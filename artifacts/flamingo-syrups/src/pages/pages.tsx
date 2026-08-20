@@ -58,7 +58,7 @@ export function HomePage() {
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-5">
               <Link href="/products" className="ink-button inline-flex items-center gap-3 px-5 py-4 text-[.7rem] font-bold uppercase tracking-[.16em] transition-transform hover:-translate-y-1" data-testid="link-hero-products">
-                Explore 21 Flavours <ArrowRight size={16} />
+                Explore Syrups <ArrowRight size={16} />
               </Link>
               <Link href="/about" className="group inline-flex items-center gap-2 text-sm font-semibold text-[#593b49]" data-testid="link-hero-story">
                 Meet the master mixologist <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -122,7 +122,7 @@ export function HomePage() {
           </div>
           <div className="mt-12 text-center">
             <Link href="/products" className="ink-button inline-flex items-center gap-3 px-6 py-4 text-[.72rem] font-bold uppercase tracking-[.16em]" data-testid="link-home-catalogue">
-              Browse All 21 Syrups <ArrowRight size={16} />
+              Explore Syrups Catalogue <ArrowRight size={16} />
             </Link>
           </div>
         </div>
@@ -161,16 +161,19 @@ export function HomePage() {
 }
 
 export function ProductsPage() {
-  const [selectedCategory, setSelectedCategory] = useState<SyrupCategory>('All');
+  const [selectedCategory, setSelectedCategory] = useState<SyrupCategory>('Berry & Fruit');
   const [selectedId, setSelectedId] = useState<string>(syrupsList[0].id);
+  const [showAllGrid, setShowAllGrid] = useState<boolean>(false);
 
-  // Check URL query parameters for pre-selected syrup e.g. /products?syrup=jamun
+  // Read URL query parameter e.g. /products?syrup=jamun
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       const syrupParam = params.get('syrup');
       if (syrupParam && syrupsList.some((s) => s.id === syrupParam)) {
         setSelectedId(syrupParam);
+        const match = syrupsList.find((s) => s.id === syrupParam);
+        if (match) setSelectedCategory(match.category);
       }
     }
   }, []);
@@ -179,13 +182,12 @@ export function ProductsPage() {
     return syrupsList.find((s) => s.id === selectedId) ?? syrupsList[0];
   }, [selectedId]);
 
-  const filteredSyrups = useMemo(() => {
-    if (selectedCategory === 'All') return syrupsList;
+  const displayedSyrups = useMemo(() => {
+    if (showAllGrid) return syrupsList;
     return syrupsList.filter((s) => s.category === selectedCategory);
-  }, [selectedCategory]);
+  }, [selectedCategory, showAllGrid]);
 
-  const categories: SyrupCategory[] = [
-    'All',
+  const categories: Array<Exclude<SyrupCategory, 'All'>> = [
     'Berry & Fruit',
     'Citrus & Tropical',
     'Spiced & Botanical',
@@ -197,14 +199,14 @@ export function ProductsPage() {
       <section className="border-b border-rose-300/70 bg-[#f9d7e4]">
         <div className="page-shell grid gap-10 py-16 md:grid-cols-[1fr_.8fr] md:py-24">
           <div>
-            <SectionKicker>Complete Flavour Range</SectionKicker>
+            <SectionKicker>Flamingo Syrups Collection</SectionKicker>
             <h1 className="mt-5 max-w-3xl font-display text-6xl leading-[.82] tracking-[-.04em] md:text-[8rem]">
               21 Exceptional<br /><span className="italic text-[#d84f78]">Flavours.</span>
             </h1>
           </div>
           <div className="flex flex-col justify-between gap-6 self-end">
             <p className="max-w-md text-base leading-7 text-[#684454]">
-              Endless possibilities. Formulated for professional mixology with real ingredients, vibrant colours, and consistent taste in every 750 ml bottle.
+              Select any syrup flavour from the dropdown menu below or browse by category. Crafted for professional mixology with real ingredients in 750 ml bottles.
             </p>
             <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-[#b63d65]">
               <Wine size={16} /> 21 Syrups · 750 ml Professional Pack
@@ -214,26 +216,31 @@ export function ProductsPage() {
       </section>
 
       <section className="page-shell py-12 md:py-20">
-        {/* DROPDOWN MENU & CONTROLS SECTION */}
+        {/* INTERACTIVE SYRUP DROPDOWN SELECT MENU CONTROL */}
         <div className="rounded-2xl border-2 border-rose-300 bg-[#fff3f8] p-6 md:p-8 shadow-sm">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             
-            {/* 1. SELECT DROPDOWN MENU */}
-            <div className="w-full lg:max-w-md">
-              <label htmlFor="syrup-dropdown" className="block text-xs font-bold uppercase tracking-[.14em] text-[#b63d65] mb-2">
-                Dropdown Menu — Choose Any Syrup Flavour:
+            {/* SYRUP SELECT DROPDOWN MENU */}
+            <div className="w-full lg:max-w-lg">
+              <label htmlFor="syrup-dropdown-menu" className="block text-xs font-bold uppercase tracking-[.14em] text-[#b63d65] mb-2">
+                Select Syrup Flavour from Dropdown (21 Varieties):
               </label>
               <div className="relative">
                 <select
-                  id="syrup-dropdown"
+                  id="syrup-dropdown-menu"
                   value={selectedId}
-                  onChange={(e) => setSelectedId(e.target.value)}
-                  className="w-full appearance-none rounded-xl border-2 border-[#d84f78] bg-[#fffdfc] px-4 py-3.5 pr-10 text-base font-semibold text-[#321e2a] shadow-sm outline-none transition-all hover:border-[#b63d65] focus:border-[#b63d65] focus:ring-2 focus:ring-[#d84f78]/30"
+                  onChange={(e) => {
+                    const chosenId = e.target.value;
+                    setSelectedId(chosenId);
+                    const match = syrupsList.find((s) => s.id === chosenId);
+                    if (match) setSelectedCategory(match.category);
+                  }}
+                  className="w-full appearance-none rounded-xl border-2 border-[#d84f78] bg-[#fffdfc] px-4 py-3.5 pr-10 text-base font-semibold text-[#321e2a] shadow-sm outline-none transition-all hover:border-[#b63d65] focus:border-[#b63d65] focus:ring-2 focus:ring-[#d84f78]/30 cursor-pointer"
                   data-testid="select-syrup-dropdown"
                 >
                   {syrupsList.map((syrup) => (
                     <option key={syrup.id} value={syrup.id}>
-                      Bottle {syrup.index}: {syrup.name} ({syrup.category})
+                      Bottle {syrup.index}: {syrup.name} — ({syrup.category})
                     </option>
                   ))}
                 </select>
@@ -241,94 +248,52 @@ export function ProductsPage() {
               </div>
             </div>
 
-            {/* 2. CATEGORY FILTER TABS */}
+            {/* CATEGORY SELECTOR TABS */}
             <div className="flex flex-col gap-2">
               <span className="text-xs font-bold uppercase tracking-[.14em] text-[#996074]">
-                Filter by Category:
+                Filter by Flavour Family:
               </span>
               <div className="flex flex-wrap gap-2" role="group" aria-label="Filter syrups by category">
                 {categories.map((cat) => (
                   <button
                     key={cat}
                     type="button"
-                    onClick={() => setSelectedCategory(cat)}
+                    onClick={() => {
+                      setSelectedCategory(cat);
+                      setShowAllGrid(false);
+                    }}
                     className={`border px-3.5 py-2 text-[.66rem] font-bold uppercase tracking-[.14em] transition-colors rounded-lg ${
-                      selectedCategory === cat
+                      !showAllGrid && selectedCategory === cat
                         ? 'border-[#321e2a] bg-[#321e2a] text-[#fff3f8]'
                         : 'border-rose-300 bg-white text-[#684454] hover:border-[#d84f78] hover:bg-[#fbd6e4]/40'
                     }`}
-                    aria-pressed={selectedCategory === cat}
+                    aria-pressed={!showAllGrid && selectedCategory === cat}
                     data-testid={`filter-${cat.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
                   >
-                    {cat} {cat === 'All' ? `(${syrupsList.length})` : ''}
+                    {cat}
                   </button>
                 ))}
+
+                <button
+                  type="button"
+                  onClick={() => setShowAllGrid((prev) => !prev)}
+                  className={`border px-3.5 py-2 text-[.66rem] font-bold uppercase tracking-[.14em] transition-colors rounded-lg ${
+                    showAllGrid
+                      ? 'border-[#d84f78] bg-[#d84f78] text-white'
+                      : 'border-rose-300 bg-white text-[#b63d65] hover:border-[#d84f78]'
+                  }`}
+                  data-testid="button-toggle-all-21"
+                >
+                  {showAllGrid ? 'Showing All 21 ✓' : 'View All 21 Varieties'}
+                </button>
               </div>
             </div>
 
           </div>
         </div>
 
-        {/* 21 SYRUPS GRID CARDS */}
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredSyrups.map((syrup) => {
-            const isSelected = selectedId === syrup.id;
-            return (
-              <button
-                type="button"
-                key={syrup.id}
-                onClick={() => setSelectedId(syrup.id)}
-                className={`group relative flex flex-col justify-between min-h-[310px] overflow-hidden rounded-xl border p-6 text-left transition-all hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(153,63,98,.16)] ${
-                  isSelected
-                    ? 'border-2 border-[#d84f78] bg-[#fff3f8] shadow-md ring-2 ring-[#d84f78]/20'
-                    : 'border-rose-300/80 bg-[#fbd6e4]/70 hover:bg-[#fbd6e4]'
-                }`}
-                data-testid={`card-syrup-${syrup.id}`}
-                aria-pressed={isSelected}
-              >
-                <div className="flex items-start justify-between">
-                  <span
-                    className="flex h-9 w-9 items-center justify-center rounded-full text-xs font-bold text-white shadow-sm"
-                    style={{ backgroundColor: syrup.badgeColor }}
-                  >
-                    {syrup.index}
-                  </span>
-                  <span className="rounded-full bg-white/80 px-2.5 py-1 text-[.64rem] font-bold uppercase tracking-wider text-[#7e3450]">
-                    {syrup.tag}
-                  </span>
-                </div>
-
-                <div className="my-4">
-                  <p className="text-[.68rem] font-bold uppercase tracking-widest text-[#b63d65]">
-                    {syrup.category}
-                  </p>
-                  <h3 className="mt-1 font-display text-3xl font-semibold leading-tight text-[#321e2a] group-hover:text-[#d84f78]">
-                    {syrup.name}
-                  </h3>
-                  <p className="mt-2.5 text-xs leading-5 text-[#684454] line-clamp-3">
-                    {syrup.description}
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-between border-t border-rose-300/60 pt-3 text-[.68rem] font-bold uppercase tracking-wider text-[#593b49]">
-                  <span>Pack: {syrup.volume}</span>
-                  <span className="flex items-center gap-1 text-[#d84f78] group-hover:translate-x-1 transition-transform">
-                    {isSelected ? 'Selected ✓' : 'Select Flavour →'}
-                  </span>
-                </div>
-
-                {isSelected && (
-                  <span className="absolute right-3 top-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#d84f78] text-white">
-                    <Check size={14} />
-                  </span>
-                )}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* SELECTED SYRUP DETAILED FOCUS VIEW */}
-        <div className="mt-14 rounded-2xl border-2 border-[#d84f78] bg-[#fff3f8] p-8 shadow-lg md:p-12">
+        {/* SELECTED SYRUP DETAILED FOCUS CARD */}
+        <div className="mt-10 rounded-2xl border-2 border-[#d84f78] bg-[#fff3f8] p-8 shadow-lg md:p-12">
           <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
             <div>
               <div className="flex items-center gap-3">
@@ -339,9 +304,9 @@ export function ProductsPage() {
                   {selectedSyrup.index}
                 </span>
                 <div>
-                  <SectionKicker>Selected Syrup Detail</SectionKicker>
+                  <SectionKicker>Selected Syrup Flavour</SectionKicker>
                   <span className="text-xs font-bold text-[#7e3450] uppercase tracking-wider">
-                    {selectedSyrup.category}
+                    Category: {selectedSyrup.category}
                   </span>
                 </div>
               </div>
@@ -355,21 +320,21 @@ export function ProductsPage() {
                   {selectedSyrup.tag}
                 </span>
                 <span className="rounded-full border border-rose-300 bg-white px-3 py-1 text-xs font-bold text-[#593b49]">
-                  Standard Pack: {selectedSyrup.volume}
+                  Standard Bottle Pack: {selectedSyrup.volume}
                 </span>
               </div>
             </div>
 
             <div className="flex flex-col justify-between gap-6 border-t border-rose-300/80 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-[#b63d65]">Profile & Flavour Notes:</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-[#b63d65]">Profile & Taste Notes:</h4>
                 <p className="mt-2 text-base leading-7 text-[#684454]">
                   {selectedSyrup.description}
                 </p>
               </div>
 
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-[#b63d65]">Recommended Pairings & Mixology:</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-[#b63d65]">Mixology & Recommended Pairings:</h4>
                 <p className="mt-2 text-sm leading-6 font-medium text-[#321e2a]">
                   {selectedSyrup.pairingNotes}
                 </p>
@@ -385,6 +350,75 @@ export function ProductsPage() {
                 </Link>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* CATEGORY / FEATURED SYRUPS CARDS */}
+        <div className="mt-12">
+          <div className="flex items-center justify-between border-b border-rose-300 pb-4 mb-8">
+            <h3 className="font-display text-3xl font-semibold text-[#321e2a]">
+              {showAllGrid ? 'All 21 Varieties Catalogue' : `${selectedCategory} Flavours`}
+            </h3>
+            <span className="text-xs font-bold uppercase tracking-wider text-[#996074]">
+              {displayedSyrups.length} {displayedSyrups.length === 1 ? 'Syrup' : 'Syrups'}
+            </span>
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {displayedSyrups.map((syrup) => {
+              const isSelected = selectedId === syrup.id;
+              return (
+                <button
+                  type="button"
+                  key={syrup.id}
+                  onClick={() => setSelectedId(syrup.id)}
+                  className={`group relative flex flex-col justify-between min-h-[300px] overflow-hidden rounded-xl border p-6 text-left transition-all hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(153,63,98,.16)] ${
+                    isSelected
+                      ? 'border-2 border-[#d84f78] bg-[#fff3f8] shadow-md ring-2 ring-[#d84f78]/20'
+                      : 'border-rose-300/80 bg-[#fbd6e4]/70 hover:bg-[#fbd6e4]'
+                  }`}
+                  data-testid={`card-syrup-${syrup.id}`}
+                  aria-pressed={isSelected}
+                >
+                  <div className="flex items-start justify-between">
+                    <span
+                      className="flex h-9 w-9 items-center justify-center rounded-full text-xs font-bold text-white shadow-sm"
+                      style={{ backgroundColor: syrup.badgeColor }}
+                    >
+                      {syrup.index}
+                    </span>
+                    <span className="rounded-full bg-white/80 px-2.5 py-1 text-[.64rem] font-bold uppercase tracking-wider text-[#7e3450]">
+                      {syrup.tag}
+                    </span>
+                  </div>
+
+                  <div className="my-4">
+                    <p className="text-[.68rem] font-bold uppercase tracking-widest text-[#b63d65]">
+                      {syrup.category}
+                    </p>
+                    <h4 className="mt-1 font-display text-3xl font-semibold leading-tight text-[#321e2a] group-hover:text-[#d84f78]">
+                      {syrup.name}
+                    </h4>
+                    <p className="mt-2.5 text-xs leading-5 text-[#684454] line-clamp-3">
+                      {syrup.description}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center justify-between border-t border-rose-300/60 pt-3 text-[.68rem] font-bold uppercase tracking-wider text-[#593b49]">
+                    <span>Pack: {syrup.volume}</span>
+                    <span className="flex items-center gap-1 text-[#d84f78] group-hover:translate-x-1 transition-transform">
+                      {isSelected ? 'Selected ✓' : 'Select Flavour →'}
+                    </span>
+                  </div>
+
+                  {isSelected && (
+                    <span className="absolute right-3 top-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#d84f78] text-white">
+                      <Check size={14} />
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -490,7 +524,7 @@ export function AboutPage() {
           </h2>
           <p className="mx-auto mt-7 max-w-lg leading-7 text-[#684454]">If you are building a beverage programme, come tell us what your menu needs.</p>
           <Link href="/products" className="ink-button mt-9 inline-flex items-center gap-3 px-5 py-4 text-[.7rem] font-bold uppercase tracking-[.16em]" data-testid="link-about-contact">
-            View Products Catalogue <ArrowRight size={16} />
+            View Syrups Catalogue <ArrowRight size={16} />
           </Link>
         </div>
       </section>

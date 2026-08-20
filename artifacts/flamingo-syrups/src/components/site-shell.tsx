@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, type ReactNode } from 'react';
 import { ArrowUpRight, ChevronDown, Menu, X, Wine } from 'lucide-react';
 import { Link, useLocation } from 'wouter';
 import logoPath from '@assets/2.jpg_1787233517766.jpeg';
-import { brand, syrupsList } from '@/data/site-data';
+import { brand } from '@/data/site-data';
 
 export function ScrollToTop() {
   const [location] = useLocation();
@@ -55,7 +55,7 @@ export function SiteHeader() {
             {location === '/' && <span className="absolute -bottom-1 left-0 h-px w-full bg-[#d84f78]" />}
           </Link>
 
-          {/* Products Dropdown Menu */}
+          {/* Products Dropdown Menu with Syrups item */}
           <div className="relative" ref={dropdownRef} onMouseEnter={() => setProductsOpen(true)}>
             <button
               type="button"
@@ -64,52 +64,34 @@ export function SiteHeader() {
               className={`flex items-center gap-1.5 py-2 text-[.72rem] font-semibold uppercase tracking-[.16em] transition-colors hover:text-[#d84f78] ${location.startsWith('/products') ? 'text-[#d84f78]' : 'text-[#593b49]'}`}
               aria-expanded={productsOpen}
             >
-              Products ({syrupsList.length})
+              Products
               <ChevronDown size={14} className={`transition-transform duration-200 ${productsOpen ? 'rotate-180 text-[#d84f78]' : ''}`} />
             </button>
 
             {productsOpen && (
-              <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2 z-50">
-                <div className="w-[520px] rounded-xl border border-rose-300/80 bg-[#fff3f8] p-5 shadow-[0_20px_50px_rgba(153,63,98,.2)] backdrop-blur-md">
-                  <div className="flex items-center justify-between border-b border-rose-200/80 pb-3">
-                    <div className="flex items-center gap-2">
-                      <Wine size={16} className="text-[#d84f78]" />
-                      <span className="font-display text-lg font-semibold text-[#321e2a]">21 Exceptional Flavours</span>
+              <div className="absolute left-0 top-full pt-2 z-50">
+                <div className="w-[280px] rounded-xl border border-rose-300/80 bg-[#fff3f8] p-3 shadow-[0_20px_50px_rgba(153,63,98,.2)] backdrop-blur-md">
+                  <Link
+                    href="/products"
+                    onClick={() => setProductsOpen(false)}
+                    className="group flex items-center justify-between rounded-lg border border-transparent p-3 transition-all hover:border-rose-300 hover:bg-[#fbd6e4]/70"
+                    data-testid="link-dropdown-syrups"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#d84f78] text-white shadow-sm">
+                        <Wine size={18} />
+                      </span>
+                      <div>
+                        <p className="text-sm font-bold text-[#321e2a] group-hover:text-[#d84f78]">
+                          Syrups
+                        </p>
+                        <p className="text-[.68rem] text-[#996074]">
+                          21 Exceptional Flavours
+                        </p>
+                      </div>
                     </div>
-                    <Link
-                      href="/products"
-                      onClick={() => setProductsOpen(false)}
-                      className="text-[.68rem] font-bold uppercase tracking-[.14em] text-[#d84f78] hover:underline"
-                    >
-                      View All Catalogue →
-                    </Link>
-                  </div>
-
-                  <div className="mt-3 grid max-h-[360px] grid-cols-2 gap-1.5 overflow-y-auto pr-1">
-                    {syrupsList.map((syrup) => (
-                      <Link
-                        key={syrup.id}
-                        href={`/products?syrup=${syrup.id}`}
-                        onClick={() => setProductsOpen(false)}
-                        className="group flex items-center justify-between rounded-lg border border-transparent p-2.5 transition-all hover:border-rose-300 hover:bg-[#fbd6e4]/60"
-                      >
-                        <div className="flex items-center gap-2.5">
-                          <span
-                            className="flex h-6 w-6 items-center justify-center rounded-full text-[.6rem] font-bold text-white shadow-sm"
-                            style={{ backgroundColor: syrup.badgeColor }}
-                          >
-                            {syrup.index}
-                          </span>
-                          <span className="text-xs font-semibold text-[#321e2a] group-hover:text-[#b63d65]">
-                            {syrup.name}
-                          </span>
-                        </div>
-                        <span className="text-[.65rem] font-bold uppercase tracking-wider text-[#996074]">
-                          {syrup.volume}
-                        </span>
-                      </Link>
-                    ))}
-                  </div>
+                    <ArrowUpRight size={16} className="text-[#d84f78] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </Link>
                 </div>
               </div>
             )}
@@ -157,23 +139,10 @@ export function SiteHeader() {
               Home
             </Link>
             
-            <div className="border-b border-rose-200/80 py-3">
-              <div className="flex items-center justify-between font-semibold uppercase tracking-[.14em] text-[#593b49]">
-                <span>Products ({syrupsList.length} Syrups)</span>
-              </div>
-              <div className="mt-3 max-h-56 overflow-y-auto space-y-1 pl-2">
-                {syrupsList.map((syrup) => (
-                  <Link
-                    key={syrup.id}
-                    href={`/products?syrup=${syrup.id}`}
-                    className="flex items-center justify-between py-1.5 text-xs text-[#684454] hover:text-[#d84f78]"
-                  >
-                    <span>{syrup.index}. {syrup.name}</span>
-                    <span className="text-[.65rem] font-bold text-[#b63d65]">{syrup.tag}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
+            <Link href="/products" className="flex items-center justify-between border-b border-rose-200/80 py-3 text-sm font-semibold uppercase tracking-[.14em] text-[#593b49]">
+              <span>Products (Syrups)</span>
+              <span className="rounded-full bg-[#d84f78] px-2 py-0.5 text-[.64rem] text-white">21 Flavours</span>
+            </Link>
 
             <Link href="/about" className="border-b border-rose-200/80 py-3 text-sm font-semibold uppercase tracking-[.14em] text-[#593b49]">
               The story
@@ -201,7 +170,7 @@ export function SiteFooter() {
           <p className="eyebrow text-[#eaa0b7]">Explore</p>
           <div className="mt-5 flex flex-col items-start gap-3 text-sm text-[#ffeaf3]">
             <Link href="/" className="hover:text-[#eaa0b7]" data-testid="link-footer-home">Home</Link>
-            <Link href="/products" className="hover:text-[#eaa0b7]" data-testid="link-footer-products">Products</Link>
+            <Link href="/products" className="hover:text-[#eaa0b7]" data-testid="link-footer-products">Syrups</Link>
             <Link href="/about" className="hover:text-[#eaa0b7]" data-testid="link-footer-about">The story</Link>
             <Link href="/contact" className="hover:text-[#eaa0b7]" data-testid="link-footer-contact">Enquire</Link>
           </div>
