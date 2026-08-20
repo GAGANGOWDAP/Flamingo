@@ -88,7 +88,7 @@ export function SiteFooter() {
     <footer className="mt-24 bg-[#321e2a] text-[#ffeaf3]">
       <div className="page-shell grid gap-12 py-16 md:grid-cols-[1.1fr_.8fr_.8fr] md:py-20">
         <div>
-          <p className="eyebrow text-[#eaa0b7]">Flamingo Syrups</p>
+          <p className="eyebrow text-[#eaa0b7]">Flamingo</p>
           <h2 className="mt-4 max-w-sm font-display text-5xl leading-[.92] text-[#fff3f8] md:text-6xl">A little colour for the bar.</h2>
           <p className="mt-6 max-w-xs text-sm leading-6 text-[#e6bfce]">A new syrup collection is taking shape in Bengaluru. Product details will follow when they are ready to be shared.</p>
         </div>
@@ -112,7 +112,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-[#6b4353]">
         <div className="page-shell flex flex-col gap-2 py-5 text-[.66rem] uppercase tracking-[.15em] text-[#c997a9] sm:flex-row sm:items-center sm:justify-between">
-          <span>Flamingo Syrups · Bengaluru</span>
+          <span>Flamingo · Bengaluru</span>
           <span>Collection in preparation</span>
         </div>
       </div>

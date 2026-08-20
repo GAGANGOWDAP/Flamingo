@@ -8,7 +8,7 @@ export type ProductSlot = {
 };
 
 export const brand = {
-  name: 'Flamingo Syrups',
+  name: 'Flamingo',
   creator: 'Manoj Alphones',
   phone: '+91 8971825137',
   email: 'mjsince1987@gmail.com',
