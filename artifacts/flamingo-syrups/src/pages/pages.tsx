@@ -1,4 +1,5 @@
 import { useMemo, useState, useEffect, type FormEvent, type ReactNode } from 'react';
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import { ArrowDown, ArrowRight, Check, ChevronDown, Droplet, GlassWater, Mail, MapPin, Phone, Sparkles, Star, Wine } from 'lucide-react';
 import { Link } from 'wouter';
 import logoPath from '@assets/2.jpg_1787233517766.jpeg';
@@ -43,7 +44,32 @@ function Marquee() {
   );
 }
 
+// Animation variants for viewport entrance & staggered cards
+const cardContainerVariants: Variants = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.09, // 90ms staggered entrance from left to right
+    },
+  },
+};
+
+const cardItemVariants: Variants = {
+  hidden: { opacity: 0, y: 25 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6, // 600ms entrance
+      ease: 'easeOut',
+    },
+  },
+};
+
 export function HomePage() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <>
       <section className="relative overflow-hidden">
@@ -105,7 +131,13 @@ export function HomePage() {
             <SectionKicker>Complete Flavour Range</SectionKicker>
             <h2 className="mt-4 font-display text-5xl leading-[.9] text-[#234039] md:text-7xl">Designed for perfection in every drop.</h2>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          <motion.div
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5"
+            variants={shouldReduceMotion ? undefined : cardContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+          >
             {[
               { title: 'Real Ingredients', desc: 'Real taste extracted from authentic fruits, herbs & botanicals.' },
               { title: 'Vibrant Colours', desc: 'Bright, appealing and consistent hue for dramatic cocktails.' },
@@ -113,13 +145,28 @@ export function HomePage() {
               { title: 'Versatile Applications', desc: 'Perfect for mocktails, cocktails, spritzes, and iced teas.' },
               { title: 'Professional Pack', desc: 'Available in standard 750 ml bar bottle format.' },
             ].map((feature, index) => (
-              <div key={feature.title} className="rounded-xl border border-[#9ec8b7] bg-[#e3f2eb] p-6 shadow-sm">
-                <span className="font-display text-2xl font-bold text-[#b63d65]">0{index + 1}</span>
-                <h3 className="mt-3 font-display text-xl font-semibold text-[#234039]">{feature.title}</h3>
-                <p className="mt-2 text-xs leading-5 text-[#3d6155]">{feature.desc}</p>
-              </div>
+              <motion.div
+                key={feature.title}
+                variants={shouldReduceMotion ? undefined : cardItemVariants}
+                className="group relative overflow-hidden rounded-xl border border-[#9ec8b7] bg-[#e3f2eb] p-6 shadow-sm transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-2 hover:border-[#d84f78] hover:shadow-[0_20px_45px_rgba(153,63,98,.16)]"
+              >
+                {/* SUBTLE PINK GRADIENT SWEEP */}
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-r from-transparent via-[#ffeaf3]/70 to-transparent opacity-0 -translate-x-full transition-all duration-700 ease-in-out group-hover:opacity-100 group-hover:translate-x-full"
+                />
+                <div className="relative z-10">
+                  <span className="inline-block font-display text-2xl font-bold text-[#b63d65] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                    0{index + 1}
+                  </span>
+                  <h3 className="mt-3 font-display text-xl font-semibold text-[#234039] transition-colors duration-300 group-hover:text-[#d84f78]">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-2 text-xs leading-5 text-[#3d6155]">{feature.desc}</p>
+                </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
           <div className="mt-12 text-center">
             <Link href="/products" className="ink-button inline-flex items-center gap-3 px-6 py-4 text-[.72rem] font-bold uppercase tracking-[.16em]" data-testid="link-home-catalogue">
               Explore Syrups Catalogue <ArrowRight size={16} />
@@ -161,6 +208,7 @@ export function HomePage() {
 }
 
 export function ProductsPage() {
+  const shouldReduceMotion = useReducedMotion();
   const [selectedCategory, setSelectedCategory] = useState<SyrupCategory>('Berry & Fruit');
   const [selectedId, setSelectedId] = useState<string>(syrupsList[0].id);
   const [showAllGrid, setShowAllGrid] = useState<boolean>(false);
@@ -353,7 +401,7 @@ export function ProductsPage() {
           </div>
         </div>
 
-        {/* CATEGORY / FEATURED SYRUPS CARDS */}
+        {/* FLAVOUR CARDS GRID WITH VIEWPORT STAGGER & PREMUM INTERACTION SYSTEM */}
         <div className="mt-12">
           <div className="flex items-center justify-between border-b border-rose-300 pb-4 mb-8">
             <h3 className="font-display text-3xl font-semibold text-[#321e2a]">
@@ -364,15 +412,23 @@ export function ProductsPage() {
             </span>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <motion.div
+            key={selectedCategory + String(showAllGrid)}
+            className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+            variants={shouldReduceMotion ? undefined : cardContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+          >
             {displayedSyrups.map((syrup) => {
               const isSelected = selectedId === syrup.id;
               return (
-                <button
+                <motion.button
                   type="button"
                   key={syrup.id}
+                  variants={shouldReduceMotion ? undefined : cardItemVariants}
                   onClick={() => setSelectedId(syrup.id)}
-                  className={`group relative flex flex-col justify-between min-h-[300px] overflow-hidden rounded-xl border p-6 text-left transition-all hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(153,63,98,.16)] ${
+                  className={`group relative flex flex-col justify-between min-h-[300px] overflow-hidden rounded-xl border p-6 text-left transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-2 hover:border-[#d84f78] hover:shadow-[0_22px_48px_rgba(153,63,98,.18)] ${
                     isSelected
                       ? 'border-2 border-[#d84f78] bg-[#fff3f8] shadow-md ring-2 ring-[#d84f78]/20'
                       : 'border-rose-300/80 bg-[#fbd6e4]/70 hover:bg-[#fbd6e4]'
@@ -380,23 +436,30 @@ export function ProductsPage() {
                   data-testid={`card-syrup-${syrup.id}`}
                   aria-pressed={isSelected}
                 >
-                  <div className="flex items-start justify-between">
+                  {/* 3. SUBTLE PINK GRADIENT SWEEP OVERLAY */}
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-r from-transparent via-[#ffeaf3]/70 to-transparent opacity-0 -translate-x-full transition-all duration-700 ease-in-out group-hover:opacity-100 group-hover:translate-x-full"
+                  />
+
+                  {/* CARD CONTENT WITH z-10 LAYER FOR MAXIMUM READABILITY */}
+                  <div className="relative z-10 flex items-start justify-between">
                     <span
-                      className="flex h-9 w-9 items-center justify-center rounded-full text-xs font-bold text-white shadow-sm"
+                      className="flex h-9 w-9 items-center justify-center rounded-full text-xs font-bold text-white shadow-sm transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-110 group-hover:rotate-3"
                       style={{ backgroundColor: syrup.badgeColor }}
                     >
                       {syrup.index}
                     </span>
-                    <span className="rounded-full bg-white/80 px-2.5 py-1 text-[.64rem] font-bold uppercase tracking-wider text-[#7e3450]">
+                    <span className="rounded-full bg-white/80 px-2.5 py-1 text-[.64rem] font-bold uppercase tracking-wider text-[#7e3450] transition-transform duration-500 ease-out group-hover:scale-[1.03]">
                       {syrup.tag}
                     </span>
                   </div>
 
-                  <div className="my-4">
+                  <div className="relative z-10 my-4">
                     <p className="text-[.68rem] font-bold uppercase tracking-widest text-[#b63d65]">
                       {syrup.category}
                     </p>
-                    <h4 className="mt-1 font-display text-3xl font-semibold leading-tight text-[#321e2a] group-hover:text-[#d84f78]">
+                    <h4 className="mt-1 font-display text-3xl font-semibold leading-tight text-[#321e2a] transition-colors duration-300 group-hover:text-[#d84f78]">
                       {syrup.name}
                     </h4>
                     <p className="mt-2.5 text-xs leading-5 text-[#684454] line-clamp-3">
@@ -404,22 +467,22 @@ export function ProductsPage() {
                     </p>
                   </div>
 
-                  <div className="flex items-center justify-between border-t border-rose-300/60 pt-3 text-[.68rem] font-bold uppercase tracking-wider text-[#593b49]">
+                  <div className="relative z-10 flex items-center justify-between border-t border-rose-300/60 pt-3 text-[.68rem] font-bold uppercase tracking-wider text-[#593b49]">
                     <span>Pack: {syrup.volume}</span>
-                    <span className="flex items-center gap-1 text-[#d84f78] group-hover:translate-x-1 transition-transform">
+                    <span className="flex items-center gap-1 text-[#d84f78] transition-transform duration-300 group-hover:translate-x-1.5">
                       {isSelected ? 'Selected ✓' : 'Select Flavour →'}
                     </span>
                   </div>
 
                   {isSelected && (
-                    <span className="absolute right-3 top-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#d84f78] text-white">
+                    <span className="absolute right-3 top-3 z-10 flex h-6 w-6 items-center justify-center rounded-full bg-[#d84f78] text-white shadow-sm">
                       <Check size={14} />
                     </span>
                   )}
-                </button>
+                </motion.button>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
