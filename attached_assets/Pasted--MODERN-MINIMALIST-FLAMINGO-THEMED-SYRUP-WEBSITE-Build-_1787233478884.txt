@@ -1,0 +1,992 @@
+# MODERN MINIMALIST FLAMINGO-THEMED SYRUP WEBSITE
+
+Build a modern, premium, minimalist and highly polished company website for a syrup/product-based company.
+
+The website must strongly focus on **UI/UX, visual hierarchy, smooth animations, whitespace, typography and premium presentation**.
+
+## 1. IMPORTANT DESIGN DIRECTION
+
+The main visual inspiration should be:
+
+**Flamingo bird + artistic/minimalist aesthetic + premium syrup brand**
+
+Primary brand color:
+
+`#FFEAF3`
+
+Use this as the main soft pink foundation, but do NOT make the entire website pink.
+
+Create a sophisticated palette around it:
+
+* Primary: `#FFEAF3`
+* Deep pink/rose accent: use sparingly
+* Soft white: `#FFFFFF`
+* Off-white: `#FFF9FB`
+* Dark text: `#242124`
+* Muted text: `#777277`
+* Very light pink borders: derived from the primary color
+
+The website should feel:
+
+* Elegant
+* Fresh
+* Premium
+* Artistic
+* Minimal
+* Modern
+* Soft
+* Clean
+* Professional
+* Refreshing
+
+Avoid:
+
+* Overly colorful UI
+* Heavy gradients
+* Excessive shadows
+* Clutter
+* Too many animations
+* Generic corporate templates
+* Excessive rounded cards
+* Excessive glassmorphism
+* Unnecessary decorative elements
+
+The flamingo concept should be incorporated subtly through shapes, curves, typography, decorative elements and visual composition rather than making the entire website look like a cartoon.
+
+---
+
+# 2. ATTACHED FILES
+
+I will provide:
+
+1. **Company logo**
+2. **PDF containing the syrup/product details**
+
+IMPORTANT:
+
+Read and use the attached PDF as the **source of truth for all syrup/product information**.
+
+Do NOT invent:
+
+* Product names
+* Syrup names
+* Flavours
+* Ingredients
+* Sizes
+* Descriptions
+* Product specifications
+* Claims
+* Benefits
+* Any other product information
+
+If information is not present in the PDF, leave it configurable rather than inventing content.
+
+Use the attached company logo exactly and place it appropriately in:
+
+* Navbar
+* Footer
+* Relevant branding areas
+
+Do not redesign or distort the logo.
+
+---
+
+# 3. WEBSITE PAGES
+
+Create exactly these primary pages:
+
+1. HOME
+2. PRODUCTS
+3. ABOUT
+4. CONTACT US
+
+Navbar:
+
+**Logo | Home | Products | About | Contact Us**
+
+Add a prominent CTA:
+
+**Explore Products** or **Contact Us**
+
+The navbar should be clean and minimal.
+
+On mobile, use a smooth animated hamburger menu.
+
+---
+
+# 4. HOME PAGE
+
+Create a premium hero section.
+
+The hero should immediately communicate:
+
+* Brand identity
+* Syrup/product category
+* Premium quality
+* Modern aesthetic
+
+Suggested structure:
+
+LEFT SIDE:
+
+Small eyebrow text:
+"CRAFTED FOR BETTER FLAVOURS"
+
+Large headline with elegant typography.
+
+Example style:
+
+"Bring Every Creation
+to Life with Flavour."
+
+Do not blindly use this exact copy if the PDF/company information suggests better branding.
+
+Supporting paragraph with a short professional company description.
+
+CTA buttons:
+
+**Explore Products**
+**Contact Us**
+
+RIGHT SIDE:
+
+Create an artistic flamingo-inspired visual composition.
+
+IMPORTANT:
+
+Do not automatically generate or download random stock images.
+
+If no product/flamingo visual assets are provided, create the design using:
+
+* CSS shapes
+* Elegant curves
+* Abstract forms
+* Soft pink layers
+* Subtle flamingo-inspired silhouettes
+* Typography
+* Product cards
+
+The visual should look premium even without external images.
+
+---
+
+# 5. HOME PAGE SECTIONS
+
+After the hero, include:
+
+### A. Brand Introduction
+
+Short introduction about the company.
+
+### B. Featured Products
+
+Display selected syrups from the PDF.
+
+Use beautiful product cards.
+
+Each card should contain:
+
+* Product name
+* Short description
+* Category/flavour if available
+* "View Details" button
+
+Do not show every product here if there are many products.
+
+Show a curated selection.
+
+Add:
+
+**View All Products →**
+
+### C. Why Choose Us
+
+Use 3–4 clean visual points based ONLY on information that can be reasonably supported by the supplied company/product information.
+
+Examples:
+
+* Quality
+* Consistency
+* Wide Selection
+* Crafted for Versatility
+
+Do not make unsupported certifications or health claims.
+
+### D. Brand/Flavour Experience Section
+
+Create an artistic section using the flamingo-inspired theme.
+
+Use curved layouts and soft pink background.
+
+### E. Final CTA
+
+A minimal premium CTA:
+
+"Let's Create Something Delicious."
+
+Button:
+
+**Contact Us**
+
+---
+
+# 6. PRODUCTS PAGE
+
+This is one of the MOST IMPORTANT pages.
+
+Create a visually impressive product browsing experience.
+
+The product information must come from the attached PDF.
+
+## Product Navigation
+
+Create a dropdown/filter system.
+
+Example:
+
+**All Products ▼**
+
+When opened, show the syrup/product list from the PDF.
+
+If the PDF contains categories, organize them into categories.
+
+Example:
+
+* All Syrups
+* Fruit Syrups
+* Premium Syrups
+* Other categories found in PDF
+
+Do not invent categories if they do not exist.
+
+---
+
+# 7. PRODUCT DROPDOWN BEHAVIOUR
+
+The dropdown must feel premium.
+
+Use:
+
+* Smooth opening animation
+* Soft fade
+* Slight slide
+* Clean typography
+* Clear active state
+* Good spacing
+
+When the user selects a syrup:
+
+Display the corresponding product details without requiring a full page reload where practical.
+
+Use a reusable product-detail component.
+
+Each product detail should show ONLY information available in the PDF.
+
+Possible fields:
+
+* Product name
+* Description
+* Flavour
+* Ingredients
+* Available sizes
+* Applications
+* Specifications
+* Other information present in PDF
+
+If a field does not exist in the PDF, do not display an empty heading.
+
+---
+
+# 8. PRODUCT CARD DESIGN
+
+Product cards should be minimal and premium.
+
+Use:
+
+* Soft pink background
+* White card surfaces
+* Very subtle border
+* Small shadow
+* Large whitespace
+* Elegant typography
+* Smooth hover animation
+
+On hover:
+
+* Card moves upward slightly
+* Subtle shadow increase
+* CTA becomes more prominent
+* No excessive animation
+
+Do not use exaggerated 3D effects.
+
+---
+
+# 9. PRODUCT DETAIL EXPERIENCE
+
+When a product is selected, create a beautiful product information layout.
+
+Desktop:
+
+LEFT:
+Product visual / decorative product area
+
+RIGHT:
+Product name
+Short description
+Details
+CTA
+
+Mobile:
+
+Stack everything vertically.
+
+Add a smooth transition when changing products.
+
+Do NOT reload the entire page unnecessarily.
+
+---
+
+# 10. ABOUT PAGE
+
+Create a minimal premium company story page.
+
+Sections:
+
+### Our Story
+
+Use company information provided by the supplied material.
+
+### Our Approach
+
+Explain the company's approach using only reliable supplied information.
+
+### Our Values
+
+Use 3–4 visually attractive value cards.
+
+### Brand Philosophy
+
+Create a visually strong flamingo-inspired section.
+
+The About page should feel editorial and premium rather than like a generic corporate page.
+
+---
+
+# 11. CONTACT US PAGE
+
+Create a clean contact page.
+
+Include:
+
+### Contact Information
+
+Only use actual company contact details if provided in the supplied files.
+
+### Contact Form
+
+Fields:
+
+* Name
+* Email
+* Phone
+* Subject
+* Message
+
+Button:
+
+**Send Enquiry**
+
+Add client-side validation.
+
+Show attractive success/error states.
+
+Do not connect to a paid email service.
+
+Keep the form architecture ready for future backend integration.
+
+---
+
+# 12. FOOTER
+
+Create a premium minimal footer.
+
+Include:
+
+* Logo
+* Short company description
+* Navigation
+* Products
+* Contact information
+* Copyright
+
+Keep it visually clean.
+
+Do not overload the footer.
+
+---
+
+# 13. ANIMATIONS & TRANSITIONS
+
+Animations are important, but they must remain subtle and performance-friendly.
+
+Use animations for:
+
+* Page entry
+* Hero elements
+* Navbar
+* Product dropdown
+* Product cards
+* Buttons
+* Section reveals
+* Hover states
+* Product switching
+
+Preferred animation style:
+
+* Fade
+* Slide
+* Scale very slightly
+* Smooth easing
+* Soft transform
+
+Avoid:
+
+* Excessive bouncing
+* Flashing
+* Spinning
+* Long animations
+* Distracting effects
+
+Animation duration should generally be around:
+
+`200ms – 600ms`
+
+Use CSS transitions wherever possible.
+
+Only use an animation library if it provides a clear benefit.
+
+---
+
+# 14. SCROLL EXPERIENCE
+
+The website should feel extremely smooth while scrolling.
+
+Use:
+
+* Proper section spacing
+* Smooth reveal animations
+* Clean scroll rhythm
+* Sticky navbar where appropriate
+* Correct scroll restoration
+
+IMPORTANT:
+
+Whenever a user navigates to a new page using React Router, the page MUST open from the TOP.
+
+Do not preserve the previous page's scroll position when navigating to another route.
+
+Implement a reusable ScrollToTop component.
+
+---
+
+# 15. TYPOGRAPHY
+
+Typography is a major part of the design.
+
+Use a modern elegant font combination.
+
+Prefer a clean sans-serif for general UI and optionally a refined serif/display font for major headings.
+
+Do not use too many fonts.
+
+Maximum:
+
+**2 font families**
+
+Create a clear hierarchy:
+
+* Hero heading
+* Section heading
+* Subheading
+* Body text
+* Labels
+* Buttons
+
+Maintain excellent readability.
+
+---
+
+# 16. RESPONSIVE DESIGN
+
+The website MUST be fully responsive.
+
+Test:
+
+### Desktop
+
+1440px
+1280px
+1024px
+
+### Tablet
+
+768px
+
+### Mobile
+
+430px
+390px
+375px
+
+The mobile experience is extremely important.
+
+Navbar should become a clean mobile menu.
+
+Cards should stack properly.
+
+No:
+
+* Horizontal overflow
+* Broken layouts
+* Cut-off text
+* Overlapping elements
+* Tiny buttons
+* Unusable dropdowns
+
+---
+
+# 17. ACCESSIBILITY
+
+Implement basic accessibility:
+
+* Semantic HTML
+* Proper button elements
+* Accessible form labels
+* Alt text for provided images
+* Keyboard navigation
+* Visible focus states
+* Good color contrast
+* Accessible dropdown behaviour
+
+---
+
+# 18. TECH STACK
+
+Use:
+
+* React
+* Vite
+* JavaScript
+* CSS
+
+Prefer simple architecture.
+
+Do NOT introduce unnecessary technologies.
+
+Avoid adding:
+
+* Redux unless absolutely necessary
+* Large UI component libraries
+* Unnecessary animation libraries
+* Unnecessary backend
+* Unnecessary dependencies
+
+The goal is a lightweight website.
+
+---
+
+# 19. PROJECT STRUCTURE
+
+Keep the project modular and easy to edit.
+
+Recommended:
+
+src/
+│
+├── assets/
+│   ├── logo/
+│   ├── products/
+│   └── images/
+│
+├── components/
+│   ├── Navbar.jsx
+│   ├── Footer.jsx
+│   ├── Button.jsx
+│   ├── ProductCard.jsx
+│   ├── ProductDropdown.jsx
+│   ├── ProductDetails.jsx
+│   ├── SectionTitle.jsx
+│   └── ScrollToTop.jsx
+│
+├── pages/
+│   ├── Home.jsx
+│   ├── Products.jsx
+│   ├── About.jsx
+│   └── Contact.jsx
+│
+├── data/
+│   └── products.js
+│
+├── styles/
+│   ├── variables.css
+│   ├── global.css
+│   ├── navbar.css
+│   ├── home.css
+│   ├── products.css
+│   ├── about.css
+│   └── contact.css
+│
+├── App.jsx
+└── main.jsx
+
+Keep the exact structure reasonably simple if an existing project structure already exists.
+
+---
+
+# 20. VERY IMPORTANT — LOW CREDIT / EASY EDIT ARCHITECTURE
+
+I want to minimize Replit AI credits when making future changes.
+
+Therefore:
+
+### DO NOT hard-code product information inside JSX.
+
+Create:
+
+`src/data/products.js`
+
+Store all product information there.
+
+Example structure:
+
+```js
+export const products = [
+  {
+    id: "product-1",
+    name: "Product Name",
+    category: "Category",
+    description: "Description",
+    ingredients: [],
+    sizes: [],
+    details: []
+  }
+];
+```
+
+Populate this using the attached PDF.
+
+This means future product changes can be made by editing ONE data file.
+
+---
+
+# 21. CENTRALIZE DESIGN VARIABLES
+
+Create a central CSS variables file.
+
+Example:
+
+```css
+:root {
+  --primary: #FFEAF3;
+  --background: #FFF9FB;
+  --surface: #FFFFFF;
+  --text: #242124;
+  --muted: #777277;
+  --border: #F2DDE6;
+  --accent: #D96C91;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  --transition-fast: 200ms ease;
+  --transition-normal: 350ms ease;
+  --transition-slow: 550ms ease;
+}
+```
+
+Use these variables throughout the website.
+
+Do not repeat hard-coded colors everywhere.
+
+This is VERY IMPORTANT for future edits.
+
+If I later say:
+
+"Change the pink"
+
+I should only need to change the primary CSS variable.
+
+---
+
+# 22. CENTRALIZE CONTENT
+
+Keep major website text in logical locations.
+
+Do not duplicate the same content in multiple components.
+
+If possible, create:
+
+`src/data/siteContent.js`
+
+for reusable:
+
+* Company description
+* Navigation labels
+* CTA text
+* Footer content
+
+This makes future edits inexpensive.
+
+---
+
+# 23. IMAGE MANAGEMENT
+
+Keep images inside:
+
+`src/assets/`
+
+Use meaningful filenames.
+
+Example:
+
+logo.png
+
+product-name.png
+
+Do not scatter image URLs throughout JSX.
+
+Create reusable image references/data.
+
+If a product image is not available, create a tasteful placeholder/design treatment instead of automatically downloading random images.
+
+---
+
+# 24. CODE QUALITY
+
+Write clean, readable code.
+
+Avoid:
+
+* Giant JSX files
+* Duplicate CSS
+* Duplicate components
+* Inline styling everywhere
+* Repeated product markup
+* Unnecessary dependencies
+* Unnecessary files
+
+Create reusable components.
+
+---
+
+# 25. PERFORMANCE
+
+The website should load quickly.
+
+Use:
+
+* Lazy loading for non-critical images
+* Optimized assets
+* CSS transitions
+* Minimal dependencies
+* No unnecessary API requests
+* No unnecessary animations
+
+Do not add libraries just for decorative effects.
+
+---
+
+# 26. UI QUALITY REQUIREMENT
+
+Before considering the website complete, inspect the entire website visually.
+
+Check:
+
+* Navbar alignment
+* Hero spacing
+* Typography
+* Button sizes
+* Card consistency
+* Section spacing
+* Product dropdown
+* Product details
+* Footer
+* Mobile layout
+* Page transitions
+* Hover states
+* Empty states
+* Form states
+
+The final result should look like a professionally designed modern premium brand website, NOT a basic AI-generated template.
+
+---
+
+# 27. ROUTING
+
+Use React Router.
+
+Routes:
+
+`/`
+`/products`
+`/about`
+`/contact`
+
+Product selection can use either:
+
+`/products/:productId`
+
+or a clean state-based product selector, depending on which gives the best UX.
+
+Make sure browser back/forward navigation works properly.
+
+---
+
+# 28. FUTURE EDIT RULE
+
+VERY IMPORTANT:
+
+When I ask for a future change, DO NOT rebuild or rewrite the entire website.
+
+Only modify the files/components directly related to the requested change.
+
+Examples:
+
+If I say:
+
+"Change the primary color"
+
+→ Modify CSS variables only.
+
+If I say:
+
+"Add a syrup"
+
+→ Modify `products.js` only.
+
+If I say:
+
+"Change the navbar"
+
+→ Modify Navbar-related files only.
+
+If I say:
+
+"Change the hero"
+
+→ Modify Home hero-related files only.
+
+If I say:
+
+"Change product dropdown"
+
+→ Modify ProductDropdown/Product-related files only.
+
+If I say:
+
+"Change footer"
+
+→ Modify Footer-related files only.
+
+Do NOT unnecessarily modify unrelated pages.
+
+This is specifically to reduce Replit AI credit usage.
+
+---
+
+# 29. BEFORE CODING
+
+First inspect the existing project structure.
+
+If a project already exists:
+
+* Do NOT delete working files unnecessarily.
+* Do NOT rebuild the entire project from scratch.
+* Reuse existing configuration where possible.
+* Only add required dependencies.
+* Preserve existing functionality.
+
+Then inspect the supplied PDF and logo.
+
+Extract the syrup/product information from the PDF.
+
+Then build the website.
+
+---
+
+# 30. FINAL QUALITY CHECK
+
+Before finishing, verify:
+
+[ ] All 4 pages work.
+
+[ ] Navbar works.
+
+[ ] Mobile menu works.
+
+[ ] Products dropdown works.
+
+[ ] All products from the PDF are represented correctly.
+
+[ ] Product details are accurate to the PDF.
+
+[ ] No invented product claims.
+
+[ ] Logo displays correctly.
+
+[ ] Website uses #FFEAF3 as the main brand foundation.
+
+[ ] Design is minimalist.
+
+[ ] Flamingo artistic theme is subtle and premium.
+
+[ ] Animations are smooth.
+
+[ ] Buttons work.
+
+[ ] Contact form validation works.
+
+[ ] No horizontal scrolling.
+
+[ ] New pages open from the top.
+
+[ ] Desktop layout works.
+
+[ ] Mobile layout works.
+
+[ ] No console errors.
+
+[ ] No broken imports.
+
+[ ] No unnecessary dependencies.
+
+[ ] Product data is centralized.
+
+[ ] CSS variables are centralized.
+
+[ ] Future edits can be made without rewriting the whole website.
+
+---
+
+# MOST IMPORTANT FINAL INSTRUCTION
+
+Prioritize the following in this exact order:
+
+**1. UI/UX quality**
+**2. Visual design**
+**3. Product browsing experience**
+**4. Responsiveness**
+**5. Smooth interactions**
+**6. Clean code**
+**7. Performance**
+**8. Easy future editing**
+**9. Minimal dependency usage**
+**10. Low Replit AI credit consumption**
+
+Do not rush into generating code.
+
+First understand the supplied logo and PDF, then create the design system and component structure, and finally implement the website.
+
+The finished website should feel like a **premium modern flamingo-inspired syrup brand**, with a soft `#FFEAF3` aesthetic and an exceptionally clean user experience.

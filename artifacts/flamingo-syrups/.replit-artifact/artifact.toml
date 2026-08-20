@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Flamingo Syrups"
+description = "A premium flamingo-inspired syrup brand website with a product-ready browsing experience, editorial brand story, and enquiry contact flow."
+version = "1.0.0"
+id = "artifacts/flamingo-syrups"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25828
+
+[services.development]
+run = "pnpm --filter @workspace/flamingo-syrups run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/flamingo-syrups", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/flamingo-syrups/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25828"
+BASE_PATH = "/"
