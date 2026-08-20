@@ -1,5 +1,12 @@
 export type SyrupCategory = 'All' | 'Berry & Fruit' | 'Citrus & Tropical' | 'Spiced & Botanical' | 'Confection & Classic';
 
+export type Recipe = {
+  name: string;
+  ingredients: string[];
+  method: string;
+  garnish: string;
+};
+
 export type SyrupItem = {
   id: string;
   name: string;
@@ -11,6 +18,7 @@ export type SyrupItem = {
   tag: string;
   tone: 'rose' | 'petal' | 'mint' | 'amber' | 'blue' | 'purple' | 'gold' | 'emerald';
   badgeColor: string;
+  recipe: Recipe;
 };
 
 export const brand = {
@@ -33,6 +41,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Rich & Tangy',
     tone: 'purple',
     badgeColor: '#6b21a8',
+    recipe: {
+      name: 'Jamun Old Fashioned',
+      ingredients: ['Bourbon — 60 ml', 'Jamun Syrup — 10 ml', 'Angostura Bitters — 2 dashes'],
+      method: 'Stir with ice and strain over a large ice cube.',
+      garnish: 'Orange peel.',
+    },
   },
   {
     id: 'limoncello',
@@ -45,6 +59,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Bright Citrus',
     tone: 'gold',
     badgeColor: '#ca8a04',
+    recipe: {
+      name: 'Limoncello Collins',
+      ingredients: ['Gin — 45 ml', 'Limoncello Syrup — 20 ml', 'Fresh Lemon Juice — 20 ml', 'Soda — 60 ml'],
+      method: 'Shake gin, syrup and lemon with ice. Strain into an ice-filled Collins glass and top with soda.',
+      garnish: 'Lemon wheel.',
+    },
   },
   {
     id: 'triple-sec',
@@ -57,6 +77,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Bittersweet Orange',
     tone: 'amber',
     badgeColor: '#ea580c',
+    recipe: {
+      name: 'Triple Sec Margarita',
+      ingredients: ['Tequila — 50 ml', 'Triple Sec Syrup — 20 ml', 'Fresh Lime Juice — 20 ml'],
+      method: 'Shake with ice and strain into a salt-rimmed glass over fresh ice.',
+      garnish: 'Lime wheel.',
+    },
   },
   {
     id: 'guava-chilli',
@@ -69,6 +95,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Sweet & Fiery',
     tone: 'rose',
     badgeColor: '#e11d48',
+    recipe: {
+      name: 'Guava Chilli Margarita',
+      ingredients: ['Tequila — 50 ml', 'Guava Chilli Syrup — 20 ml', 'Fresh Lime Juice — 20 ml'],
+      method: 'Shake with ice and strain over fresh ice.',
+      garnish: 'Guava slice and chilli.',
+    },
   },
   {
     id: 'paloma-grapefruit',
@@ -81,6 +113,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Tart & Zesty',
     tone: 'rose',
     badgeColor: '#f43f5e',
+    recipe: {
+      name: 'Paloma',
+      ingredients: ['Tequila — 50 ml', 'Paloma (Grapefruit) Syrup — 20 ml', 'Fresh Lime Juice — 15 ml', 'Soda — 60 ml'],
+      method: 'Build over ice in a highball glass and stir gently.',
+      garnish: 'Grapefruit wedge.',
+    },
   },
   {
     id: 'cucumber',
@@ -93,6 +131,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Cool Botanical',
     tone: 'mint',
     badgeColor: '#059669',
+    recipe: {
+      name: 'Cucumber Gin Fizz',
+      ingredients: ['Gin — 45 ml', 'Cucumber Syrup — 20 ml', 'Fresh Lemon Juice — 20 ml', 'Soda — 60 ml'],
+      method: 'Shake gin, syrup and lemon with ice. Strain over fresh ice and top with soda.',
+      garnish: 'Cucumber ribbon.',
+    },
   },
   {
     id: 'green-apple',
@@ -105,6 +149,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Crisp & Sour',
     tone: 'emerald',
     badgeColor: '#65a30d',
+    recipe: {
+      name: 'Green Apple Martini',
+      ingredients: ['Vodka — 50 ml', 'Green Apple Syrup — 20 ml', 'Fresh Lemon Juice — 10 ml'],
+      method: 'Shake vigorously with ice and fine strain into a chilled martini glass.',
+      garnish: 'Green apple slice.',
+    },
   },
   {
     id: 'raspberry',
@@ -117,6 +167,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Wild Berry',
     tone: 'rose',
     badgeColor: '#be123c',
+    recipe: {
+      name: 'Raspberry Bramble',
+      ingredients: ['Gin — 45 ml', 'Raspberry Syrup — 20 ml', 'Fresh Lemon Juice — 20 ml', 'Soda — 30 ml'],
+      method: 'Shake gin, syrup and lemon. Pour over crushed ice and top with soda.',
+      garnish: 'Fresh raspberries and lemon.',
+    },
   },
   {
     id: 'strawberry',
@@ -129,6 +185,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Summer Berry',
     tone: 'rose',
     badgeColor: '#e11d48',
+    recipe: {
+      name: 'Strawberry Daiquiri',
+      ingredients: ['White Rum — 50 ml', 'Strawberry Syrup — 20 ml', 'Fresh Lime Juice — 20 ml'],
+      method: 'Shake hard with ice and strain into a chilled coupe.',
+      garnish: 'Fresh strawberry.',
+    },
   },
   {
     id: 'pineapple',
@@ -141,6 +203,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Tropical Sun',
     tone: 'gold',
     badgeColor: '#ca8a04',
+    recipe: {
+      name: 'Pineapple Mai Tai',
+      ingredients: ['Dark Rum — 30 ml', 'White Rum — 30 ml', 'Pineapple Syrup — 20 ml', 'Fresh Lime Juice — 20 ml'],
+      method: 'Shake with ice and pour over crushed ice.',
+      garnish: 'Pineapple leaf and lime.',
+    },
   },
   {
     id: 'cherry',
@@ -153,6 +221,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Deep Stone Fruit',
     tone: 'rose',
     badgeColor: '#9f1239',
+    recipe: {
+      name: 'Cherry Manhattan',
+      ingredients: ['Bourbon or Rye Whiskey — 50 ml', 'Cherry Syrup — 10 ml', 'Sweet Vermouth — 20 ml', 'Angostura Bitters — 2 dashes'],
+      method: 'Stir with ice and strain into a chilled coupe.',
+      garnish: 'Cherry.',
+    },
   },
   {
     id: 'blue-curacao',
@@ -165,6 +239,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Electric Citrus',
     tone: 'blue',
     badgeColor: '#0284c7',
+    recipe: {
+      name: 'Blue Curaçao Sour',
+      ingredients: ['Vodka — 45 ml', 'Blue Curaçao Syrup — 20 ml', 'Fresh Lemon Juice — 20 ml'],
+      method: 'Shake with ice and strain over fresh ice.',
+      garnish: 'Orange peel.',
+    },
   },
   {
     id: 'pandan',
@@ -177,6 +257,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Aromatic Leaf',
     tone: 'mint',
     badgeColor: '#047857',
+    recipe: {
+      name: 'Pandan Mojito',
+      ingredients: ['White Rum — 50 ml', 'Pandan Syrup — 20 ml', 'Fresh Lime Juice — 20 ml', 'Fresh Mint — 8–10 leaves', 'Soda — 60 ml'],
+      method: 'Gently muddle mint and lime. Add rum and syrup. Fill with crushed ice and top with soda.',
+      garnish: 'Mint sprig and lime.',
+    },
   },
   {
     id: 'grenadine',
@@ -189,6 +275,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Pomegranate Ruby',
     tone: 'rose',
     badgeColor: '#991b1b',
+    recipe: {
+      name: 'Jack Rose',
+      ingredients: ['Apple Brandy — 50 ml', 'Grenadine Syrup — 15 ml', 'Fresh Lime Juice — 20 ml'],
+      method: 'Shake with ice and strain into a chilled coupe.',
+      garnish: 'Lime twist.',
+    },
   },
   {
     id: 'litchi',
@@ -201,6 +293,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Floral Exotic',
     tone: 'petal',
     badgeColor: '#db2777',
+    recipe: {
+      name: 'Litchi Martini',
+      ingredients: ['Vodka — 50 ml', 'Litchi Syrup — 20 ml', 'Fresh Lemon Juice — 10 ml'],
+      method: 'Shake with ice and fine strain into a chilled martini glass.',
+      garnish: 'Litchi.',
+    },
   },
   {
     id: 'irish-cream',
@@ -213,6 +311,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Rich & Creamy',
     tone: 'amber',
     badgeColor: '#b45309',
+    recipe: {
+      name: 'Irish Cream White Russian',
+      ingredients: ['Vodka — 40 ml', 'Irish Cream Syrup — 20 ml', 'Coffee Liqueur — 15 ml', 'Fresh Cream — 30 ml'],
+      method: 'Build over ice and stir gently. Float fresh cream on top.',
+      garnish: 'Coffee beans.',
+    },
   },
   {
     id: 'watermelon',
@@ -225,6 +329,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Juicy Summer',
     tone: 'rose',
     badgeColor: '#f43f5e',
+    recipe: {
+      name: 'Watermelon Daiquiri',
+      ingredients: ['White Rum — 50 ml', 'Watermelon Syrup — 20 ml', 'Fresh Lime Juice — 20 ml'],
+      method: 'Shake with ice and strain into a chilled coupe.',
+      garnish: 'Watermelon slice.',
+    },
   },
   {
     id: 'peach',
@@ -237,6 +347,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Velvet Stone Fruit',
     tone: 'amber',
     badgeColor: '#d97706',
+    recipe: {
+      name: 'Peach Bellini',
+      ingredients: ['Peach Syrup — 20 ml', 'Prosecco — 90 ml'],
+      method: 'Add peach syrup to a chilled flute and slowly top with Prosecco. Stir gently.',
+      garnish: 'Peach slice.',
+    },
   },
   {
     id: 'cinnamon',
@@ -249,6 +365,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Warm Bark Spice',
     tone: 'amber',
     badgeColor: '#9a3412',
+    recipe: {
+      name: 'Cinnamon Whiskey Sour',
+      ingredients: ['Bourbon — 50 ml', 'Cinnamon Syrup — 15 ml', 'Fresh Lemon Juice — 25 ml', 'Egg White — 15 ml (optional)'],
+      method: 'Dry shake if using egg white. Add ice and shake again. Fine strain over fresh ice.',
+      garnish: 'Cinnamon stick and lemon peel.',
+    },
   },
   {
     id: 'green-melon',
@@ -261,6 +383,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Honeydew Glow',
     tone: 'emerald',
     badgeColor: '#65a30d',
+    recipe: {
+      name: 'Green Melon Sour',
+      ingredients: ['Vodka — 45 ml', 'Green Melon Syrup — 20 ml', 'Fresh Lime Juice — 20 ml'],
+      method: 'Shake with ice and strain over fresh ice.',
+      garnish: 'Melon slice.',
+    },
   },
   {
     id: 'coconut',
@@ -273,6 +401,12 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Tropical Cream',
     tone: 'petal',
     badgeColor: '#78350f',
+    recipe: {
+      name: 'Coconut Colada',
+      ingredients: ['White Rum — 50 ml', 'Coconut Syrup — 20 ml', 'Pineapple Juice — 80 ml', 'Fresh Lime Juice — 10 ml'],
+      method: 'Shake with ice and pour over crushed ice, or blend for a frozen serve.',
+      garnish: 'Pineapple leaf and coconut.',
+    },
   },
 ];
 

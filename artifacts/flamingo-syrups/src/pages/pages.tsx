@@ -388,6 +388,39 @@ export function ProductsPage() {
                 </p>
               </div>
 
+              {/* SIGNATURE COCKTAIL RECIPE BOX */}
+              <div className="rounded-xl border border-rose-300 bg-[#fbd6e4]/50 p-5 shadow-sm">
+                <div className="flex items-center gap-2 mb-3">
+                  <Wine size={18} className="text-[#d84f78]" />
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#b63d65]">
+                    Signature Cocktail Recipe: <span className="text-[#321e2a] font-display text-lg font-semibold ml-1.5">{selectedSyrup.recipe.name}</span>
+                  </h4>
+                </div>
+
+                <div className="space-y-2.5 text-xs text-[#593b49]">
+                  <div>
+                    <span className="font-bold text-[#b63d65] uppercase tracking-wider block mb-1.5">Ingredients:</span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {selectedSyrup.recipe.ingredients.map((ing) => (
+                        <span key={ing} className="rounded-md border border-rose-300/80 bg-white px-2.5 py-1 text-xs font-semibold text-[#321e2a]">
+                          {ing}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-1.5 border-t border-rose-200">
+                    <span className="font-bold text-[#b63d65] uppercase tracking-wider">Method: </span>
+                    <span className="text-[#321e2a] font-medium">{selectedSyrup.recipe.method}</span>
+                  </div>
+
+                  <div>
+                    <span className="font-bold text-[#b63d65] uppercase tracking-wider">Garnish: </span>
+                    <span className="text-[#321e2a] font-medium">{selectedSyrup.recipe.garnish}</span>
+                  </div>
+                </div>
+              </div>
+
               <div className="pt-2">
                 <Link
                   href={`/contact?syrup=${encodeURIComponent(selectedSyrup.name)}`}
@@ -462,9 +495,13 @@ export function ProductsPage() {
                     <h4 className="mt-1 font-display text-3xl font-semibold leading-tight text-[#321e2a] transition-colors duration-300 group-hover:text-[#d84f78]">
                       {syrup.name}
                     </h4>
-                    <p className="mt-2.5 text-xs leading-5 text-[#684454] line-clamp-3">
+                    <p className="mt-2 text-xs leading-5 text-[#684454] line-clamp-2">
                       {syrup.description}
                     </p>
+                    <div className="mt-2.5 inline-flex items-center gap-1.5 rounded-md border border-rose-300/80 bg-white/80 px-2 py-1 text-[.64rem] font-bold text-[#b63d65]">
+                      <Wine size={11} className="text-[#d84f78]" />
+                      <span>Recipe: {syrup.recipe.name}</span>
+                    </div>
                   </div>
 
                   <div className="relative z-10 flex items-center justify-between border-t border-rose-300/60 pt-3 text-[.68rem] font-bold uppercase tracking-wider text-[#593b49]">
