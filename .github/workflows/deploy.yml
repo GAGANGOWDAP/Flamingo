@@ -38,7 +38,9 @@ jobs:
           version: 10
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: |
+          pnpm approve-builds --all || true
+          pnpm install --no-frozen-lockfile
 
       - name: Build Flamingo website
         run: pnpm --filter @workspace/flamingo-syrups run build
