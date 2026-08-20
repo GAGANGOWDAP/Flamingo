@@ -1,15 +1,8 @@
-import { useEffect, useState, type ReactNode } from 'react';
-import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { useEffect, useState, useRef, type ReactNode } from 'react';
+import { ArrowUpRight, ChevronDown, Menu, X, Wine } from 'lucide-react';
 import { Link, useLocation } from 'wouter';
 import logoPath from '@assets/2.jpg_1787233517766.jpeg';
-import { brand } from '@/data/site-data';
-
-const links = [
-  { href: '/', label: 'Home' },
-  { href: '/products', label: 'Products' },
-  { href: '/about', label: 'The story' },
-  { href: '/contact', label: 'Enquire' },
-];
+import { brand, syrupsList } from '@/data/site-data';
 
 export function ScrollToTop() {
   const [location] = useLocation();
@@ -22,13 +15,26 @@ export function ScrollToTop() {
 export function SiteHeader() {
   const [location] = useLocation();
   const [open, setOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setOpen(false);
+    setProductsOpen(false);
   }, [location]);
 
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setProductsOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-30 border-b border-rose-200/70 bg-[#fff3f8]/90 backdrop-blur-md">
+    <header className="sticky top-0 z-30 border-b border-rose-200/70 bg-[#fff3f8]/95 backdrop-blur-md">
       <div className="page-shell flex h-[76px] items-center justify-between">
         <Link href="/" className="group flex items-center gap-3" data-testid="link-logo">
           <span className="flex h-12 w-12 items-center justify-center overflow-hidden border border-rose-200 bg-[#fffdfc]">
@@ -40,17 +46,92 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              data-testid={`link-nav-${link.label.toLowerCase().replace(/\s/g, '-')}`}
-              className={`relative py-2 text-[.72rem] font-semibold uppercase tracking-[.16em] transition-colors hover:text-[#d84f78] ${location === link.href ? 'text-[#d84f78]' : 'text-[#593b49]'}`}
+          <Link
+            href="/"
+            data-testid="link-nav-home"
+            className={`relative py-2 text-[.72rem] font-semibold uppercase tracking-[.16em] transition-colors hover:text-[#d84f78] ${location === '/' ? 'text-[#d84f78]' : 'text-[#593b49]'}`}
+          >
+            Home
+            {location === '/' && <span className="absolute -bottom-1 left-0 h-px w-full bg-[#d84f78]" />}
+          </Link>
+
+          {/* Products Dropdown Menu */}
+          <div className="relative" ref={dropdownRef} onMouseEnter={() => setProductsOpen(true)}>
+            <button
+              type="button"
+              onClick={() => setProductsOpen((prev) => !prev)}
+              data-testid="link-nav-products-dropdown"
+              className={`flex items-center gap-1.5 py-2 text-[.72rem] font-semibold uppercase tracking-[.16em] transition-colors hover:text-[#d84f78] ${location.startsWith('/products') ? 'text-[#d84f78]' : 'text-[#593b49]'}`}
+              aria-expanded={productsOpen}
             >
-              {link.label}
-              {location === link.href && <span className="absolute -bottom-1 left-0 h-px w-full bg-[#d84f78]" />}
-            </Link>
-          ))}
+              Products ({syrupsList.length})
+              <ChevronDown size={14} className={`transition-transform duration-200 ${productsOpen ? 'rotate-180 text-[#d84f78]' : ''}`} />
+            </button>
+
+            {productsOpen && (
+              <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2 z-50">
+                <div className="w-[520px] rounded-xl border border-rose-300/80 bg-[#fff3f8] p-5 shadow-[0_20px_50px_rgba(153,63,98,.2)] backdrop-blur-md">
+                  <div className="flex items-center justify-between border-b border-rose-200/80 pb-3">
+                    <div className="flex items-center gap-2">
+                      <Wine size={16} className="text-[#d84f78]" />
+                      <span className="font-display text-lg font-semibold text-[#321e2a]">21 Exceptional Flavours</span>
+                    </div>
+                    <Link
+                      href="/products"
+                      onClick={() => setProductsOpen(false)}
+                      className="text-[.68rem] font-bold uppercase tracking-[.14em] text-[#d84f78] hover:underline"
+                    >
+                      View All Catalogue →
+                    </Link>
+                  </div>
+
+                  <div className="mt-3 grid max-h-[360px] grid-cols-2 gap-1.5 overflow-y-auto pr-1">
+                    {syrupsList.map((syrup) => (
+                      <Link
+                        key={syrup.id}
+                        href={`/products?syrup=${syrup.id}`}
+                        onClick={() => setProductsOpen(false)}
+                        className="group flex items-center justify-between rounded-lg border border-transparent p-2.5 transition-all hover:border-rose-300 hover:bg-[#fbd6e4]/60"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <span
+                            className="flex h-6 w-6 items-center justify-center rounded-full text-[.6rem] font-bold text-white shadow-sm"
+                            style={{ backgroundColor: syrup.badgeColor }}
+                          >
+                            {syrup.index}
+                          </span>
+                          <span className="text-xs font-semibold text-[#321e2a] group-hover:text-[#b63d65]">
+                            {syrup.name}
+                          </span>
+                        </div>
+                        <span className="text-[.65rem] font-bold uppercase tracking-wider text-[#996074]">
+                          {syrup.volume}
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <Link
+            href="/about"
+            data-testid="link-nav-the-story"
+            className={`relative py-2 text-[.72rem] font-semibold uppercase tracking-[.16em] transition-colors hover:text-[#d84f78] ${location === '/about' ? 'text-[#d84f78]' : 'text-[#593b49]'}`}
+          >
+            The story
+            {location === '/about' && <span className="absolute -bottom-1 left-0 h-px w-full bg-[#d84f78]" />}
+          </Link>
+
+          <Link
+            href="/contact"
+            data-testid="link-nav-enquire"
+            className={`relative py-2 text-[.72rem] font-semibold uppercase tracking-[.16em] transition-colors hover:text-[#d84f78] ${location === '/contact' ? 'text-[#d84f78]' : 'text-[#593b49]'}`}
+          >
+            Enquire
+            {location === '/contact' && <span className="absolute -bottom-1 left-0 h-px w-full bg-[#d84f78]" />}
+          </Link>
         </nav>
 
         <Link href="/contact" className="ink-button hidden items-center gap-2 px-4 py-3 text-[.68rem] font-bold uppercase tracking-[.17em] transition-all hover:-translate-y-0.5 md:flex" data-testid="link-header-enquire">
@@ -68,14 +149,38 @@ export function SiteHeader() {
           {open ? <X size={21} /> : <Menu size={21} />}
         </button>
       </div>
+
       {open && (
         <nav id="mobile-navigation" className="border-t border-rose-200 bg-[#fff3f8] px-8 py-5 md:hidden" aria-label="Mobile navigation">
           <div className="page-shell flex flex-col">
-            {links.map((link) => (
-              <Link key={link.href} href={link.href} className="border-b border-rose-200/80 py-4 text-sm font-semibold uppercase tracking-[.14em] text-[#593b49]" data-testid={`link-mobile-${link.label.toLowerCase().replace(/\s/g, '-')}`}>
-                {link.label}
-              </Link>
-            ))}
+            <Link href="/" className="border-b border-rose-200/80 py-3 text-sm font-semibold uppercase tracking-[.14em] text-[#593b49]">
+              Home
+            </Link>
+            
+            <div className="border-b border-rose-200/80 py-3">
+              <div className="flex items-center justify-between font-semibold uppercase tracking-[.14em] text-[#593b49]">
+                <span>Products ({syrupsList.length} Syrups)</span>
+              </div>
+              <div className="mt-3 max-h-56 overflow-y-auto space-y-1 pl-2">
+                {syrupsList.map((syrup) => (
+                  <Link
+                    key={syrup.id}
+                    href={`/products?syrup=${syrup.id}`}
+                    className="flex items-center justify-between py-1.5 text-xs text-[#684454] hover:text-[#d84f78]"
+                  >
+                    <span>{syrup.index}. {syrup.name}</span>
+                    <span className="text-[.65rem] font-bold text-[#b63d65]">{syrup.tag}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <Link href="/about" className="border-b border-rose-200/80 py-3 text-sm font-semibold uppercase tracking-[.14em] text-[#593b49]">
+              The story
+            </Link>
+            <Link href="/contact" className="py-3 text-sm font-semibold uppercase tracking-[.14em] text-[#593b49]">
+              Enquire
+            </Link>
           </div>
         </nav>
       )}
@@ -90,7 +195,7 @@ export function SiteFooter() {
         <div>
           <p className="eyebrow text-[#eaa0b7]">Flamingo</p>
           <h2 className="mt-4 max-w-sm font-display text-5xl leading-[.92] text-[#fff3f8] md:text-6xl">A little colour for the bar.</h2>
-          <p className="mt-6 max-w-xs text-sm leading-6 text-[#e6bfce]">A new syrup collection is taking shape in Bengaluru. Product details will follow when they are ready to be shared.</p>
+          <p className="mt-6 max-w-xs text-sm leading-6 text-[#e6bfce]">21 Exceptional Flavours. Endless Possibilities. Crafted in Bengaluru for professional mixology & craft beverages.</p>
         </div>
         <div>
           <p className="eyebrow text-[#eaa0b7]">Explore</p>
@@ -113,7 +218,7 @@ export function SiteFooter() {
       <div className="border-t border-[#6b4353]">
         <div className="page-shell flex flex-col gap-2 py-5 text-[.66rem] uppercase tracking-[.15em] text-[#c997a9] sm:flex-row sm:items-center sm:justify-between">
           <span>Flamingo · Bengaluru</span>
-          <span>Collection in preparation</span>
+          <span>21 Exceptional Flavours</span>
         </div>
       </div>
     </footer>
