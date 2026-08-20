@@ -223,7 +223,7 @@ export function ProductsPage() {
             {/* SYRUP SELECT DROPDOWN MENU */}
             <div className="w-full lg:max-w-lg">
               <label htmlFor="syrup-dropdown-menu" className="block text-xs font-bold uppercase tracking-[.14em] text-[#b63d65] mb-2">
-                Select Syrup Flavour from Dropdown (21 Varieties):
+                SELECT SYRUPS:
               </label>
               <div className="relative">
                 <select
