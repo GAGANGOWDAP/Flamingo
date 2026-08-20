@@ -52,7 +52,7 @@ jobs:
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./artifacts/flamingo-syrups/dist
+          path: ./artifacts/flamingo-syrups/dist/public
 
       - name: Deploy to GitHub Pages
         id: deployment
