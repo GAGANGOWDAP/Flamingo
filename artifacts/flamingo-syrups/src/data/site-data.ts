@@ -15,6 +15,10 @@ import tripleSecImg from '@assets/triple_sec_syrup.jpg';
 import blueCuracaoImg from '@assets/blue_curacao_syrup.jpg';
 import limoncelloImg from '@assets/limoncello_syrup.jpg';
 import guavaChilliImg from '@assets/guava_chilli_syrup.jpg';
+import palomaImg from '@assets/paloma_syrup.jpg';
+import cucumberImg from '@assets/cucumber_syrup.jpg';
+import greenAppleImg from '@assets/green_apple_syrup.jpg';
+import raspberryImg from '@assets/raspberry_syrup.jpg';
 
 export type SyrupCategory = 'All' | 'Berry & Fruit' | 'Citrus & Tropical' | 'Spiced & Botanical' | 'Confection & Classic';
 
@@ -136,6 +140,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Tart & Zesty',
     tone: 'rose',
     badgeColor: '#f43f5e',
+    image: palomaImg,
     recipe: {
       name: 'Paloma',
       ingredients: ['Tequila — 50 ml', 'Paloma (Grapefruit) Syrup — 20 ml', 'Fresh Lime Juice — 15 ml', 'Soda — 60 ml'],
@@ -154,6 +159,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Cool Botanical',
     tone: 'mint',
     badgeColor: '#059669',
+    image: cucumberImg,
     recipe: {
       name: 'Cucumber Gin Fizz',
       ingredients: ['Gin — 45 ml', 'Cucumber Syrup — 20 ml', 'Fresh Lemon Juice — 20 ml', 'Soda — 60 ml'],
@@ -172,6 +178,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Crisp & Sour',
     tone: 'emerald',
     badgeColor: '#65a30d',
+    image: greenAppleImg,
     recipe: {
       name: 'Green Apple Martini',
       ingredients: ['Vodka — 50 ml', 'Green Apple Syrup — 20 ml', 'Fresh Lemon Juice — 10 ml'],
@@ -190,6 +197,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Wild Berry',
     tone: 'rose',
     badgeColor: '#be123c',
+    image: raspberryImg,
     recipe: {
       name: 'Raspberry Bramble',
       ingredients: ['Gin — 45 ml', 'Raspberry Syrup — 20 ml', 'Fresh Lemon Juice — 20 ml', 'Soda — 30 ml'],
