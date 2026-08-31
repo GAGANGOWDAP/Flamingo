@@ -288,7 +288,7 @@ export function ProductsPage() {
                 >
                   {syrupsList.map((syrup) => (
                     <option key={syrup.id} value={syrup.id}>
-                      Bottle {syrup.index}: {syrup.name} — ({syrup.category})
+                      {syrup.name} — ({syrup.category})
                     </option>
                   ))}
                 </select>
@@ -344,11 +344,9 @@ export function ProductsPage() {
             <div>
               <div className="flex items-center gap-3">
                 <span
-                  className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-white shadow-md"
+                  className="h-3.5 w-3.5 rounded-full shadow-sm shrink-0"
                   style={{ backgroundColor: selectedSyrup.badgeColor }}
-                >
-                  {selectedSyrup.index}
-                </span>
+                />
                 <div>
                   <SectionKicker>Selected Syrup Flavour</SectionKicker>
                   <span className="text-xs font-bold text-[#7e3450] uppercase tracking-wider">
@@ -474,21 +472,21 @@ export function ProductsPage() {
 
                   {/* CARD CONTENT WITH z-10 LAYER FOR MAXIMUM READABILITY */}
                   <div className="relative z-10 flex items-start justify-between">
-                    <span
-                      className="flex h-9 w-9 items-center justify-center rounded-full text-xs font-bold text-white shadow-sm transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-110 group-hover:rotate-3"
-                      style={{ backgroundColor: syrup.badgeColor }}
-                    >
-                      {syrup.index}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span
+                        className="h-3 w-3 rounded-full shadow-sm transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-125"
+                        style={{ backgroundColor: syrup.badgeColor }}
+                      />
+                      <span className="text-[.68rem] font-bold uppercase tracking-widest text-[#b63d65]">
+                        {syrup.category}
+                      </span>
+                    </div>
                     <span className="rounded-full bg-white/80 px-2.5 py-1 text-[.64rem] font-bold uppercase tracking-wider text-[#7e3450] transition-transform duration-500 ease-out group-hover:scale-[1.03]">
                       {syrup.tag}
                     </span>
                   </div>
 
                   <div className="relative z-10 my-4">
-                    <p className="text-[.68rem] font-bold uppercase tracking-widest text-[#b63d65]">
-                      {syrup.category}
-                    </p>
                     <h4 className="mt-1 font-display text-3xl font-semibold leading-tight text-[#321e2a] transition-colors duration-300 group-hover:text-[#d84f78]">
                       {syrup.name}
                     </h4>
