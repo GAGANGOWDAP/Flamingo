@@ -3,6 +3,10 @@ import coconutImg from '@assets/coconut_syrup.jpg';
 import cinnamonImg from '@assets/cinnamon_syrup.jpg';
 import peachImg from '@assets/peach_syrup.jpg';
 import greenMelonImg from '@assets/green_melon_syrup.jpg';
+import irishCreamImg from '@assets/irish_cream_syrup.jpg';
+import grenadineImg from '@assets/grenadine_syrup.jpg';
+import watermelonImg from '@assets/watermelon_syrup.jpg';
+import litchiImg from '@assets/litchi_syrup.jpg';
 
 export type SyrupCategory = 'All' | 'Berry & Fruit' | 'Citrus & Tropical' | 'Spiced & Botanical' | 'Confection & Classic';
 
@@ -283,6 +287,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Pomegranate Ruby',
     tone: 'rose',
     badgeColor: '#991b1b',
+    image: grenadineImg,
     recipe: {
       name: 'Jack Rose',
       ingredients: ['Apple Brandy — 50 ml', 'Grenadine Syrup — 15 ml', 'Fresh Lime Juice — 20 ml'],
@@ -301,6 +306,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Floral Exotic',
     tone: 'petal',
     badgeColor: '#db2777',
+    image: litchiImg,
     recipe: {
       name: 'Litchi Martini',
       ingredients: ['Vodka — 50 ml', 'Litchi Syrup — 20 ml', 'Fresh Lemon Juice — 10 ml'],
@@ -319,6 +325,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Rich & Creamy',
     tone: 'amber',
     badgeColor: '#b45309',
+    image: irishCreamImg,
     recipe: {
       name: 'Irish Cream White Russian',
       ingredients: ['Vodka — 40 ml', 'Irish Cream Syrup — 20 ml', 'Coffee Liqueur — 15 ml', 'Fresh Cream — 30 ml'],
@@ -337,6 +344,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Juicy Summer',
     tone: 'rose',
     badgeColor: '#f43f5e',
+    image: watermelonImg,
     recipe: {
       name: 'Watermelon Daiquiri',
       ingredients: ['White Rum — 50 ml', 'Watermelon Syrup — 20 ml', 'Fresh Lime Juice — 20 ml'],
