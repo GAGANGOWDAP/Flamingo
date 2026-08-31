@@ -191,7 +191,7 @@ export function HomePage() {
           </Link>
         </div>
       </section>
-      
+
       <section className="border-y border-rose-300/70 bg-[#f9d7e4]">
         <div className="page-shell flex flex-col items-start justify-between gap-8 py-16 md:flex-row md:items-center md:py-20">
           <div>
@@ -267,7 +267,7 @@ export function ProductsPage() {
         {/* INTERACTIVE SYRUP DROPDOWN SELECT MENU CONTROL */}
         <div className="rounded-2xl border-2 border-rose-300 bg-[#fff3f8] p-6 md:p-8 shadow-sm">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            
+
             {/* SYRUP SELECT DROPDOWN MENU */}
             <div className="w-full lg:max-w-lg">
               <label htmlFor="syrup-dropdown-menu" className="block text-xs font-bold uppercase tracking-[.14em] text-[#b63d65] mb-2">
@@ -310,11 +310,10 @@ export function ProductsPage() {
                       setSelectedCategory(cat);
                       setShowAllGrid(false);
                     }}
-                    className={`border px-3.5 py-2 text-[.66rem] font-bold uppercase tracking-[.14em] transition-colors rounded-lg ${
-                      !showAllGrid && selectedCategory === cat
+                    className={`border px-3.5 py-2 text-[.66rem] font-bold uppercase tracking-[.14em] transition-colors rounded-lg ${!showAllGrid && selectedCategory === cat
                         ? 'border-[#321e2a] bg-[#321e2a] text-[#fff3f8]'
                         : 'border-rose-300 bg-white text-[#684454] hover:border-[#d84f78] hover:bg-[#fbd6e4]/40'
-                    }`}
+                      }`}
                     aria-pressed={!showAllGrid && selectedCategory === cat}
                     data-testid={`filter-${cat.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
                   >
@@ -325,11 +324,10 @@ export function ProductsPage() {
                 <button
                   type="button"
                   onClick={() => setShowAllGrid((prev) => !prev)}
-                  className={`border px-3.5 py-2 text-[.66rem] font-bold uppercase tracking-[.14em] transition-colors rounded-lg ${
-                    showAllGrid
+                  className={`border px-3.5 py-2 text-[.66rem] font-bold uppercase tracking-[.14em] transition-colors rounded-lg ${showAllGrid
                       ? 'border-[#d84f78] bg-[#d84f78] text-white'
                       : 'border-rose-300 bg-white text-[#b63d65] hover:border-[#d84f78]'
-                  }`}
+                    }`}
                   data-testid="button-toggle-all-21"
                 >
                   {showAllGrid ? 'Showing All 21 ✓' : 'View All 21 Varieties'}
@@ -358,11 +356,11 @@ export function ProductsPage() {
                   </span>
                 </div>
               </div>
-              
+
               <h2 className="mt-4 font-display text-5xl font-semibold text-[#321e2a] md:text-6xl">
                 {selectedSyrup.name}
               </h2>
-              
+
               <div className="mt-4 flex flex-wrap items-center gap-3">
                 <span className="rounded-full bg-[#d84f78] px-3 py-1 text-xs font-bold text-white">
                   {selectedSyrup.tag}
@@ -461,11 +459,10 @@ export function ProductsPage() {
                   key={syrup.id}
                   variants={shouldReduceMotion ? undefined : cardItemVariants}
                   onClick={() => setSelectedId(syrup.id)}
-                  className={`group relative flex flex-col justify-between min-h-[300px] overflow-hidden rounded-xl border p-6 text-left transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-2 hover:border-[#d84f78] hover:shadow-[0_22px_48px_rgba(153,63,98,.18)] ${
-                    isSelected
+                  className={`group relative flex flex-col justify-between min-h-[300px] overflow-hidden rounded-xl border p-6 text-left transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-2 hover:border-[#d84f78] hover:shadow-[0_22px_48px_rgba(153,63,98,.18)] ${isSelected
                       ? 'border-2 border-[#d84f78] bg-[#fff3f8] shadow-md ring-2 ring-[#d84f78]/20'
                       : 'border-rose-300/80 bg-[#fbd6e4]/70 hover:bg-[#fbd6e4]'
-                  }`}
+                    }`}
                   data-testid={`card-syrup-${syrup.id}`}
                   aria-pressed={isSelected}
                 >
@@ -563,7 +560,7 @@ export function AboutPage() {
           </div>
         </div>
       </section>
-      
+
       <section className="page-shell grid gap-12 py-24 md:grid-cols-[.75fr_1.25fr] md:py-32">
         <div>
           <SectionKicker>The maker</SectionKicker>
@@ -594,7 +591,7 @@ export function AboutPage() {
               <p className="eyebrow mt-2 text-[#996074]">cocktails & drinks created</p>
             </div>
           </div>
-          
+
           <div className="mt-16 grid gap-10 md:grid-cols-[.8fr_1.2fr]">
             <div>
               <SectionKicker>A working timeline</SectionKicker>
