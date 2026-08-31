@@ -367,6 +367,16 @@ export function ProductsPage() {
                   Standard Bottle Pack: {selectedSyrup.volume}
                 </span>
               </div>
+
+              {selectedSyrup.image && (
+                <div className="mt-6 overflow-hidden rounded-xl border border-rose-300/80 shadow-md">
+                  <img
+                    src={selectedSyrup.image}
+                    alt={selectedSyrup.name}
+                    className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                </div>
+              )}
             </div>
 
             <div className="flex flex-col justify-between gap-6 border-t border-rose-300/80 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
@@ -487,6 +497,15 @@ export function ProductsPage() {
                   </div>
 
                   <div className="relative z-10 my-4">
+                    {syrup.image && (
+                      <div className="mb-3 overflow-hidden rounded-xl border border-rose-300/60 shadow-sm">
+                        <img
+                          src={syrup.image}
+                          alt={syrup.name}
+                          className="h-44 w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                        />
+                      </div>
+                    )}
                     <h4 className="mt-1 font-display text-3xl font-semibold leading-tight text-[#321e2a] transition-colors duration-300 group-hover:text-[#d84f78]">
                       {syrup.name}
                     </h4>

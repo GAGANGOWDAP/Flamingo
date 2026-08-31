@@ -1,3 +1,9 @@
+import jamunImg from '@assets/jamun_syrup.jpg';
+import coconutImg from '@assets/coconut_syrup.jpg';
+import cinnamonImg from '@assets/cinnamon_syrup.jpg';
+import peachImg from '@assets/peach_syrup.jpg';
+import greenMelonImg from '@assets/green_melon_syrup.jpg';
+
 export type SyrupCategory = 'All' | 'Berry & Fruit' | 'Citrus & Tropical' | 'Spiced & Botanical' | 'Confection & Classic';
 
 export type Recipe = {
@@ -19,6 +25,7 @@ export type SyrupItem = {
   tone: 'rose' | 'petal' | 'mint' | 'amber' | 'blue' | 'purple' | 'gold' | 'emerald';
   badgeColor: string;
   recipe: Recipe;
+  image?: string;
 };
 
 export const brand = {
@@ -41,6 +48,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Rich & Tangy',
     tone: 'purple',
     badgeColor: '#6b21a8',
+    image: jamunImg,
     recipe: {
       name: 'Jamun Old Fashioned',
       ingredients: ['Bourbon — 60 ml', 'Jamun Syrup — 10 ml', 'Angostura Bitters — 2 dashes'],
@@ -347,6 +355,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Velvet Stone Fruit',
     tone: 'amber',
     badgeColor: '#d97706',
+    image: peachImg,
     recipe: {
       name: 'Peach Bellini',
       ingredients: ['Peach Syrup — 20 ml', 'Prosecco — 90 ml'],
@@ -365,6 +374,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Warm Bark Spice',
     tone: 'amber',
     badgeColor: '#9a3412',
+    image: cinnamonImg,
     recipe: {
       name: 'Cinnamon Whiskey Sour',
       ingredients: ['Bourbon — 50 ml', 'Cinnamon Syrup — 15 ml', 'Fresh Lemon Juice — 25 ml', 'Egg White — 15 ml (optional)'],
@@ -383,6 +393,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Honeydew Glow',
     tone: 'emerald',
     badgeColor: '#65a30d',
+    image: greenMelonImg,
     recipe: {
       name: 'Green Melon Sour',
       ingredients: ['Vodka — 45 ml', 'Green Melon Syrup — 20 ml', 'Fresh Lime Juice — 20 ml'],
@@ -401,6 +412,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Tropical Cream',
     tone: 'petal',
     badgeColor: '#78350f',
+    image: coconutImg,
     recipe: {
       name: 'Coconut Colada',
       ingredients: ['White Rum — 50 ml', 'Coconut Syrup — 20 ml', 'Pineapple Juice — 80 ml', 'Fresh Lime Juice — 10 ml'],
