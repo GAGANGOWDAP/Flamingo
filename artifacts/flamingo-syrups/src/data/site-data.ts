@@ -7,6 +7,10 @@ import irishCreamImg from '@assets/irish_cream_syrup.jpg';
 import grenadineImg from '@assets/grenadine_syrup.jpg';
 import watermelonImg from '@assets/watermelon_syrup.jpg';
 import litchiImg from '@assets/litchi_syrup.jpg';
+import pandanImg from '@assets/pandan_syrup.jpg';
+import cherryImg from '@assets/cherry_syrup.jpg';
+import pineappleImg from '@assets/pineapple_syrup.jpg';
+import strawberryImg from '@assets/strawberry_syrup.jpg';
 
 export type SyrupCategory = 'All' | 'Berry & Fruit' | 'Citrus & Tropical' | 'Spiced & Botanical' | 'Confection & Classic';
 
@@ -197,6 +201,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Summer Berry',
     tone: 'rose',
     badgeColor: '#e11d48',
+    image: strawberryImg,
     recipe: {
       name: 'Strawberry Daiquiri',
       ingredients: ['White Rum — 50 ml', 'Strawberry Syrup — 20 ml', 'Fresh Lime Juice — 20 ml'],
@@ -215,6 +220,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Tropical Sun',
     tone: 'gold',
     badgeColor: '#ca8a04',
+    image: pineappleImg,
     recipe: {
       name: 'Pineapple Mai Tai',
       ingredients: ['Dark Rum — 30 ml', 'White Rum — 30 ml', 'Pineapple Syrup — 20 ml', 'Fresh Lime Juice — 20 ml'],
@@ -233,6 +239,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Deep Stone Fruit',
     tone: 'rose',
     badgeColor: '#9f1239',
+    image: cherryImg,
     recipe: {
       name: 'Cherry Manhattan',
       ingredients: ['Bourbon or Rye Whiskey — 50 ml', 'Cherry Syrup — 10 ml', 'Sweet Vermouth — 20 ml', 'Angostura Bitters — 2 dashes'],
@@ -269,6 +276,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Aromatic Leaf',
     tone: 'mint',
     badgeColor: '#047857',
+    image: pandanImg,
     recipe: {
       name: 'Pandan Mojito',
       ingredients: ['White Rum — 50 ml', 'Pandan Syrup — 20 ml', 'Fresh Lime Juice — 20 ml', 'Fresh Mint — 8–10 leaves', 'Soda — 60 ml'],
