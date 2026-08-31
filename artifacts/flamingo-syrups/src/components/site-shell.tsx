@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, type ReactNode } from 'react';
 import { ArrowUpRight, ChevronDown, Menu, X, Wine } from 'lucide-react';
 import { Link, useLocation } from 'wouter';
 import logoPath from '@assets/2.jpg_1787233517766.jpeg';
-import { brand } from '@/data/site-data';
+import { brand, syrupsList } from '@/data/site-data';
 
 export function ScrollToTop() {
   const [location] = useLocation();
@@ -86,7 +86,7 @@ export function SiteHeader() {
                           Syrups
                         </p>
                         <p className="text-[.68rem] text-[#996074]">
-                          21 Exceptional Flavours
+                          {syrupsList.length} Exceptional Flavours
                         </p>
                       </div>
                     </div>
@@ -141,7 +141,7 @@ export function SiteHeader() {
             
             <Link href="/products" className="flex items-center justify-between border-b border-rose-200/80 py-3 text-sm font-semibold uppercase tracking-[.14em] text-[#593b49]">
               <span>Products (Syrups)</span>
-              <span className="rounded-full bg-[#d84f78] px-2 py-0.5 text-[.64rem] text-white">21 Flavours</span>
+              <span className="rounded-full bg-[#d84f78] px-2 py-0.5 text-[.64rem] text-white">{syrupsList.length} Flavours</span>
             </Link>
 
             <Link href="/about" className="border-b border-rose-200/80 py-3 text-sm font-semibold uppercase tracking-[.14em] text-[#593b49]">
@@ -164,7 +164,7 @@ export function SiteFooter() {
         <div>
           <p className="eyebrow text-[#eaa0b7]">Flamingo</p>
           <h2 className="mt-4 max-w-sm font-display text-5xl leading-[.92] text-[#fff3f8] md:text-6xl">A little colour for the bar.</h2>
-          <p className="mt-6 max-w-xs text-sm leading-6 text-[#e6bfce]">21 Exceptional Flavours. Endless Possibilities. Crafted in Bengaluru for professional mixology & craft beverages.</p>
+          <p className="mt-6 max-w-xs text-sm leading-6 text-[#e6bfce]">{syrupsList.length} Exceptional Flavours. Endless Possibilities. Crafted in Bengaluru for professional mixology & craft beverages.</p>
         </div>
         <div>
           <p className="eyebrow text-[#eaa0b7]">Explore</p>

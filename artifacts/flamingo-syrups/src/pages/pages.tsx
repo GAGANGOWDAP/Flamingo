@@ -328,9 +328,9 @@ export function ProductsPage() {
                       ? 'border-[#d84f78] bg-[#d84f78] text-white'
                       : 'border-rose-300 bg-white text-[#b63d65] hover:border-[#d84f78]'
                     }`}
-                  data-testid="button-toggle-all-21"
+                  data-testid="button-toggle-all-29"
                 >
-                  {showAllGrid ? 'Showing All 21 ✓' : 'View All 21 Varieties'}
+                  {showAllGrid ? `Showing All ${syrupsList.length} ✓` : `View All ${syrupsList.length} Varieties`}
                 </button>
               </div>
             </div>
@@ -386,6 +386,15 @@ export function ProductsPage() {
                   {selectedSyrup.description}
                 </p>
               </div>
+
+              {selectedSyrup.ingredientsList && (
+                <div>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#b63d65]">Product Ingredients:</h4>
+                  <p className="mt-1.5 text-xs leading-5 font-medium text-[#593b49]">
+                    {selectedSyrup.ingredientsList}
+                  </p>
+                </div>
+              )}
 
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-[#b63d65]">Mixology & Recommended Pairings:</h4>
@@ -444,7 +453,7 @@ export function ProductsPage() {
         <div className="mt-12">
           <div className="flex items-center justify-between border-b border-rose-300 pb-4 mb-8">
             <h3 className="font-display text-3xl font-semibold text-[#321e2a]">
-              {showAllGrid ? 'All 21 Varieties Catalogue' : `${selectedCategory} Flavours`}
+              {showAllGrid ? `All ${syrupsList.length} Varieties Catalogue` : `${selectedCategory} Flavours`}
             </h3>
             <span className="text-xs font-bold uppercase tracking-wider text-[#996074]">
               {displayedSyrups.length} {displayedSyrups.length === 1 ? 'Syrup' : 'Syrups'}
