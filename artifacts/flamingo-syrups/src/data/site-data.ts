@@ -11,6 +11,10 @@ import pandanImg from '@assets/pandan_syrup.jpg';
 import cherryImg from '@assets/cherry_syrup.jpg';
 import pineappleImg from '@assets/pineapple_syrup.jpg';
 import strawberryImg from '@assets/strawberry_syrup.jpg';
+import tripleSecImg from '@assets/triple_sec_syrup.jpg';
+import blueCuracaoImg from '@assets/blue_curacao_syrup.jpg';
+import limoncelloImg from '@assets/limoncello_syrup.jpg';
+import guavaChilliImg from '@assets/guava_chilli_syrup.jpg';
 
 export type SyrupCategory = 'All' | 'Berry & Fruit' | 'Citrus & Tropical' | 'Spiced & Botanical' | 'Confection & Classic';
 
@@ -75,6 +79,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Bright Citrus',
     tone: 'gold',
     badgeColor: '#ca8a04',
+    image: limoncelloImg,
     recipe: {
       name: 'Limoncello Collins',
       ingredients: ['Gin — 45 ml', 'Limoncello Syrup — 20 ml', 'Fresh Lemon Juice — 20 ml', 'Soda — 60 ml'],
@@ -93,6 +98,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Bittersweet Orange',
     tone: 'amber',
     badgeColor: '#ea580c',
+    image: tripleSecImg,
     recipe: {
       name: 'Triple Sec Margarita',
       ingredients: ['Tequila — 50 ml', 'Triple Sec Syrup — 20 ml', 'Fresh Lime Juice — 20 ml'],
@@ -111,6 +117,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Sweet & Fiery',
     tone: 'rose',
     badgeColor: '#e11d48',
+    image: guavaChilliImg,
     recipe: {
       name: 'Guava Chilli Margarita',
       ingredients: ['Tequila — 50 ml', 'Guava Chilli Syrup — 20 ml', 'Fresh Lime Juice — 20 ml'],
@@ -258,6 +265,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Electric Citrus',
     tone: 'blue',
     badgeColor: '#0284c7',
+    image: blueCuracaoImg,
     recipe: {
       name: 'Blue Curaçao Sour',
       ingredients: ['Vodka — 45 ml', 'Blue Curaçao Syrup — 20 ml', 'Fresh Lemon Juice — 20 ml'],
