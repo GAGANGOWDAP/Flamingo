@@ -743,13 +743,18 @@ export function EnquirePage() {
       <section className="border-b border-rose-300/70 bg-[#f9d7e4]">
         <div className="page-shell grid gap-8 py-16 md:grid-cols-[1.1fr_.9fr] md:py-24">
           <div>
-            <SectionKicker>B2B & Trade Enquiries</SectionKicker>
-            <h1 className="mt-4 max-w-3xl font-display text-5xl leading-[.85] tracking-[-.03em] sm:text-6xl md:text-[6.5rem]">
+            <p className="font-sans text-[11.5px] sm:text-[12px] font-semibold uppercase tracking-[.28em] text-[#b63d65]">
+              B2B & Trade Enquiries
+            </p>
+            <h1 className="mt-3.5 max-w-3xl font-display text-4xl font-bold uppercase tracking-[-.03em] text-[#321e2a] sm:text-5xl md:text-[5.2rem] lg:text-[5.6rem] leading-[.86]">
               LET'S TALK.<br />
-              <span className="italic text-[#d84f78]">Built for Beverage Professionals.</span>
+              <span className="block mt-1.5 font-display italic font-normal tracking-tight text-[#d84f78] text-3xl sm:text-4xl md:text-[4.2rem] lg:text-[4.5rem] leading-[.92]">
+                Built for Beverage<br />
+                Professionals.
+              </span>
             </h1>
           </div>
-          <p className="max-w-md self-end text-base leading-7 text-[#684454]">
+          <p className="max-w-[450px] self-end font-sans text-[17px] font-normal leading-[1.58] text-[#684454]">
             Whether you're a luxury hotel, craft cocktail bar, restaurant, café, mixologist, or distributor, talk to the Flamingo team about your syrup requirements.
           </p>
         </div>
