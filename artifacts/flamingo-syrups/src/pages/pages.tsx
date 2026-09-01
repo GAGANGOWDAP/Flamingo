@@ -12,11 +12,11 @@ function SectionKicker({ children }: { children: ReactNode }) {
 
 function FlamingoMark({ compact = false }: { compact?: boolean }) {
   return (
-    <div className={`relative flex items-center justify-center ${compact ? 'h-36 w-36' : 'h-64 w-64 md:h-[25rem] md:w-[25rem]'}`}>
+    <div className={`relative flex items-center justify-center ${compact ? 'h-28 w-28 md:h-32 md:w-32' : 'h-64 w-64 md:h-[25rem] md:w-[25rem]'}`}>
       <div className="absolute inset-[7%] rounded-[48%_52%_45%_55%] border border-[#d84f78]/40 bg-[#ffd5e5]" />
       <div className="absolute inset-[14%] rounded-full border border-dashed border-[#d84f78]/40" />
       <div className="flamingo-drift relative">
-        <svg viewBox="0 0 260 300" className={compact ? 'h-24 w-24' : 'h-48 w-48 md:h-64 md:w-64'} aria-hidden="true">
+        <svg viewBox="0 0 260 300" className={compact ? 'h-20 w-20 md:h-22 md:w-22' : 'h-48 w-48 md:h-64 md:w-64'} aria-hidden="true">
           <path d="M125 266c-42 0-80-18-80-53 0-24 19-42 49-53 18-7 34-20 34-39 0-16-10-27-30-31l-29-6 4-14 38 3c38 3 64 23 64 58 0 21-10 38-32 51 37 3 69 19 69 51 0 20-19 33-49 33Z" fill="#db527b" />
           <path d="M109 101c-1-35 16-66 43-70 29-4 50 21 47 52-2 25-18 42-42 49 13-11 20-26 20-42 0-17-9-26-23-26-16 0-27 17-29 39Z" fill="#db527b" />
           <path d="M149 34c8-14 21-20 32-15 9 4 11 14 4 23-13-5-24-8-36-8Z" fill="#db527b" />
@@ -572,16 +572,26 @@ export function ProductsPage() {
 export function AboutPage() {
   return (
     <main>
+      {/* THE STORY COMPACT EDITORIAL CARD */}
       <section className="relative overflow-hidden border-b border-rose-300/70 bg-[#cfe7dc]">
-        <div className="page-shell grid min-h-[600px] items-center gap-10 py-20 md:grid-cols-[1fr_.8fr]">
-          <div>
-            <SectionKicker>The story</SectionKicker>
-            <h1 className="mt-5 max-w-3xl font-display text-[clamp(4rem,9vw,8.4rem)] leading-[.78] tracking-[-.04em] text-[#234039]">
-              A drink is<br /><span className="italic text-[#b63d65]">a feeling</span><br />before it is<br />a recipe.
-            </h1>
-          </div>
-          <div className="flex justify-center md:justify-end">
-            <FlamingoMark compact />
+        <div className="page-shell py-12 md:py-16">
+          <div className="mx-auto max-w-4xl rounded-3xl border border-[#b4d4c7] bg-[#cfe7dc]/80 p-8 sm:p-10 md:p-12 shadow-sm">
+            <div className="grid items-center gap-8 md:grid-cols-[1fr_.45fr]">
+              <div>
+                <p className="font-sans text-[10px] sm:text-[11px] font-medium uppercase tracking-[.25em] text-[#b63d65]">
+                  THE STORY
+                </p>
+                <h1 className="mt-3 font-display text-3xl font-normal leading-[.88] tracking-[-.03em] text-[#234039] sm:text-4xl md:text-[3.5rem] lg:text-[4.2rem]">
+                  A drink is<br />
+                  <span className="italic text-[#b63d65]">a feeling</span><br />
+                  before it is<br />
+                  a recipe.
+                </h1>
+              </div>
+              <div className="flex justify-center md:justify-end">
+                <FlamingoMark compact />
+              </div>
+            </div>
           </div>
         </div>
       </section>
