@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect, type FormEvent, type ReactNode } from 'react';
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, ChevronDown, Download, Droplet, GlassWater, Mail, MapPin, Phone, Sparkles, Star, Wine } from 'lucide-react';
-import { Link, useParams } from 'wouter';
+import { Link, useParams, useLocation } from 'wouter';
 import logoPath from '@assets/2.jpg_1787233517766.jpeg';
 import { brand, syrupsList, timeline, type SyrupCategory, type SyrupItem } from '@/data/site-data';
 import NotFound from '@/pages/not-found';
@@ -211,45 +211,18 @@ export function HomePage() {
 }
 
 export function ProductsPage() {
+  const [, setLocation] = useLocation();
   const shouldReduceMotion = useReducedMotion();
-  const [selectedCategory, setSelectedCategory] = useState<SyrupCategory>('Fruit & Berry');
-  const [selectedId, setSelectedId] = useState<string>(syrupsList[0].id);
-  const [showAllGrid, setShowAllGrid] = useState<boolean>(false);
-
-  // Read URL query parameter e.g. /products?syrup=jamun
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search);
-      const syrupParam = params.get('syrup');
-      if (syrupParam && syrupsList.some((s) => s.id === syrupParam)) {
-        setSelectedId(syrupParam);
-        const match = syrupsList.find((s) => s.id === syrupParam);
-        if (match) setSelectedCategory(match.category);
-      }
-    }
-  }, []);
-
-  const selectedSyrup = useMemo(() => {
-    return syrupsList.find((s) => s.id === selectedId) ?? syrupsList[0];
-  }, [selectedId]);
+  const [selectedCategory, setSelectedCategory] = useState<SyrupCategory>('All');
+  const [showAllGrid, setShowAllGrid] = useState<boolean>(true);
 
   const displayedSyrups = useMemo(() => {
-    if (showAllGrid) return syrupsList;
-    return syrupsList.filter((s) => s.category === selectedCategory);
+    if (showAllGrid || selectedCategory === 'All') return syrupsList;
+    return syrupsList.filter((item) => item.category === selectedCategory);
   }, [selectedCategory, showAllGrid]);
 
-  const categoryIcons: Record<Exclude<SyrupCategory, 'All'>, string> = {
-    'Fruit & Berry': '🍓',
-    'Citrus': '🍊',
-    'Herbal & Botanical': '🌿',
-    'Melon': '🍈',
-    'Tropical': '🥥',
-    'Classic Cocktail': '🍹',
-    'Creamy & Dessert': '🍦',
-    'Spiced': '🌶️',
-  };
-
-  const categories: Array<Exclude<SyrupCategory, 'All'>> = [
+  const categories: SyrupCategory[] = [
+    'All',
     'Fruit & Berry',
     'Citrus',
     'Herbal & Botanical',
@@ -259,6 +232,18 @@ export function ProductsPage() {
     'Creamy & Dessert',
     'Spiced',
   ];
+
+  const categoryIcons: Record<SyrupCategory, string> = {
+    'All': '✨',
+    'Fruit & Berry': '🍓',
+    'Citrus': '🍊',
+    'Herbal & Botanical': '🌿',
+    'Melon': '🍈',
+    'Tropical': '🥥',
+    'Classic Cocktail': '🍹',
+    'Creamy & Dessert': '🍦',
+    'Spiced': '🌶️',
+  };
 
   return (
     <main>
@@ -272,7 +257,7 @@ export function ProductsPage() {
           </div>
           <div className="flex flex-col justify-between gap-6 self-end">
             <p className="max-w-md text-base leading-7 text-[#684454]">
-              Select any syrup flavour from the dropdown menu below or filter by parent flavour family. Crafted for professional mixology with real ingredients in 750 ml bottles.
+              Select any syrup flavour from the dropdown menu below or click any card to view its dedicated product page. Crafted for professional mixology in 750 ml bottles.
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <a
@@ -295,28 +280,28 @@ export function ProductsPage() {
       </section>
 
       <section className="page-shell py-12 md:py-20">
-        {/* INTERACTIVE SYRUP DROPDOWN SELECT MENU CONTROL */}
+        {/* INTERACTIVE SYRUP DROPDOWN & FILTER CONTROLS */}
         <div className="rounded-2xl border-2 border-rose-300 bg-[#fff3f8] p-6 md:p-8 shadow-sm">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
 
             {/* SYRUP SELECT DROPDOWN MENU */}
             <div className="w-full lg:max-w-lg">
               <label htmlFor="syrup-dropdown-menu" className="block text-xs font-bold uppercase tracking-[.14em] text-[#b63d65] mb-2">
-                SELECT SYRUPS:
+                SELECT SYRUP TO VIEW PAGE:
               </label>
               <div className="relative">
                 <select
                   id="syrup-dropdown-menu"
-                  value={selectedId}
+                  defaultValue=""
                   onChange={(e) => {
-                    const chosenId = e.target.value;
-                    setSelectedId(chosenId);
-                    const match = syrupsList.find((s) => s.id === chosenId);
-                    if (match) setSelectedCategory(match.category);
+                    if (e.target.value) {
+                      setLocation(`/products/${e.target.value}`);
+                    }
                   }}
                   className="w-full appearance-none rounded-xl border-2 border-[#d84f78] bg-[#fffdfc] px-4 py-3.5 pr-10 text-base font-semibold text-[#321e2a] shadow-sm outline-none transition-all hover:border-[#b63d65] focus:border-[#b63d65] focus:ring-2 focus:ring-[#d84f78]/30 cursor-pointer"
                   data-testid="select-syrup-dropdown"
                 >
+                  <option value="" disabled>Choose from 29 Flavours...</option>
                   {syrupsList.map((syrup) => (
                     <option key={syrup.id} value={syrup.id}>
                       {syrup.name} — ({syrup.category})
@@ -330,7 +315,7 @@ export function ProductsPage() {
             {/* CATEGORY SELECTOR TABS */}
             <div className="flex flex-col gap-2.5">
               <span className="text-xs font-bold uppercase tracking-[.14em] text-[#996074]">
-                Filter by Flavour Family ({categories.length} Categories):
+                Filter by Flavour Family:
               </span>
               <div className="flex flex-wrap gap-2" role="group" aria-label="Filter syrups by category family">
                 {categories.map((cat) => (
@@ -339,9 +324,9 @@ export function ProductsPage() {
                     type="button"
                     onClick={() => {
                       setSelectedCategory(cat);
-                      setShowAllGrid(false);
+                      setShowAllGrid(cat === 'All');
                     }}
-                    className={`border px-3 py-2 text-[.68rem] font-bold uppercase tracking-[.12em] transition-all rounded-xl flex items-center gap-1.5 ${!showAllGrid && selectedCategory === cat
+                    className={`border px-3 py-2 text-[.68rem] font-bold uppercase tracking-[.12em] transition-all rounded-xl flex items-center gap-1.5 ${(!showAllGrid && selectedCategory === cat) || (showAllGrid && cat === 'All')
                       ? 'border-[#d84f78] bg-[#d84f78] text-white shadow-sm'
                       : 'border-rose-300 bg-white text-[#593b49] hover:border-[#d84f78] hover:bg-[#fbd6e4]/40'
                       }`}
@@ -352,238 +337,96 @@ export function ProductsPage() {
                     <span>{cat}</span>
                   </button>
                 ))}
-
-                <button
-                  type="button"
-                  onClick={() => setShowAllGrid((prev) => !prev)}
-                  className={`border px-3 py-2 text-[.68rem] font-bold uppercase tracking-[.12em] transition-all rounded-xl flex items-center gap-1.5 ${showAllGrid
-                    ? 'border-[#321e2a] bg-[#321e2a] text-[#fff3f8]'
-                    : 'border-rose-300 bg-white text-[#b63d65] hover:border-[#d84f78]'
-                    }`}
-                  data-testid="button-toggle-all-29"
-                >
-                  <span>✨</span>
-                  <span>{showAllGrid ? `Showing All ${syrupsList.length} ✓` : `View All ${syrupsList.length}`}</span>
-                </button>
               </div>
             </div>
 
           </div>
         </div>
 
-        {/* SELECTED SYRUP DETAILED FOCUS CARD */}
-        <div className="mt-10 rounded-2xl border-2 border-[#d84f78] bg-[#fff3f8] p-8 shadow-lg md:p-12">
-          <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
-            <div>
-              <div className="flex items-center gap-3">
-                <span
-                  className="h-3.5 w-3.5 rounded-full shadow-sm shrink-0"
-                  style={{ backgroundColor: selectedSyrup.badgeColor }}
-                />
-                <div>
-                  <SectionKicker>Selected Syrup Flavour</SectionKicker>
-                  <span className="text-xs font-bold text-[#7e3450] uppercase tracking-wider">
-                    Category: {selectedSyrup.category}
-                  </span>
-                </div>
-              </div>
-
-              <h2 className="mt-4 font-display text-5xl font-semibold text-[#321e2a] md:text-6xl">
-                {selectedSyrup.name}
-              </h2>
-
-              <div className="mt-4 flex flex-wrap items-center gap-3">
-                <span className="rounded-full bg-[#d84f78] px-3 py-1 text-xs font-bold text-white">
-                  {selectedSyrup.tag}
-                </span>
-                <span className="rounded-full border border-rose-300 bg-white px-3 py-1 text-xs font-bold text-[#593b49]">
-                  Standard Bottle Pack: {selectedSyrup.volume}
-                </span>
-              </div>
-
-              {selectedSyrup.image && (
-                <div className="mt-6 overflow-hidden rounded-xl border border-rose-300/80 shadow-md">
-                  <img
-                    src={selectedSyrup.image}
-                    alt={selectedSyrup.name}
-                    className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
-              )}
-            </div>
-
-            <div className="flex flex-col justify-between gap-6 border-t border-rose-300/80 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-[#b63d65]">Profile & Taste Notes:</h4>
-                <p className="mt-2 text-base leading-7 text-[#684454]">
-                  {selectedSyrup.description}
-                </p>
-              </div>
-
-              {selectedSyrup.ingredientsList && (
-                <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#b63d65]">Product Ingredients:</h4>
-                  <p className="mt-1.5 text-xs leading-5 font-medium text-[#593b49]">
-                    {selectedSyrup.ingredientsList}
-                  </p>
-                </div>
-              )}
-
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-[#b63d65]">Mixology & Recommended Pairings:</h4>
-                <p className="mt-2 text-sm leading-6 font-medium text-[#321e2a]">
-                  {selectedSyrup.pairingNotes}
-                </p>
-              </div>
-
-              {/* SIGNATURE COCKTAIL RECIPE BOX */}
-              <div className="rounded-xl border border-rose-300 bg-[#fbd6e4]/50 p-5 shadow-sm">
-                <div className="flex items-center gap-2 mb-3">
-                  <Wine size={18} className="text-[#d84f78]" />
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#b63d65]">
-                    Signature Cocktail Recipe: <span className="text-[#321e2a] font-display text-lg font-semibold ml-1.5">{selectedSyrup.recipe.name}</span>
-                  </h4>
-                </div>
-
-                <div className="space-y-2.5 text-xs text-[#593b49]">
-                  <div>
-                    <span className="font-bold text-[#b63d65] uppercase tracking-wider block mb-1.5">Ingredients:</span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {selectedSyrup.recipe.ingredients.map((ing) => (
-                        <span key={ing} className="rounded-md border border-rose-300/80 bg-white px-2.5 py-1 text-xs font-semibold text-[#321e2a]">
-                          {ing}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="pt-1.5 border-t border-rose-200">
-                    <span className="font-bold text-[#b63d65] uppercase tracking-wider">Method: </span>
-                    <span className="text-[#321e2a] font-medium">{selectedSyrup.recipe.method}</span>
-                  </div>
-
-                  <div>
-                    <span className="font-bold text-[#b63d65] uppercase tracking-wider">Garnish: </span>
-                    <span className="text-[#321e2a] font-medium">{selectedSyrup.recipe.garnish}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-3 pt-2">
-                <Link
-                  href={`/products/${selectedSyrup.id}`}
-                  className="inline-flex items-center gap-2.5 rounded-xl border border-[#321e2a] bg-[#321e2a] px-6 py-3.5 text-xs font-bold uppercase tracking-[.16em] text-white transition-all hover:bg-[#d84f78] hover:border-[#d84f78]"
-                  data-testid="link-view-dedicated-product-page"
-                >
-                  View Full Product Page <ArrowUpRight size={15} />
-                </Link>
-                <Link
-                  href={`/contact?syrup=${encodeURIComponent(selectedSyrup.name)}`}
-                  className="inline-flex items-center gap-2.5 rounded-xl border border-rose-300 bg-white px-6 py-3.5 text-xs font-bold uppercase tracking-[.16em] text-[#b63d65] transition-colors hover:border-[#d84f78] hover:bg-[#fff3f8]"
-                  data-testid="link-selected-syrup-enquire"
-                >
-                  Enquire About {selectedSyrup.name} <ArrowRight size={15} />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* FLAVOUR CARDS GRID WITH VIEWPORT STAGGER & PREMUM INTERACTION SYSTEM */}
+        {/* 29 FLAVOUR VARIETY CARDS GRID */}
         <div className="mt-12">
           <div className="flex items-center justify-between border-b border-rose-300 pb-4 mb-8">
             <h3 className="font-display text-3xl font-semibold text-[#321e2a]">
               {showAllGrid ? `All ${syrupsList.length} Varieties Catalogue` : `${selectedCategory} Flavours`}
             </h3>
             <span className="text-xs font-bold uppercase tracking-wider text-[#996074]">
-              {displayedSyrups.length} {displayedSyrups.length === 1 ? 'Syrup' : 'Syrups'}
+              {displayedSyrups.length} {displayedSyrups.length === 1 ? 'Syrup' : 'Syrups'} (Click card to view page)
             </span>
           </div>
 
           <motion.div
             key={selectedCategory + String(showAllGrid)}
-            className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
             variants={shouldReduceMotion ? undefined : cardContainerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-40px' }}
           >
             {displayedSyrups.map((syrup) => {
-              const isSelected = selectedId === syrup.id;
               return (
-                <motion.button
-                  type="button"
+                <motion.div
                   key={syrup.id}
                   variants={shouldReduceMotion ? undefined : cardItemVariants}
-                  onClick={() => setSelectedId(syrup.id)}
-                  className={`group relative flex flex-col justify-between min-h-[300px] overflow-hidden rounded-xl border p-6 text-left transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-2 hover:border-[#d84f78] hover:shadow-[0_22px_48px_rgba(153,63,98,.18)] ${isSelected
-                    ? 'border-2 border-[#d84f78] bg-[#fff3f8] shadow-md ring-2 ring-[#d84f78]/20'
-                    : 'border-rose-300/80 bg-[#fbd6e4]/70 hover:bg-[#fbd6e4]'
-                    }`}
-                  data-testid={`card-syrup-${syrup.id}`}
-                  aria-pressed={isSelected}
                 >
-                  {/* 3. SUBTLE PINK GRADIENT SWEEP OVERLAY */}
-                  <span
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-r from-transparent via-[#ffeaf3]/70 to-transparent opacity-0 -translate-x-full transition-all duration-700 ease-in-out group-hover:opacity-100 group-hover:translate-x-full"
-                  />
+                  <Link
+                    href={`/products/${syrup.id}`}
+                    className="group relative flex flex-col justify-between min-h-[340px] overflow-hidden rounded-2xl border border-rose-300/80 bg-[#fff3f8] p-6 text-left transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-2 hover:border-[#d84f78] hover:shadow-[0_22px_48px_rgba(153,63,98,.18)] block cursor-pointer"
+                    data-testid={`card-syrup-${syrup.id}`}
+                  >
+                    {/* SUBTLE PINK GRADIENT SWEEP OVERLAY */}
+                    <span
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-r from-transparent via-[#ffeaf3]/70 to-transparent opacity-0 -translate-x-full transition-all duration-700 ease-in-out group-hover:opacity-100 group-hover:translate-x-full"
+                    />
 
-                  {/* CARD CONTENT WITH z-10 LAYER FOR MAXIMUM READABILITY */}
-                  <div className="relative z-10 flex items-start justify-between">
-                    <div className="flex items-center gap-2">
-                      <span
-                        className="h-3 w-3 rounded-full shadow-sm transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-125"
-                        style={{ backgroundColor: syrup.badgeColor }}
-                      />
-                      <span className="text-[.68rem] font-bold uppercase tracking-widest text-[#b63d65]">
-                        {syrup.category}
+                    {/* CARD HEADER */}
+                    <div className="relative z-10 flex items-start justify-between">
+                      <div className="flex items-center gap-2">
+                        <span
+                          className="h-3.5 w-3.5 rounded-full shadow-sm"
+                          style={{ backgroundColor: syrup.badgeColor }}
+                        />
+                        <span className="text-[.68rem] font-bold uppercase tracking-widest text-[#b63d65]">
+                          {syrup.category}
+                        </span>
+                      </div>
+                      <span className="rounded-full bg-white/90 px-2.5 py-1 text-[.64rem] font-bold uppercase tracking-wider text-[#7e3450] shadow-sm">
+                        {syrup.tag}
                       </span>
                     </div>
-                    <span className="rounded-full bg-white/80 px-2.5 py-1 text-[.64rem] font-bold uppercase tracking-wider text-[#7e3450] transition-transform duration-500 ease-out group-hover:scale-[1.03]">
-                      {syrup.tag}
-                    </span>
-                  </div>
 
-                  <div className="relative z-10 my-4">
-                    {syrup.image && (
-                      <div className="mb-3 overflow-hidden rounded-xl border border-rose-300/60 shadow-sm">
-                        <img
-                          src={syrup.image}
-                          alt={syrup.name}
-                          className="h-44 w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                        />
+                    {/* CARD BODY & IMAGE */}
+                    <div className="relative z-10 my-4">
+                      {syrup.image && (
+                        <div className="mb-3.5 overflow-hidden rounded-xl border border-rose-300/60 bg-white p-2 shadow-sm">
+                          <img
+                            src={syrup.image}
+                            alt={`Flamingo ${syrup.name} 750ml`}
+                            className="h-48 w-full object-contain transition-transform duration-500 ease-out group-hover:scale-105"
+                          />
+                        </div>
+                      )}
+                      <h4 className="mt-1 font-display text-3xl font-semibold leading-tight text-[#321e2a] transition-colors duration-300 group-hover:text-[#d84f78]">
+                        {syrup.name}
+                      </h4>
+                      <p className="mt-2 text-xs leading-5 text-[#684454] line-clamp-2 font-sans">
+                        {syrup.description}
+                      </p>
+                      <div className="mt-3 inline-flex items-center gap-1.5 rounded-lg border border-rose-300/80 bg-white/90 px-2.5 py-1 text-[.64rem] font-bold text-[#b63d65]">
+                        <Wine size={12} className="text-[#d84f78]" />
+                        <span>Recipe: {syrup.recipe.name}</span>
                       </div>
-                    )}
-                    <h4 className="mt-1 font-display text-3xl font-semibold leading-tight text-[#321e2a] transition-colors duration-300 group-hover:text-[#d84f78]">
-                      {syrup.name}
-                    </h4>
-                    <p className="mt-2 text-xs leading-5 text-[#684454] line-clamp-2">
-                      {syrup.description}
-                    </p>
-                    <div className="mt-2.5 inline-flex items-center gap-1.5 rounded-md border border-rose-300/80 bg-white/80 px-2 py-1 text-[.64rem] font-bold text-[#b63d65]">
-                      <Wine size={11} className="text-[#d84f78]" />
-                      <span>Recipe: {syrup.recipe.name}</span>
                     </div>
-                  </div>
 
-                  <div className="relative z-10 flex items-center justify-between border-t border-rose-300/60 pt-3 text-[.68rem] font-bold uppercase tracking-wider text-[#593b49]">
-                    <span>Pack: {syrup.volume}</span>
-                    <Link
-                      href={`/products/${syrup.id}`}
-                      className="flex items-center gap-1 font-bold text-[#d84f78] transition-transform duration-300 group-hover:translate-x-1.5 hover:underline"
-                      data-testid={`link-view-page-${syrup.id}`}
-                    >
-                      View Flavour Page →
-                    </Link>
-                  </div>
-
-                  {isSelected && (
-                    <span className="absolute right-3 top-3 z-10 flex h-6 w-6 items-center justify-center rounded-full bg-[#d84f78] text-white shadow-sm">
-                      <Check size={14} />
-                    </span>
-                  )}
-                </motion.button>
+                    {/* CARD FOOTER LINK */}
+                    <div className="relative z-10 flex items-center justify-between border-t border-rose-300/60 pt-3.5 text-[.68rem] font-bold uppercase tracking-wider text-[#593b49]">
+                      <span>Pack: {syrup.volume}</span>
+                      <span className="flex items-center gap-1 font-bold text-[#d84f78] transition-transform duration-300 group-hover:translate-x-1.5">
+                        View Product Page →
+                      </span>
+                    </div>
+                  </Link>
+                </motion.div>
               );
             })}
           </motion.div>
