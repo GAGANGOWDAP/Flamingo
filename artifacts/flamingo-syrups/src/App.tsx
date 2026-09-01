@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { PageFrame, ScrollToTop, SiteFooter, SiteHeader } from '@/components/site-shell';
-import { AboutPage, ContactPage, HomePage, ProductsPage, ProductDetailPage } from '@/pages/pages';
+import { AboutPage, ContactPage, EnquirePage, HomePage, ProductsPage, ProductDetailPage } from '@/pages/pages';
 import NotFound from '@/pages/not-found';
 import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 
@@ -25,6 +25,7 @@ function Router() {
         <Route path="/products" component={ProductsPage} />
         <Route path="/products/:slug" component={ProductDetailPage} />
         <Route path="/about" component={AboutPage} />
+        <Route path="/enquire" component={EnquirePage} />
         <Route path="/contact" component={ContactPage} />
         <Route component={NotFound} />
       </Switch>

@@ -13,6 +13,10 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://gagangowdap.github.io/Flamingo/enquire</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://gagangowdap.github.io/Flamingo/contact</loc>
     <priority>0.8</priority>
   </url>

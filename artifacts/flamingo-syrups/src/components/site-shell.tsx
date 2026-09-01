@@ -178,20 +178,20 @@ export function SiteHeader() {
           </Link>
 
           <Link
-            href="/contact"
+            href="/enquire"
             data-testid="link-nav-enquire"
             className={`relative py-2 text-[.74rem] font-bold uppercase tracking-[.18em] transition-colors duration-200 hover:text-[#d84f78] ${
-              location === '/contact' ? 'text-[#d84f78]' : 'text-[#593b49]'
+              location === '/enquire' || location === '/contact' ? 'text-[#d84f78]' : 'text-[#593b49]'
             }`}
           >
             Enquire
-            {location === '/contact' && <span className="absolute -bottom-1.5 left-0 h-[2px] w-full rounded-full bg-[#d84f78]" />}
+            {(location === '/enquire' || location === '/contact') && <span className="absolute -bottom-1.5 left-0 h-[2px] w-full rounded-full bg-[#d84f78]" />}
           </Link>
         </nav>
 
         {/* CTA BUTTON - REFINED PREMIUM ENQUIRE NOW BUTTON */}
         <Link
-          href="/contact"
+          href="/enquire"
           className="hidden h-[44px] items-center gap-2 rounded-lg bg-[#321e2a] px-6 text-[.7rem] font-bold uppercase tracking-[.18em] text-[#ffeaf3] shadow-sm transition-all duration-300 hover:bg-[#d84f78] hover:shadow-md hover:-translate-y-0.5 md:flex"
           data-testid="link-header-enquire"
         >
@@ -228,13 +228,13 @@ export function SiteHeader() {
             <Link href="/about" className="border-b border-rose-200/80 py-3.5 text-sm font-bold uppercase tracking-[.16em] text-[#593b49] hover:text-[#d84f78]">
               The story
             </Link>
-            <Link href="/contact" className="py-3.5 text-sm font-bold uppercase tracking-[.16em] text-[#593b49] hover:text-[#d84f78]">
+            <Link href="/enquire" className="py-3.5 text-sm font-bold uppercase tracking-[.16em] text-[#593b49] hover:text-[#d84f78]">
               Enquire
             </Link>
 
             <div className="pt-4">
               <Link
-                href="/contact"
+                href="/enquire"
                 className="flex h-[46px] w-full items-center justify-center gap-2 rounded-lg bg-[#321e2a] px-6 text-xs font-bold uppercase tracking-[.18em] text-[#ffeaf3] shadow-sm transition-all hover:bg-[#d84f78]"
                 data-testid="link-mobile-enquire-now"
               >
