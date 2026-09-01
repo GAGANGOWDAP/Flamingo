@@ -41,7 +41,9 @@ export function EnquirePage() {
       const params = new URLSearchParams(window.location.search);
       const productParam = params.get('product') || params.get('syrup');
       if (productParam) {
-        const match = syrupsList.find((s) => s.id === productParam || s.name.toLowerCase().includes(productParam.toLowerCase()));
+        const match = syrupsList.find(
+          (s) => s.id === productParam || s.name.toLowerCase().includes(productParam.toLowerCase())
+        );
         if (match) initialProduct = match.id;
       }
     }
@@ -67,7 +69,9 @@ export function EnquirePage() {
 
   function updateField(field: keyof EnquireFormState, value: string) {
     setForm((current) => ({ ...current, [field]: value }));
-    if (errors[field]) setErrors((current) => ({ ...current, [field]: undefined }));
+    if (errors[field]) {
+      setErrors((current) => ({ ...current, [field]: undefined }));
+    }
   }
 
   function validate() {
@@ -95,7 +99,7 @@ export function EnquirePage() {
 
   return (
     <main>
-      {/* HERO BANNER */}
+      {/* SECTION 1: HERO BANNER */}
       <section className="border-b border-rose-300/70 bg-[#f9d7e4]">
         <div className="page-shell grid gap-8 py-16 md:grid-cols-[1.1fr_.9fr] md:py-24">
           <div>
@@ -116,11 +120,11 @@ export function EnquirePage() {
         </div>
       </section>
 
-      {/* ENQUIRY MAIN CONTENT SECTION */}
+      {/* SECTION 2: ENQUIRY CONTENT (CONTACT INFO + B2B FORM) */}
       <section className="page-shell py-16 md:py-24">
         <div className="grid gap-16 lg:grid-cols-[.9fr_1.1fr]">
 
-          {/* LEFT: B2B DIRECT CONTACT INFO */}
+          {/* LEFT COLUMN: DIRECT CONTACT & TRADE DETAILS */}
           <div className="space-y-10">
             <div>
               <SectionKicker>Built for Hospitality</SectionKicker>
@@ -132,15 +136,25 @@ export function EnquirePage() {
               </p>
             </div>
 
-            {/* CONTACT DETAILS CARD */}
+            {/* DIRECT TRADE LINE CARD */}
             <div className="rounded-2xl border border-rose-300/80 bg-[#fff3f8] p-8 shadow-sm space-y-6">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-[#b63d65]">Direct Trade Line:</h3>
+              <h3 className="text-xs font-bold uppercase tracking-widest text-[#b63d65]">
+                Direct Trade Line:
+              </h3>
               <div className="space-y-4 text-sm font-semibold text-[#321e2a]">
-                <a href={`mailto:${brand.email}`} className="flex items-center gap-3 hover:text-[#d84f78] transition-colors" data-testid="link-enquire-email">
+                <a
+                  href={`mailto:${brand.email}`}
+                  className="flex items-center gap-3 hover:text-[#d84f78] transition-colors"
+                  data-testid="link-enquire-email"
+                >
                   <Mail size={18} className="text-[#d84f78]" />
                   <span>{brand.email}</span>
                 </a>
-                <a href={`tel:${brand.phone.replace(/\s/g, '')}`} className="flex items-center gap-3 hover:text-[#d84f78] transition-colors" data-testid="link-enquire-phone">
+                <a
+                  href={`tel:${brand.phone.replace(/\s/g, '')}`}
+                  className="flex items-center gap-3 hover:text-[#d84f78] transition-colors"
+                  data-testid="link-enquire-phone"
+                >
                   <Phone size={18} className="text-[#d84f78]" />
                   <span>{brand.phone} (Call / WhatsApp)</span>
                 </a>
@@ -151,14 +165,20 @@ export function EnquirePage() {
               </div>
 
               <div className="border-t border-rose-200/80 pt-5">
-                <p className="text-xs font-bold uppercase tracking-widest text-[#b63d65]">Master Mixologist & Creator:</p>
-                <p className="mt-1 font-display text-2xl font-semibold text-[#321e2a]">{brand.creator}</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-[#b63d65]">
+                  Master Mixologist & Creator:
+                </p>
+                <p className="mt-1 font-display text-2xl font-semibold text-[#321e2a]">
+                  {brand.creator}
+                </p>
               </div>
             </div>
 
-            {/* DIRECT WHATSAPP CTA */}
+            {/* INSTANT WHATSAPP CONSULTATION CARD */}
             <div className="rounded-2xl border-2 border-rose-300 bg-white p-6 shadow-sm space-y-3">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-[#321e2a]">Instant Bar Consultation:</h3>
+              <h3 className="text-xs font-bold uppercase tracking-widest text-[#321e2a]">
+                Instant Bar Consultation:
+              </h3>
               <p className="text-xs leading-5 text-[#684454]">
                 Need immediate sample specs or bar menu recommendations? Message our team directly on WhatsApp.
               </p>
@@ -174,7 +194,7 @@ export function EnquirePage() {
             </div>
           </div>
 
-          {/* RIGHT: B2B ENQUIRY FORM */}
+          {/* RIGHT COLUMN: B2B ENQUIRY FORM / SUCCESS SCREEN */}
           <div className="rounded-3xl border-2 border-rose-300 bg-[#fff3f8] p-8 md:p-12 shadow-lg">
             {submitted ? (
               <div className="flex min-h-[480px] flex-col items-center justify-center text-center space-y-6">
@@ -210,8 +230,12 @@ export function EnquirePage() {
             ) : (
               <form onSubmit={handleSubmit} noValidate className="space-y-6">
                 <div className="border-b border-rose-300/80 pb-4">
-                  <h3 className="font-display text-3xl font-semibold text-[#321e2a]">B2B Product Enquiry Form</h3>
-                  <p className="mt-1 text-xs text-[#684454]">Fill out your requirements below and our trade team will get in touch.</p>
+                  <h3 className="font-display text-3xl font-semibold text-[#321e2a]">
+                    B2B Product Enquiry Form
+                  </h3>
+                  <p className="mt-1 text-xs text-[#684454]">
+                    Fill out your requirements below and our trade team will get in touch.
+                  </p>
                 </div>
 
                 <div className="grid gap-6 sm:grid-cols-2">
@@ -226,7 +250,9 @@ export function EnquirePage() {
                       className="mt-2 w-full rounded-xl border border-rose-300/80 bg-white p-3.5 text-sm font-semibold text-[#321e2a] outline-none transition-colors focus:border-[#d84f78]"
                       data-testid="input-enquire-name"
                     />
-                    {errors.name && <span className="mt-1.5 block text-xs font-normal text-[#b63d65]">{errors.name}</span>}
+                    {errors.name && (
+                      <span className="mt-1.5 block text-xs font-normal text-[#b63d65]">{errors.name}</span>
+                    )}
                   </label>
 
                   {/* COMPANY / BUSINESS NAME */}
@@ -255,7 +281,9 @@ export function EnquirePage() {
                       className="mt-2 w-full rounded-xl border border-rose-300/80 bg-white p-3.5 text-sm font-semibold text-[#321e2a] outline-none transition-colors focus:border-[#d84f78]"
                       data-testid="input-enquire-phone"
                     />
-                    {errors.phone && <span className="mt-1.5 block text-xs font-normal text-[#b63d65]">{errors.phone}</span>}
+                    {errors.phone && (
+                      <span className="mt-1.5 block text-xs font-normal text-[#b63d65]">{errors.phone}</span>
+                    )}
                   </label>
 
                   {/* EMAIL ADDRESS */}
@@ -269,7 +297,9 @@ export function EnquirePage() {
                       className="mt-2 w-full rounded-xl border border-rose-300/80 bg-white p-3.5 text-sm font-semibold text-[#321e2a] outline-none transition-colors focus:border-[#d84f78]"
                       data-testid="input-enquire-email"
                     />
-                    {errors.email && <span className="mt-1.5 block text-xs font-normal text-[#b63d65]">{errors.email}</span>}
+                    {errors.email && (
+                      <span className="mt-1.5 block text-xs font-normal text-[#b63d65]">{errors.email}</span>
+                    )}
                   </label>
                 </div>
 
