@@ -136,10 +136,14 @@ export function SiteHeader() {
                     <ArrowUpRight size={16} className="text-[#d84f78] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </Link>
 
-                  <Link
-                    href="/products"
+                  <a
+                    href={`${import.meta.env.BASE_URL}catalogue/flamingo-product-catalogue.pdf`}
+                    download="flamingo-product-catalogue.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setProductsOpen(false)}
                     className="group flex items-center justify-between rounded-xl border border-transparent p-3 transition-all hover:border-rose-300 hover:bg-[#fbd6e4]/70"
+                    aria-label="Download Flamingo Product Catalogue PDF"
                     data-testid="link-dropdown-catalogue"
                   >
                     <div className="flex items-center gap-3">
@@ -148,15 +152,15 @@ export function SiteHeader() {
                       </span>
                       <div>
                         <p className="text-xs font-bold uppercase tracking-wider text-[#321e2a] group-hover:text-[#d84f78]">
-                          Catalogue
+                          Download Catalogue ↓
                         </p>
                         <p className="text-[.68rem] font-medium text-[#996074]">
-                          750 ml Professional Pack Range
+                          29 Syrups · 750 ml Professional Pack PDF
                         </p>
                       </div>
                     </div>
                     <ArrowUpRight size={16} className="text-[#d84f78] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </Link>
+                  </a>
                 </div>
               </div>
             )}

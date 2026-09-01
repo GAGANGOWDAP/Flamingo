@@ -1,6 +1,6 @@
 import { useMemo, useState, useEffect, type FormEvent, type ReactNode } from 'react';
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
-import { ArrowDown, ArrowRight, Check, ChevronDown, Droplet, GlassWater, Mail, MapPin, Phone, Sparkles, Star, Wine } from 'lucide-react';
+import { ArrowDown, ArrowRight, Check, ChevronDown, Download, Droplet, GlassWater, Mail, MapPin, Phone, Sparkles, Star, Wine } from 'lucide-react';
 import { Link } from 'wouter';
 import logoPath from '@assets/2.jpg_1787233517766.jpeg';
 import { brand, syrupsList, timeline, type SyrupCategory, type SyrupItem } from '@/data/site-data';
@@ -273,8 +273,21 @@ export function ProductsPage() {
             <p className="max-w-md text-base leading-7 text-[#684454]">
               Select any syrup flavour from the dropdown menu below or filter by parent flavour family. Crafted for professional mixology with real ingredients in 750 ml bottles.
             </p>
-            <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-[#b63d65]">
-              <Wine size={16} /> {syrupsList.length} Syrups · 750 ml Professional Pack
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href={`${import.meta.env.BASE_URL}catalogue/flamingo-product-catalogue.pdf`}
+                download="flamingo-product-catalogue.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2.5 rounded-xl border border-[#321e2a] bg-[#321e2a] px-6 py-3.5 font-sans text-[11px] font-bold uppercase tracking-[.16em] text-[#ffeaf3] shadow-sm transition-all duration-300 hover:bg-[#d84f78] hover:border-[#d84f78] hover:shadow-md hover:-translate-y-0.5"
+                aria-label="Download Flamingo Product Catalogue PDF"
+                data-testid="button-download-catalogue-primary"
+              >
+                <Download size={16} /> Download Product Catalogue ↓
+              </a>
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#b63d65]">
+                <Wine size={16} /> {syrupsList.length} Syrups · 750 ml Professional Pack
+              </div>
             </div>
           </div>
         </div>
