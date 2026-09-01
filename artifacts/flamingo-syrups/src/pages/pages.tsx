@@ -451,7 +451,7 @@ export function ProductsPage() {
                           style={{ backgroundColor: syrup.badgeColor }}
                         />
                         <span className="text-[.68rem] font-bold uppercase tracking-widest text-[#b63d65]">
-                          {syrup.index} · {syrup.category}
+                          {syrup.category}
                         </span>
                       </div>
                       <span className="rounded-full bg-white/90 px-2.5 py-1 text-[.64rem] font-bold uppercase tracking-wider text-[#7e3450] shadow-sm">
@@ -900,7 +900,7 @@ export function ProductDetailPage() {
           {/* LEFT: BOTTLE PHOTO */}
           <div className="relative flex justify-center rounded-3xl border-2 border-rose-300/80 bg-[#fff3f8] p-8 md:p-12 shadow-[0_20px_50px_rgba(153,63,98,.12)]">
             <span className="absolute left-6 top-6 rounded-full border border-rose-300 bg-white px-3 py-1 text-xs font-bold text-[#b63d65]">
-              {syrup.index} · {syrup.category}
+              {syrup.category}
             </span>
             {syrup.image ? (
               <img
