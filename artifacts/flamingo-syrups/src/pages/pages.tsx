@@ -34,7 +34,7 @@ function Marquee() {
     <div className="overflow-hidden border-y border-rose-300/70 bg-[#fbd6e4]">
       <div className="flex min-w-max animate-[marquee_24s_linear_infinite] items-center gap-8 py-3 text-[.68rem] font-bold uppercase tracking-[.22em] text-[#7e3450]">
         <span>FLAMINGO SYRUPS</span><span className="h-1 w-1 rounded-full bg-[#d84f78]" aria-hidden="true" />
-        <span>21 EXCEPTIONAL FLAVOURS</span><span className="h-1 w-1 rounded-full bg-[#d84f78]" aria-hidden="true" />
+        <span>29 EXCEPTIONAL FLAVOURS</span><span className="h-1 w-1 rounded-full bg-[#d84f78]" aria-hidden="true" />
         <span>750 ML PROFESSIONAL PACK</span><span className="h-1 w-1 rounded-full bg-[#d84f78]" aria-hidden="true" />
         <span>BEVERAGE CULTURE, IN PINK</span><span className="h-1 w-1 rounded-full bg-[#d84f78]" aria-hidden="true" />
         <span>ONE SYRUP. ENDLESS POSSIBILITIES.</span>
@@ -77,10 +77,10 @@ export function HomePage() {
           <div className="reveal relative z-10">
             <SectionKicker>Flamingo · Bengaluru</SectionKicker>
             <h1 className="mt-6 max-w-3xl font-display text-[clamp(3.8rem,9vw,8.5rem)] font-medium leading-[.79] tracking-[-.04em] text-[#321e2a]">
-              21 Flavours.<br /><span className="ml-[.2em] italic text-[#d84f78]">Endless</span><br />Possibilities.
+              29 Flavours.<br /><span className="ml-[.2em] italic text-[#d84f78]">Endless</span><br />Possibilities.
             </h1>
             <p className="mt-8 max-w-md text-base leading-7 text-[#684454] md:text-lg">
-              A premium syrup range crafted for mixologists, beverage managers, and craft bars. Explore our complete 21 flavour collection available in 750 ml professional packs.
+              A premium syrup range crafted for mixologists, beverage managers, and craft bars. Explore our complete 29 flavour collection available in 750 ml professional packs.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-5">
               <Link href="/products" className="ink-button inline-flex items-center gap-3 px-5 py-4 text-[.7rem] font-bold uppercase tracking-[.16em] transition-transform hover:-translate-y-1" data-testid="link-hero-products">
@@ -103,7 +103,7 @@ export function HomePage() {
           </div>
         </div>
         <div className="page-shell flex items-center justify-between pb-8 text-[.65rem] font-bold uppercase tracking-[.18em] text-[#996074]">
-          <span>21 EXCEPTIONAL FLAVOURS</span>
+          <span>29 EXCEPTIONAL FLAVOURS</span>
           <span className="flex items-center gap-3">Scroll to explore <ArrowDown size={14} className="pulse-line" /></span>
         </div>
       </section>
@@ -119,7 +119,7 @@ export function HomePage() {
           </p>
           <div className="border-l border-[#d84f78] pl-6">
             <p className="font-display text-3xl italic leading-tight text-[#b63d65]">“One syrup. Endless possibilities for every craft bar.”</p>
-            <p className="mt-4 text-xs font-bold uppercase tracking-[.14em] text-[#996074]">21 Exceptional Flavours · 750 ml</p>
+            <p className="mt-4 text-xs font-bold uppercase tracking-[.14em] text-[#996074]">29 Exceptional Flavours · 750 ml</p>
           </div>
         </div>
       </section>
@@ -179,8 +179,8 @@ export function HomePage() {
         <div className="relative min-h-[360px] overflow-hidden bg-[#e8a1ba] p-8 md:min-h-[480px]">
           <div className="absolute -left-20 -top-24 h-72 w-72 rounded-full border-[38px] border-[#ffeaf3]/30" />
           <div className="absolute bottom-8 right-8 h-40 w-40 rounded-[50%_30%_50%_30%] border border-[#321e2a]/25" />
-          <p className="relative z-10 text-[9rem] leading-[.7] text-[#fff3f8] font-display md:text-[14rem]">21</p>
-          <p className="absolute bottom-8 left-8 max-w-[180px] text-xs font-bold uppercase leading-5 tracking-[.14em] text-[#6d2d45]">21 exceptional flavours for craft beverage menus</p>
+          <p className="relative z-10 text-[9rem] leading-[.7] text-[#fff3f8] font-display md:text-[14rem]">29</p>
+          <p className="absolute bottom-8 left-8 max-w-[180px] text-xs font-bold uppercase leading-5 tracking-[.14em] text-[#6d2d45]">29 exceptional flavours for craft beverage menus</p>
         </div>
         <div className="flex flex-col justify-center">
           <SectionKicker>A Mixologist's Collection</SectionKicker>
@@ -249,7 +249,7 @@ export function ProductsPage() {
           <div>
             <SectionKicker>Flamingo Syrups Collection</SectionKicker>
             <h1 className="mt-5 max-w-3xl font-display text-6xl leading-[.82] tracking-[-.04em] md:text-[8rem]">
-              21 Exceptional<br /><span className="italic text-[#d84f78]">Flavours.</span>
+              29 Exceptional<br /><span className="italic text-[#d84f78]">Flavours.</span>
             </h1>
           </div>
           <div className="flex flex-col justify-between gap-6 self-end">
@@ -257,7 +257,7 @@ export function ProductsPage() {
               Select any syrup flavour from the dropdown menu below or browse by category. Crafted for professional mixology with real ingredients in 750 ml bottles.
             </p>
             <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-[#b63d65]">
-              <Wine size={16} /> 21 Syrups · 750 ml Professional Pack
+              <Wine size={16} /> {syrupsList.length} Syrups · 750 ml Professional Pack
             </div>
           </div>
         </div>
@@ -550,7 +550,7 @@ export function ProductsPage() {
       <section className="bg-[#321e2a] text-[#ffeaf3]">
         <div className="page-shell grid gap-8 py-16 md:grid-cols-[1fr_1fr] md:py-24">
           <div>
-            <SectionKicker>21 Exceptional Flavours</SectionKicker>
+            <SectionKicker>29 Exceptional Flavours</SectionKicker>
             <h2 className="mt-4 font-display text-5xl leading-[.88] md:text-7xl">
               One Syrup.<br />
               <span className="italic text-[#eaa0b7]">Endless Possibilities.</span>
@@ -558,7 +558,7 @@ export function ProductsPage() {
           </div>
           <div className="flex flex-col justify-center gap-4 text-[#e6bfce] leading-7">
             <p>
-              All 21 flavours in the Flamingo range are crafted with premium taste standards, optimal sweet-to-acid balance, and high concentration for professional bar output.
+              All {syrupsList.length} flavours in the Flamingo range are crafted with premium taste standards, optimal sweet-to-acid balance, and high concentration for professional bar output.
             </p>
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#eaa0b7]">
               <Sparkles size={16} /> Available in 750 ml bottles for hospitality & craft bars
@@ -597,7 +597,7 @@ export function AboutPage() {
         <div className="max-w-2xl text-lg leading-8 text-[#684454]">
           <p>Flamingo is anchored to the experience of Manoj Alphones, a beverage professional whose work has moved between the bar, the team and the larger culture of hospitality.</p>
           <p className="mt-6">His practice includes time as Beverage Head & Master Mixologist at Phoenix with Bellona Hospitality from 2023–2024, Beverage Head at Gatsby from 2021–2023, and Beverage Manager and Head Mixologist roles.</p>
-          <p className="mt-6">The brand is built with that same respect for the room: thoughtful, precise and featuring a 21-flavour range made for professional bartenders and beverage buyers.</p>
+          <p className="mt-6">The brand is built with that same respect for the room: thoughtful, precise and featuring a {syrupsList.length}-flavour range made for professional bartenders and beverage buyers.</p>
         </div>
       </section>
 
@@ -605,7 +605,7 @@ export function AboutPage() {
         <div className="page-shell py-20 md:py-28">
           <div className="grid gap-6 border-y border-[#d697ad] py-12 md:grid-cols-3">
             <div>
-              <p className="font-display text-7xl text-[#d84f78]">21</p>
+              <p className="font-display text-7xl text-[#d84f78]">29</p>
               <p className="eyebrow mt-2 text-[#996074]">exceptional syrup flavours</p>
             </div>
             <div>
@@ -643,7 +643,7 @@ export function AboutPage() {
           <Sparkles size={20} className="mx-auto text-[#d84f78]" />
           <SectionKicker>What comes next</SectionKicker>
           <h2 className="mt-5 font-display text-6xl leading-[.85] md:text-8xl">
-            Explore the<br /><span className="italic text-[#d84f78]">21 Flavour Range.</span>
+            Explore the<br /><span className="italic text-[#d84f78]">29 Flavour Range.</span>
           </h2>
           <p className="mx-auto mt-7 max-w-lg leading-7 text-[#684454]">If you are building a beverage programme, come tell us what your menu needs.</p>
           <Link href="/products" className="ink-button mt-9 inline-flex items-center gap-3 px-5 py-4 text-[.7rem] font-bold uppercase tracking-[.16em]" data-testid="link-about-contact">
@@ -706,7 +706,7 @@ export function ContactPage() {
             </h1>
           </div>
           <p className="max-w-sm self-end text-lg leading-7 text-[#684454]">
-            For beverage buyers, bar teams and curious collaborators. Enquire about our 21 flavour syrup collection.
+            For beverage buyers, bar teams and curious collaborators. Enquire about our 29 flavour syrup collection.
           </p>
         </div>
       </section>

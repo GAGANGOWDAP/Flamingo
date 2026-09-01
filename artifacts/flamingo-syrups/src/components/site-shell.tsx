@@ -187,7 +187,7 @@ export function SiteFooter() {
       <div className="border-t border-[#6b4353]">
         <div className="page-shell flex flex-col gap-2 py-5 text-[.66rem] uppercase tracking-[.15em] text-[#c997a9] sm:flex-row sm:items-center sm:justify-between">
           <span>Flamingo · Bengaluru</span>
-          <span>21 Exceptional Flavours</span>
+          <span>{syrupsList.length} Exceptional Flavours</span>
         </div>
       </div>
     </footer>
