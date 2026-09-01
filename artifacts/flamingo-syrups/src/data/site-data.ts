@@ -23,6 +23,10 @@ import passionFruitImg from '@assets/passion_fruit_syrup.jpg';
 import vanillaImg from '@assets/vanilla_syrup.jpg';
 import mojitoMintImg from '@assets/mojito_mint_syrup.jpg';
 import figImg from '@assets/fig_syrup.jpg';
+import roseImg from '@assets/rose_syrup.jpg';
+import jackfruitImg from '@assets/jackfruit_syrup.jpg';
+import elderflowerImg from '@assets/elderflower_syrup.jpg';
+import lavenderImg from '@assets/lavender_syrup.jpg';
 
 export type SyrupCategory =
   | 'All'
@@ -478,6 +482,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Floral Botanical',
     tone: 'purple',
     badgeColor: '#7c3aed',
+    image: lavenderImg,
     recipe: {
       name: 'Lavender Gin Fizz',
       ingredients: ['Gin — 45 ml', 'Lavender Syrup — 20 ml', 'Fresh Lemon Juice — 20 ml', 'Soda — 60 ml'],
@@ -497,6 +502,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Alpine Blossom',
     tone: 'petal',
     badgeColor: '#059669',
+    image: elderflowerImg,
     recipe: {
       name: 'Elderflower Hugo Spritz',
       ingredients: ['Prosecco — 90 ml', 'Elderflower Syrup — 20 ml', 'Soda — 30 ml', 'Fresh Mint — 6 leaves'],
@@ -516,6 +522,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Aromatic Petal',
     tone: 'rose',
     badgeColor: '#e11d48',
+    image: roseImg,
     recipe: {
       name: 'Rose Petal Gimlet',
       ingredients: ['Gin — 50 ml', 'Rose Syrup — 20 ml', 'Fresh Lime Juice — 20 ml'],
@@ -535,6 +542,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Exotic Nectar',
     tone: 'gold',
     badgeColor: '#d97706',
+    image: jackfruitImg,
     recipe: {
       name: 'Jackfruit Rum Punch',
       ingredients: ['Dark Rum — 45 ml', 'Jackfruit Syrup — 20 ml', 'Fresh Lime Juice — 15 ml', 'Pineapple Juice — 40 ml'],
