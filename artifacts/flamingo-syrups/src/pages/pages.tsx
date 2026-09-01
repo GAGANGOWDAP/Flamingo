@@ -209,7 +209,7 @@ export function HomePage() {
 
 export function ProductsPage() {
   const shouldReduceMotion = useReducedMotion();
-  const [selectedCategory, setSelectedCategory] = useState<SyrupCategory>('Berry & Fruit');
+  const [selectedCategory, setSelectedCategory] = useState<SyrupCategory>('Fruit & Berry');
   const [selectedId, setSelectedId] = useState<string>(syrupsList[0].id);
   const [showAllGrid, setShowAllGrid] = useState<boolean>(false);
 
@@ -235,11 +235,26 @@ export function ProductsPage() {
     return syrupsList.filter((s) => s.category === selectedCategory);
   }, [selectedCategory, showAllGrid]);
 
+  const categoryIcons: Record<Exclude<SyrupCategory, 'All'>, string> = {
+    'Fruit & Berry': '🍓',
+    'Citrus': '🍊',
+    'Herbal & Botanical': '🌿',
+    'Melon': '🍈',
+    'Tropical': '🥥',
+    'Classic Cocktail': '🍹',
+    'Creamy & Dessert': '🍦',
+    'Spiced': '🌶️',
+  };
+
   const categories: Array<Exclude<SyrupCategory, 'All'>> = [
-    'Berry & Fruit',
-    'Citrus & Tropical',
-    'Spiced & Botanical',
-    'Confection & Classic',
+    'Fruit & Berry',
+    'Citrus',
+    'Herbal & Botanical',
+    'Melon',
+    'Tropical',
+    'Classic Cocktail',
+    'Creamy & Dessert',
+    'Spiced',
   ];
 
   return (
@@ -254,7 +269,7 @@ export function ProductsPage() {
           </div>
           <div className="flex flex-col justify-between gap-6 self-end">
             <p className="max-w-md text-base leading-7 text-[#684454]">
-              Select any syrup flavour from the dropdown menu below or browse by category. Crafted for professional mixology with real ingredients in 750 ml bottles.
+              Select any syrup flavour from the dropdown menu below or filter by parent flavour family. Crafted for professional mixology with real ingredients in 750 ml bottles.
             </p>
             <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-[#b63d65]">
               <Wine size={16} /> {syrupsList.length} Syrups · 750 ml Professional Pack
@@ -297,11 +312,11 @@ export function ProductsPage() {
             </div>
 
             {/* CATEGORY SELECTOR TABS */}
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2.5">
               <span className="text-xs font-bold uppercase tracking-[.14em] text-[#996074]">
-                Filter by Flavour Family:
+                Filter by Flavour Family ({categories.length} Categories):
               </span>
-              <div className="flex flex-wrap gap-2" role="group" aria-label="Filter syrups by category">
+              <div className="flex flex-wrap gap-2" role="group" aria-label="Filter syrups by category family">
                 {categories.map((cat) => (
                   <button
                     key={cat}
@@ -310,27 +325,29 @@ export function ProductsPage() {
                       setSelectedCategory(cat);
                       setShowAllGrid(false);
                     }}
-                    className={`border px-3.5 py-2 text-[.66rem] font-bold uppercase tracking-[.14em] transition-colors rounded-lg ${!showAllGrid && selectedCategory === cat
-                        ? 'border-[#321e2a] bg-[#321e2a] text-[#fff3f8]'
-                        : 'border-rose-300 bg-white text-[#684454] hover:border-[#d84f78] hover:bg-[#fbd6e4]/40'
+                    className={`border px-3 py-2 text-[.68rem] font-bold uppercase tracking-[.12em] transition-all rounded-xl flex items-center gap-1.5 ${!showAllGrid && selectedCategory === cat
+                        ? 'border-[#d84f78] bg-[#d84f78] text-white shadow-sm'
+                        : 'border-rose-300 bg-white text-[#593b49] hover:border-[#d84f78] hover:bg-[#fbd6e4]/40'
                       }`}
                     aria-pressed={!showAllGrid && selectedCategory === cat}
                     data-testid={`filter-${cat.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
                   >
-                    {cat}
+                    <span>{categoryIcons[cat]}</span>
+                    <span>{cat}</span>
                   </button>
                 ))}
 
                 <button
                   type="button"
                   onClick={() => setShowAllGrid((prev) => !prev)}
-                  className={`border px-3.5 py-2 text-[.66rem] font-bold uppercase tracking-[.14em] transition-colors rounded-lg ${showAllGrid
-                      ? 'border-[#d84f78] bg-[#d84f78] text-white'
+                  className={`border px-3 py-2 text-[.68rem] font-bold uppercase tracking-[.12em] transition-all rounded-xl flex items-center gap-1.5 ${showAllGrid
+                      ? 'border-[#321e2a] bg-[#321e2a] text-[#fff3f8]'
                       : 'border-rose-300 bg-white text-[#b63d65] hover:border-[#d84f78]'
                     }`}
                   data-testid="button-toggle-all-29"
                 >
-                  {showAllGrid ? `Showing All ${syrupsList.length} ✓` : `View All ${syrupsList.length} Varieties`}
+                  <span>✨</span>
+                  <span>{showAllGrid ? `Showing All ${syrupsList.length} ✓` : `View All ${syrupsList.length}`}</span>
                 </button>
               </div>
             </div>

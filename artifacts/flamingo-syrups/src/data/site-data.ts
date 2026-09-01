@@ -20,7 +20,16 @@ import cucumberImg from '@assets/cucumber_syrup.jpg';
 import greenAppleImg from '@assets/green_apple_syrup.jpg';
 import raspberryImg from '@assets/raspberry_syrup.jpg';
 
-export type SyrupCategory = 'All' | 'Berry & Fruit' | 'Citrus & Tropical' | 'Spiced & Botanical' | 'Confection & Classic';
+export type SyrupCategory =
+  | 'All'
+  | 'Fruit & Berry'
+  | 'Citrus'
+  | 'Herbal & Botanical'
+  | 'Melon'
+  | 'Tropical'
+  | 'Classic Cocktail'
+  | 'Creamy & Dessert'
+  | 'Spiced';
 
 export type Recipe = {
   name: string;
@@ -57,7 +66,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'jamun',
     name: 'Jamun Syrup',
-    category: 'Berry & Fruit',
+    category: 'Fruit & Berry',
     index: '01',
     description: 'A rich, vibrant syrup inspired by the bold taste of Indian jamun, with deep berry notes and a subtly tangy finish. Perfect for adding an exotic twist to cocktails and mocktails.',
     pairingNotes: 'Gins, sparkling sodas, spiced tequila highballs, and regional fruit coolers.',
@@ -76,7 +85,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'limoncello',
     name: 'Limoncello Syrup',
-    category: 'Citrus & Tropical',
+    category: 'Citrus',
     index: '02',
     description: 'Bright, zesty and refreshing, with the unmistakable character of ripe lemon. A lively citrus syrup that brings sunshine and freshness to every pour.',
     pairingNotes: 'Spritzes, wheat beers, vodka collins, and iced citrus infusions.',
@@ -95,7 +104,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'triple-sec',
     name: 'Triple Sec Syrup',
-    category: 'Citrus & Tropical',
+    category: 'Citrus',
     index: '03',
     description: 'A smooth, aromatic orange syrup with vibrant citrus sweetness and a delicate bitter-orange finish. Ideal for creating refreshing margaritas and citrus-forward cocktails.',
     pairingNotes: 'Tequila, white rum, orange spritzes, and citrus teas.',
@@ -114,7 +123,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'guava-chilli',
     name: 'Guava Chilli Syrup',
-    category: 'Spiced & Botanical',
+    category: 'Fruit & Berry',
     index: '04',
     description: 'Juicy tropical guava meets a playful chilli kick. Sweet, fruity and subtly spicy, this bold combination adds an exciting twist to every cocktail.',
     pairingNotes: 'Tequila, mezcal, spiced rum, rimmed highballs, and fiery lemonades.',
@@ -133,7 +142,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'paloma-grapefruit',
     name: 'Paloma (Grapefruit) Syrup',
-    category: 'Citrus & Tropical',
+    category: 'Citrus',
     index: '05',
     description: 'Bright grapefruit character with a refreshing citrus tang and balanced sweetness. Crafted to bring a crisp, sophisticated edge to tequila-based drinks.',
     pairingNotes: 'Blanco tequila, soda floats, mezcal palomas, and sparkling aperitifs.',
@@ -152,7 +161,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'cucumber',
     name: 'Cucumber Syrup',
-    category: 'Spiced & Botanical',
+    category: 'Herbal & Botanical',
     index: '06',
     description: 'Cool, clean and wonderfully refreshing, with delicate cucumber notes and a fresh finish. Perfect for light, elegant cocktails and summer serves.',
     pairingNotes: 'Dry gin, tonic, elderflower coolers, and green botanical mocktails.',
@@ -171,7 +180,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'green-apple',
     name: 'Green Apple Syrup',
-    category: 'Berry & Fruit',
+    category: 'Fruit & Berry',
     index: '07',
     description: 'Crisp and juicy with the refreshing tartness of freshly picked green apples. A vibrant syrup that adds a bright, fruity character to cocktails.',
     pairingNotes: 'Vodka martinis, green apple sodas, sangrias, and crushed ice coolers.',
@@ -190,7 +199,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'raspberry',
     name: 'Raspberry Syrup',
-    category: 'Berry & Fruit',
+    category: 'Fruit & Berry',
     index: '08',
     description: 'Lush and fruity with vibrant raspberry aromas, balanced sweetness and a delicate berry tang. A versatile choice for colourful, refreshing cocktails.',
     pairingNotes: 'Clover clubs, bourbon sours, lemonade floats, and berry seltzers.',
@@ -209,7 +218,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'strawberry',
     name: 'Strawberry Syrup',
-    category: 'Berry & Fruit',
+    category: 'Fruit & Berry',
     index: '09',
     description: 'Sweet, juicy and irresistibly fruity, capturing the fresh character of ripe strawberries. A delicious addition to refreshing cocktails, desserts and mocktails.',
     pairingNotes: 'Daiquiris, gin fizz, iced teas, and berry milkshakes.',
@@ -228,7 +237,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'pineapple',
     name: 'Pineapple Syrup',
-    category: 'Citrus & Tropical',
+    category: 'Fruit & Berry',
     index: '10',
     description: 'Tropical, juicy and naturally vibrant, with bright pineapple sweetness and a refreshing fruity finish. Made for creating irresistible island-inspired drinks.',
     pairingNotes: 'Dark rum, coconut cream, spicy mezcal, and tropical punches.',
@@ -247,7 +256,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'cherry',
     name: 'Cherry Syrup',
-    category: 'Berry & Fruit',
+    category: 'Fruit & Berry',
     index: '11',
     description: 'Deep, luscious cherry flavour with rich fruitiness and a smooth sweet-tart finish. A sophisticated syrup that adds depth and colour to classic cocktails.',
     pairingNotes: 'Bourbon, cola highballs, craft sodas, and dark spirit sours.',
@@ -266,7 +275,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'blue-curacao',
     name: 'Blue Curaçao Syrup',
-    category: 'Citrus & Tropical',
+    category: 'Classic Cocktail',
     index: '12',
     description: 'Bright citrus flavour with refreshing orange notes and an eye-catching blue hue. Designed to turn classic cocktails into vibrant, memorable serves.',
     pairingNotes: 'Blue Hawaiians, tropical lemonades, gin tonics, and layered mocktails.',
@@ -285,7 +294,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'pandan',
     name: 'Pandan Syrup',
-    category: 'Spiced & Botanical',
+    category: 'Herbal & Botanical',
     index: '13',
     description: 'Delicately aromatic with distinctive pandan notes and a soft, sweet finish. An exotic Asian-inspired syrup that brings elegance and uniqueness to every drink.',
     pairingNotes: 'Aged rum, cold brew coffee, coconut water highballs, and milk teas.',
@@ -304,7 +313,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'grenadine',
     name: 'Grenadine Syrup',
-    category: 'Berry & Fruit',
+    category: 'Classic Cocktail',
     index: '14',
     description: 'Lush, fruity and beautifully vibrant, with a sweet-tart character that adds colour and balance. A timeless cocktail essential for creating stunning layered drinks.',
     pairingNotes: 'Shirley Temples, Tequila Sunrises, Bacardi cocktails, and craft sodas.',
@@ -323,7 +332,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'litchi',
     name: 'Litchi Syrup',
-    category: 'Citrus & Tropical',
+    category: 'Fruit & Berry',
     index: '15',
     description: 'Delicate, floral and irresistibly juicy, inspired by the exotic sweetness of ripe litchi. Perfect for elegant, refreshing cocktails with a tropical touch.',
     pairingNotes: 'Vodka martinis, prosecco sparklers, green tea coolers, and floral gin floats.',
@@ -342,7 +351,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'irish-cream',
     name: 'Irish Cream Syrup',
-    category: 'Confection & Classic',
+    category: 'Creamy & Dessert',
     index: '16',
     description: 'Smooth and indulgent with creamy vanilla, caramel and subtle coffee-inspired notes. A luxurious syrup that transforms coffee and cocktails into rich, comforting creations.',
     pairingNotes: 'Espresso martinis, cold brews, dessert cocktails, and steamed lattes.',
@@ -361,7 +370,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'watermelon',
     name: 'Watermelon Syrup',
-    category: 'Berry & Fruit',
+    category: 'Fruit & Berry',
     index: '17',
     description: 'Fresh, juicy and delightfully sweet, capturing the refreshing character of ripe watermelon. Perfect for vibrant summer cocktails and refreshing serves.',
     pairingNotes: 'Blanco tequila, mint coolers, vodka seltzers, and lemonade.',
@@ -380,7 +389,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'peach',
     name: 'Peach Syrup',
-    category: 'Citrus & Tropical',
+    category: 'Fruit & Berry',
     index: '18',
     description: 'Soft, fragrant and beautifully fruity, with the luscious sweetness of ripe peaches. A refined syrup for elegant, refreshing cocktails and sparkling serves.',
     pairingNotes: 'Bourbon, iced black tea, sparkling wine, and peach bellinis.',
@@ -399,7 +408,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'cinnamon',
     name: 'Cinnamon Syrup',
-    category: 'Spiced & Botanical',
+    category: 'Spiced',
     index: '19',
     description: 'Warm, aromatic and gently spiced, with rich cinnamon character and a smooth sweet finish. Adds comforting depth and sophistication to cocktails and hot beverages.',
     pairingNotes: 'Aged rum, Tiki punches, hot toddies, and craft lattes.',
@@ -418,7 +427,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'green-melon',
     name: 'Green Melon Syrup',
-    category: 'Berry & Fruit',
+    category: 'Melon',
     index: '20',
     description: 'Sweet, juicy and refreshingly fruity, with delicate melon notes and a vibrant character. A playful syrup for colourful, tropical-inspired cocktails.',
     pairingNotes: 'Japanese whiskey, melon sour, coconut water, and tropical highballs.',
@@ -437,7 +446,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'coconut',
     name: 'Coconut Syrup',
-    category: 'Confection & Classic',
+    category: 'Tropical',
     index: '21',
     description: 'Creamy, tropical and beautifully aromatic, with smooth coconut notes and a luscious finish. Perfect for bringing an instant island-inspired indulgence to every drink.',
     pairingNotes: 'White rum, pineapple juice, iced matcha, and tropical coolers.',
@@ -456,7 +465,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'lavender',
     name: 'Lavender Syrup',
-    category: 'Spiced & Botanical',
+    category: 'Herbal & Botanical',
     index: '22',
     description: 'Delicately floral with a soft, aromatic sweetness and an elegant finish. A sophisticated touch for refreshing cocktails, mocktails, teas, and crafted beverages.',
     ingredientsList: 'Sugar, Water, Permitted Lavender Flavouring Substances, Acidity Regulator (Citric Acid), Preservative.',
@@ -475,7 +484,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'elderflower',
     name: 'Elderflower Syrup',
-    category: 'Spiced & Botanical',
+    category: 'Herbal & Botanical',
     index: '23',
     description: 'Light, floral and beautifully fragrant, with a subtle fruity sweetness. Adds a refined botanical character to sparkling drinks, cocktails, mocktails, and summer serves.',
     ingredientsList: 'Sugar, Water, Permitted Elderflower Flavouring Substances, Acidity Regulator (Citric Acid), Preservative.',
@@ -494,7 +503,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'rose',
     name: 'Rose Syrup',
-    category: 'Spiced & Botanical',
+    category: 'Herbal & Botanical',
     index: '24',
     description: 'Romantically floral with a delicate rose aroma and luscious sweetness. Perfect for creating elegant beverages with a distinctive floral signature and luxurious appeal.',
     ingredientsList: 'Sugar, Water, Permitted Rose Flavouring Substances, Acidity Regulator (Citric Acid), Preservative.',
@@ -513,7 +522,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'jackfruit',
     name: 'Jackfruit Syrup',
-    category: 'Citrus & Tropical',
+    category: 'Fruit & Berry',
     index: '25',
     description: 'Rich, tropical and irresistibly fruity, capturing the distinctive sweetness of ripe jackfruit. A bold tropical addition to cocktails, mocktails, shakes, and desserts.',
     ingredientsList: 'Sugar, Water, Permitted Jackfruit Flavouring Substances, Acidity Regulator (Citric Acid), Preservative.',
@@ -532,7 +541,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'fig',
     name: 'Fig Syrup',
-    category: 'Berry & Fruit',
+    category: 'Fruit & Berry',
     index: '26',
     description: 'Lusciously sweet with deep fruity notes and a smooth, sophisticated finish. Brings a rich gourmet character to cocktails, coffee creations, desserts, and specialty drinks.',
     ingredientsList: 'Sugar, Water, Permitted Fig Flavouring Substances, Acidity Regulator (Citric Acid), Preservative.',
@@ -551,7 +560,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'mojito-mint',
     name: 'Mojito Mint Syrup',
-    category: 'Spiced & Botanical',
+    category: 'Herbal & Botanical',
     index: '27',
     description: 'Cool, crisp and refreshingly minty, with a bright aromatic finish. Crafted to bring an instant burst of freshness to mojitos, coolers, mocktails, and summer beverages.',
     ingredientsList: 'Sugar, Water, Permitted Mojito Mint Flavouring Substances, Acidity Regulator (Citric Acid), Preservative.',
@@ -570,7 +579,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'vanilla',
     name: 'Vanilla Syrup',
-    category: 'Confection & Classic',
+    category: 'Creamy & Dessert',
     index: '28',
     description: 'Smooth, creamy and beautifully aromatic, with the comforting sweetness of vanilla. A versatile classic that elevates coffee, milkshakes, cocktails, desserts, and specialty beverages.',
     ingredientsList: 'Sugar, Water, Permitted Vanilla Flavouring Substances, Acidity Regulator (Citric Acid), Preservative.',
@@ -589,7 +598,7 @@ export const syrupsList: SyrupItem[] = [
   {
     id: 'passion-fruit',
     name: 'Passion Fruit Syrup',
-    category: 'Citrus & Tropical',
+    category: 'Fruit & Berry',
     index: '29',
     description: 'Bold, tropical and irresistibly tangy, bursting with vibrant passion fruit character. Adds a lively sweet-tart twist to cocktails, mocktails, coolers, and tropical creations.',
     ingredientsList: 'Sugar, Water, Permitted Passion Fruit Flavouring Substances, Acidity Regulator (Citric Acid), Preservative.',
