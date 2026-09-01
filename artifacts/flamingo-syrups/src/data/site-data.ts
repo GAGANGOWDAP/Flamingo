@@ -19,6 +19,10 @@ import palomaImg from '@assets/paloma_syrup.jpg';
 import cucumberImg from '@assets/cucumber_syrup.jpg';
 import greenAppleImg from '@assets/green_apple_syrup.jpg';
 import raspberryImg from '@assets/raspberry_syrup.jpg';
+import passionFruitImg from '@assets/passion_fruit_syrup.jpg';
+import vanillaImg from '@assets/vanilla_syrup.jpg';
+import mojitoMintImg from '@assets/mojito_mint_syrup.jpg';
+import figImg from '@assets/fig_syrup.jpg';
 
 export type SyrupCategory =
   | 'All'
@@ -550,6 +554,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Rich Dark Fruit',
     tone: 'amber',
     badgeColor: '#78350f',
+    image: figImg,
     recipe: {
       name: 'Fig & Walnut Old Fashioned',
       ingredients: ['Bourbon — 60 ml', 'Fig Syrup — 15 ml', 'Aromatic Bitters — 2 dashes'],
@@ -569,6 +574,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Garden Mint',
     tone: 'mint',
     badgeColor: '#10b981',
+    image: mojitoMintImg,
     recipe: {
       name: 'Craft Mint Mojito',
       ingredients: ['White Rum — 50 ml', 'Mojito Mint Syrup — 20 ml', 'Fresh Lime Juice — 20 ml', 'Soda — 60 ml'],
@@ -588,6 +594,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Vanilla Bean',
     tone: 'amber',
     badgeColor: '#b45309',
+    image: vanillaImg,
     recipe: {
       name: 'Vanilla Espresso Martini',
       ingredients: ['Vodka — 40 ml', 'Vanilla Syrup — 15 ml', 'Fresh Espresso — 30 ml', 'Coffee Liqueur — 15 ml'],
@@ -607,6 +614,7 @@ export const syrupsList: SyrupItem[] = [
     tag: 'Tart & Tropical',
     tone: 'gold',
     badgeColor: '#ca8a04',
+    image: passionFruitImg,
     recipe: {
       name: 'Pornstar Passion Martini',
       ingredients: ['Vodka — 45 ml', 'Passion Fruit Syrup — 20 ml', 'Fresh Lime Juice — 15 ml', 'Prosecco Shot — 30 ml (side)'],
