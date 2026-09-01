@@ -76,17 +76,19 @@ export function HomePage() {
         <div className="page-shell grid min-h-[calc(100dvh-76px)] items-center gap-10 py-16 md:grid-cols-[1.08fr_.92fr] md:py-20">
           <div className="reveal relative z-10">
             <SectionKicker>Flamingo · Bengaluru</SectionKicker>
-            <h1 className="mt-6 max-w-3xl font-display text-[clamp(3.8rem,9vw,8.5rem)] font-medium leading-[.79] tracking-[-.04em] text-[#321e2a]">
-              29 Flavours.<br /><span className="ml-[.2em] italic text-[#d84f78]">Endless</span><br />Possibilities.
+            <h1 className="mt-6 max-w-3xl font-display text-[44px] sm:text-[62px] md:text-[84px] font-medium leading-[.90] tracking-[-.03em] text-[#321e2a]">
+              29 Flavours.<br />
+              <span className="italic text-[#d84f78]">Endless</span><br />
+              Possibilities.
             </h1>
-            <p className="mt-8 max-w-md text-base leading-7 text-[#684454] md:text-lg">
+            <p className="mt-8 max-w-md font-sans text-[14px] md:text-[16px] font-normal leading-[1.6] tracking-normal text-[#684454]">
               A premium syrup range crafted for mixologists, beverage managers, and craft bars. Explore our complete 29 flavour collection available in 750 ml professional packs.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-5">
-              <Link href="/products" className="ink-button inline-flex items-center gap-3 px-5 py-4 text-[.7rem] font-bold uppercase tracking-[.16em] transition-transform hover:-translate-y-1" data-testid="link-hero-products">
-                Explore Syrups <ArrowRight size={16} />
+              <Link href="/products" className="ink-button inline-flex items-center gap-3 px-5 py-4 font-sans text-[11px] font-semibold uppercase tracking-[.15em] transition-transform hover:-translate-y-1" data-testid="link-hero-products">
+                Explore Syrups <ArrowRight size={15} />
               </Link>
-              <Link href="/about" className="group inline-flex items-center gap-2 text-sm font-semibold text-[#593b49]" data-testid="link-hero-story">
+              <Link href="/about" className="group inline-flex items-center gap-2 font-sans text-[12px] font-medium tracking-[.04em] text-[#593b49]" data-testid="link-hero-story">
                 Meet the master mixologist <span className="transition-transform group-hover:translate-x-1">→</span>
               </Link>
             </div>
