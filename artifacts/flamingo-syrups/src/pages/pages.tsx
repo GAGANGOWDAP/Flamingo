@@ -10,6 +10,70 @@ function SectionKicker({ children }: { children: ReactNode }) {
   return <p className="eyebrow text-[#b63d65]">{children}</p>;
 }
 
+export function updatePageSEO({
+  title,
+  description,
+  canonicalUrl,
+  ogImage,
+  ogType = 'website',
+  jsonLd,
+}: {
+  title: string;
+  description: string;
+  canonicalUrl: string;
+  ogImage?: string;
+  ogType?: 'website' | 'product';
+  jsonLd?: object[];
+}) {
+  if (typeof window === 'undefined') return;
+
+  document.title = title;
+
+  const setMeta = (nameAttr: string, valAttr: string, content: string) => {
+    let el = document.querySelector(`meta[${nameAttr}="${valAttr}"]`);
+    if (!el) {
+      el = document.createElement('meta');
+      el.setAttribute(nameAttr, valAttr);
+      document.head.appendChild(el);
+    }
+    el.setAttribute('content', content);
+  };
+
+  setMeta('name', 'description', description);
+  setMeta('property', 'og:title', title);
+  setMeta('property', 'og:description', description);
+  setMeta('property', 'og:url', canonicalUrl);
+  setMeta('property', 'og:type', ogType);
+  setMeta('property', 'og:site_name', 'Flamingo Premium Syrups');
+  if (ogImage) setMeta('property', 'og:image', ogImage);
+
+  setMeta('name', 'twitter:card', 'summary_large_image');
+  setMeta('name', 'twitter:title', title);
+  setMeta('name', 'twitter:description', description);
+  if (ogImage) setMeta('name', 'twitter:image', ogImage);
+
+  let canonicalEl = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+  if (!canonicalEl) {
+    canonicalEl = document.createElement('link');
+    canonicalEl.setAttribute('rel', 'canonical');
+    document.head.appendChild(canonicalEl);
+  }
+  canonicalEl.setAttribute('href', canonicalUrl);
+
+  const existingScripts = document.querySelectorAll('script[type="application/ld+json"]');
+  existingScripts.forEach((s) => s.remove());
+
+  if (jsonLd && jsonLd.length > 0) {
+    jsonLd.forEach((item, index) => {
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.id = `seo-jsonld-${index}`;
+      script.text = JSON.stringify(item);
+      document.head.appendChild(script);
+    });
+  }
+}
+
 function FlamingoMark({ compact = false }: { compact?: boolean }) {
   return (
     <div className={`relative flex items-center justify-center ${compact ? 'h-36 w-36' : 'h-64 w-64 md:h-[25rem] md:w-[25rem]'}`}>
@@ -70,6 +134,38 @@ const cardItemVariants: Variants = {
 
 export function HomePage() {
   const shouldReduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    updatePageSEO({
+      title: 'Flamingo Syrups | 29 Exceptional Flavours for Cocktails & Beverages',
+      description: "Explore Flamingo's collection of 29 premium syrup flavours crafted for cocktails, mocktails and creative beverage applications.",
+      canonicalUrl: 'https://gagangowdap.github.io/Flamingo/',
+      jsonLd: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          name: 'Flamingo',
+          url: 'https://gagangowdap.github.io/Flamingo/',
+          logo: 'https://gagangowdap.github.io/Flamingo/assets/2.jpg_1787233517766.jpeg',
+          email: 'mjsince1987@gmail.com',
+          telephone: '+91 8971825137',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'No 6, RA Road, Ejipura',
+            addressLocality: 'Bengaluru',
+            postalCode: '560047',
+            addressCountry: 'IN',
+          },
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: 'Flamingo Premium Syrups',
+          url: 'https://gagangowdap.github.io/Flamingo/',
+        },
+      ],
+    });
+  }, []);
 
   return (
     <>
@@ -212,9 +308,30 @@ export function HomePage() {
 
 export function ProductsPage() {
   const [, setLocation] = useLocation();
-  const shouldReduceMotion = useReducedMotion();
-  const [selectedCategory, setSelectedCategory] = useState<SyrupCategory>('All');
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const shouldReduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    updatePageSEO({
+      title: 'Flamingo Syrups | 29 Flavours',
+      description: 'Explore all 29 Flamingo syrup flavours, available in 750 ml professional packs for creative beverage applications.',
+      canonicalUrl: 'https://gagangowdap.github.io/Flamingo/products',
+      jsonLd: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          name: 'Flamingo 29 Syrup Collection',
+          itemListElement: syrupsList.map((s, idx) => ({
+            '@type': 'ListItem',
+            position: idx + 1,
+            name: `Flamingo ${s.name} Syrup`,
+            url: `https://gagangowdap.github.io/Flamingo/products/${s.id}`,
+          })),
+        },
+      ],
+    });
+  }, []);
 
   const categories: SyrupCategory[] = [
     'All',
@@ -570,6 +687,21 @@ export function ProductsPage() {
 }
 
 export function AboutPage() {
+  useEffect(() => {
+    updatePageSEO({
+      title: 'For Business & Trade | Flamingo Premium Syrups',
+      description: 'Partner with Flamingo for professional 750ml syrup packs, custom beverage program development, and B2B trade supply for hotels, bars, and restaurants.',
+      canonicalUrl: 'https://gagangowdap.github.io/Flamingo/for-business',
+      jsonLd: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'AboutPage',
+          name: 'About Flamingo & Master Mixologist Manoj Alphones',
+          url: 'https://gagangowdap.github.io/Flamingo/about',
+        },
+      ],
+    });
+  }, []);
   return (
     <main>
       <section className="relative overflow-hidden border-b border-rose-300/70 bg-[#cfe7dc]">
@@ -685,28 +817,33 @@ export function EnquirePage() {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    document.title = "Enquire | Flamingo Premium Syrups";
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute(
-        'content',
-        'Get in touch with Flamingo for syrup enquiries, professional 750ml packs and B2B beverage requirements.'
-      );
-    }
-
+    let initialProduct = '';
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       const productParam = params.get('product') || params.get('syrup');
       if (productParam) {
         const match = syrupsList.find((s) => s.id === productParam || s.name.toLowerCase().includes(productParam.toLowerCase()));
-        if (match) {
-          setForm((prev) => ({
-            ...prev,
-            product: match.id,
-          }));
-        }
+        if (match) initialProduct = match.id;
       }
     }
+
+    if (initialProduct) {
+      setForm((prev) => ({ ...prev, product: initialProduct }));
+    }
+
+    updatePageSEO({
+      title: 'Enquire | Flamingo Premium Syrups',
+      description: 'Get in touch with Flamingo for syrup enquiries, professional 750ml packs and B2B beverage requirements.',
+      canonicalUrl: 'https://gagangowdap.github.io/Flamingo/enquire',
+      jsonLd: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'ContactPage',
+          name: 'Flamingo B2B Product Enquiry',
+          url: 'https://gagangowdap.github.io/Flamingo/enquire',
+        },
+      ],
+    });
   }, []);
 
   function updateField(field: keyof EnquireFormState, value: string) {
@@ -1032,39 +1169,54 @@ export function ProductDetailPage() {
 
   useEffect(() => {
     if (syrup) {
-      document.title = `Flamingo ${syrup.name} | 750ml Professional Syrup`;
+      const canonicalUrl = `https://gagangowdap.github.io/Flamingo/products/${syrup.id}`;
+      const ogImage = syrup.image ? `${window.location.origin}${syrup.image}` : undefined;
 
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) {
-        metaDesc.setAttribute(
-          'content',
-          `Explore Flamingo ${syrup.name} in a 750ml professional pack, crafted for cocktails, mocktails and creative beverage applications.`
-        );
-      }
-
-      const scriptId = 'product-structured-data';
-      let script = document.getElementById(scriptId) as HTMLScriptElement | null;
-      if (!script) {
-        script = document.createElement('script');
-        script.id = scriptId;
-        script.type = 'application/ld+json';
-        document.head.appendChild(script);
-      }
-      script.text = JSON.stringify({
-        '@context': 'https://schema.org/',
-        '@type': 'Product',
-        name: `Flamingo ${syrup.name}`,
-        image: syrup.image ? `${window.location.origin}${syrup.image}` : undefined,
-        description: syrup.description,
-        brand: {
-          '@type': 'Brand',
-          name: 'Flamingo',
-        },
-        offers: {
-          '@type': 'Offer',
-          availability: 'https://schema.org/InStock',
-          priceCurrency: 'INR',
-        },
+      updatePageSEO({
+        title: `Flamingo ${syrup.name} Syrup | 750ml Professional Syrup`,
+        description: `Explore Flamingo ${syrup.name} Syrup in a 750 ml professional pack for cocktails, mocktails and creative beverage applications.`,
+        canonicalUrl,
+        ogImage,
+        ogType: 'product',
+        jsonLd: [
+          {
+            '@context': 'https://schema.org/',
+            '@type': 'Product',
+            name: `Flamingo ${syrup.name} Syrup`,
+            image: ogImage,
+            description: syrup.description,
+            brand: {
+              '@type': 'Brand',
+              name: 'Flamingo',
+            },
+            category: syrup.category,
+            url: canonicalUrl,
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://gagangowdap.github.io/Flamingo/',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Products',
+                item: 'https://gagangowdap.github.io/Flamingo/products',
+              },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: syrup.name,
+                item: canonicalUrl,
+              },
+            ],
+          },
+        ],
       });
     }
   }, [syrup]);

@@ -1,7 +1,19 @@
+import { useEffect } from 'react';
 import { Link } from 'wouter';
 import { Wine, ArrowRight } from 'lucide-react';
 
 export default function NotFound() {
+  useEffect(() => {
+    document.title = '404 Flavour Not Found | Flamingo';
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    if (!metaRobots) {
+      metaRobots = document.createElement('meta');
+      metaRobots.setAttribute('name', 'robots');
+      document.head.appendChild(metaRobots);
+    }
+    metaRobots.setAttribute('content', 'noindex, nofollow');
+  }, []);
+
   return (
     <div className="page-shell flex min-h-[65dvh] flex-col items-center justify-center py-24 text-center">
       <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#d84f78] text-white shadow-md">
