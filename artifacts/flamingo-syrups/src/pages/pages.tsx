@@ -326,8 +326,8 @@ export function ProductsPage() {
                       setShowAllGrid(false);
                     }}
                     className={`border px-3 py-2 text-[.68rem] font-bold uppercase tracking-[.12em] transition-all rounded-xl flex items-center gap-1.5 ${!showAllGrid && selectedCategory === cat
-                        ? 'border-[#d84f78] bg-[#d84f78] text-white shadow-sm'
-                        : 'border-rose-300 bg-white text-[#593b49] hover:border-[#d84f78] hover:bg-[#fbd6e4]/40'
+                      ? 'border-[#d84f78] bg-[#d84f78] text-white shadow-sm'
+                      : 'border-rose-300 bg-white text-[#593b49] hover:border-[#d84f78] hover:bg-[#fbd6e4]/40'
                       }`}
                     aria-pressed={!showAllGrid && selectedCategory === cat}
                     data-testid={`filter-${cat.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
@@ -341,8 +341,8 @@ export function ProductsPage() {
                   type="button"
                   onClick={() => setShowAllGrid((prev) => !prev)}
                   className={`border px-3 py-2 text-[.68rem] font-bold uppercase tracking-[.12em] transition-all rounded-xl flex items-center gap-1.5 ${showAllGrid
-                      ? 'border-[#321e2a] bg-[#321e2a] text-[#fff3f8]'
-                      : 'border-rose-300 bg-white text-[#b63d65] hover:border-[#d84f78]'
+                    ? 'border-[#321e2a] bg-[#321e2a] text-[#fff3f8]'
+                    : 'border-rose-300 bg-white text-[#b63d65] hover:border-[#d84f78]'
                     }`}
                   data-testid="button-toggle-all-29"
                 >
@@ -494,8 +494,8 @@ export function ProductsPage() {
                   variants={shouldReduceMotion ? undefined : cardItemVariants}
                   onClick={() => setSelectedId(syrup.id)}
                   className={`group relative flex flex-col justify-between min-h-[300px] overflow-hidden rounded-xl border p-6 text-left transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-2 hover:border-[#d84f78] hover:shadow-[0_22px_48px_rgba(153,63,98,.18)] ${isSelected
-                      ? 'border-2 border-[#d84f78] bg-[#fff3f8] shadow-md ring-2 ring-[#d84f78]/20'
-                      : 'border-rose-300/80 bg-[#fbd6e4]/70 hover:bg-[#fbd6e4]'
+                    ? 'border-2 border-[#d84f78] bg-[#fff3f8] shadow-md ring-2 ring-[#d84f78]/20'
+                    : 'border-rose-300/80 bg-[#fbd6e4]/70 hover:bg-[#fbd6e4]'
                     }`}
                   data-testid={`card-syrup-${syrup.id}`}
                   aria-pressed={isSelected}
