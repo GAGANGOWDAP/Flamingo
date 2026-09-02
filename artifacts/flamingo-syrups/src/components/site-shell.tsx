@@ -6,7 +6,6 @@ import {
   X,
   Wine,
   Download,
-  Flame,
   Instagram,
 } from "lucide-react";
 import { Link, useLocation } from "wouter";
@@ -146,31 +145,6 @@ export function SiteHeader() {
                         </p>
                         <p className="text-[.68rem] font-medium text-[#996074]">
                           {syrupsList.length} Exceptional Flavours
-                        </p>
-                      </div>
-                    </div>
-                    <ArrowUpRight
-                      size={16}
-                      className="text-[#d84f78] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    />
-                  </Link>
-
-                  <Link
-                    href="/products"
-                    onClick={() => setProductsOpen(false)}
-                    className="group flex items-center justify-between rounded-xl border border-transparent p-3 transition-all hover:border-rose-300 hover:bg-[#fbd6e4]/70"
-                    data-testid="link-dropdown-bestsellers"
-                  >
-                    <div className="flex items-center gap-3">
-                      <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#b63d65] text-white shadow-sm">
-                        <Flame size={18} />
-                      </span>
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-wider text-[#321e2a] group-hover:text-[#d84f78]">
-                          Best Sellers
-                        </p>
-                        <p className="text-[.68rem] font-medium text-[#996074]">
-                          Jamun, Limoncello, Guava Chilli
                         </p>
                       </div>
                     </div>
