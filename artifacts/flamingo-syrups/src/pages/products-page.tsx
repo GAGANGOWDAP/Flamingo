@@ -1,29 +1,42 @@
-import { useState, useMemo, useEffect } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, ArrowUpRight, ChevronDown, Download, Search, Wine, X } from 'lucide-react';
-import { Link, useLocation } from 'wouter';
-import { syrupsList, socialLinks, type SyrupCategory } from '@/data/site-data';
-import { updatePageSEO } from '@/lib/seo';
-import { SectionKicker, cardContainerVariants, cardItemVariants } from '@/components/common-ui';
+import { useState, useMemo, useEffect } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  ChevronDown,
+  Download,
+  Search,
+  Wine,
+  X,
+} from "lucide-react";
+import { Link, useLocation } from "wouter";
+import { syrupsList, socialLinks, type SyrupCategory } from "@/data/site-data";
+import { updatePageSEO } from "@/lib/seo";
+import {
+  SectionKicker,
+  cardContainerVariants,
+  cardItemVariants,
+} from "@/components/common-ui";
 
 export function ProductsPage() {
   const [, setLocation] = useLocation();
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     updatePageSEO({
-      title: 'Flamingo Syrups | 29 Flavours',
-      description: 'Explore all 29 Flamingo syrup flavours, available in 750 ml professional packs for creative beverage applications.',
-      canonicalUrl: 'https://gagangowdap.github.io/Flamingo/products',
+      title: "Flamingo Syrups | 29 Flavours",
+      description:
+        "Explore all 29 Flamingo syrup flavours, available in 750 ml professional packs for creative beverage applications.",
+      canonicalUrl: "https://gagangowdap.github.io/Flamingo/products",
       jsonLd: [
         {
-          '@context': 'https://schema.org',
-          '@type': 'ItemList',
-          name: 'Flamingo 29 Syrup Collection',
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Flamingo 29 Syrup Collection",
           itemListElement: syrupsList.map((s, idx) => ({
-            '@type': 'ListItem',
+            "@type": "ListItem",
             position: idx + 1,
             name: `Flamingo ${s.name} Syrup`,
             url: `https://gagangowdap.github.io/Flamingo/products/${s.id}`,
@@ -34,32 +47,33 @@ export function ProductsPage() {
   }, []);
 
   const categories: SyrupCategory[] = [
-    'All',
-    'Fruit & Berry',
-    'Citrus',
-    'Herbal & Botanical',
-    'Melon',
-    'Tropical',
-    'Classic Cocktail',
-    'Creamy & Dessert',
-    'Spiced',
+    "All",
+    "Fruit & Berry",
+    "Citrus",
+    "Herbal & Botanical",
+    "Melon",
+    "Tropical",
+    "Classic Cocktail",
+    "Creamy & Dessert",
+    "Spiced",
   ];
 
   const categoryIcons: Record<SyrupCategory, string> = {
-    'All': '✨',
-    'Fruit & Berry': '🍓',
-    'Citrus': '🍊',
-    'Herbal & Botanical': '🌿',
-    'Melon': '🍈',
-    'Tropical': '🥥',
-    'Classic Cocktail': '🍹',
-    'Creamy & Dessert': '🍦',
-    'Spiced': '🌶️',
+    All: "✨",
+    "Fruit & Berry": "🍓",
+    Citrus: "🍊",
+    "Herbal & Botanical": "🌿",
+    Melon: "🍈",
+    Tropical: "🥥",
+    "Classic Cocktail": "🍹",
+    "Creamy & Dessert": "🍦",
+    Spiced: "🌶️",
   };
 
   const filteredSyrups = useMemo(() => {
     return syrupsList.filter((syrup) => {
-      const matchesCategory = selectedCategory === 'All' || syrup.category === selectedCategory;
+      const matchesCategory =
+        selectedCategory === "All" || syrup.category === selectedCategory;
       const q = searchQuery.trim().toLowerCase();
       const matchesSearch =
         !q ||
@@ -79,13 +93,18 @@ export function ProductsPage() {
           <div>
             <SectionKicker>Our Collection</SectionKicker>
             <h1 className="mt-5 max-w-3xl font-display text-[clamp(42px,5.5vw,72px)] font-normal leading-[.92] tracking-[-.02em] text-[#321e2a]">
-              29 FLAVOURS.<br />
-              <span className="italic font-normal text-[#d84f78]">ENDLESS POSSIBILITIES.</span>
+              29 FLAVOURS.
+              <br />
+              <span className="italic font-normal text-[#d84f78]">
+                ENDLESS POSSIBILITIES.
+              </span>
             </h1>
           </div>
           <div className="flex flex-col justify-between gap-6 self-end">
             <p className="max-w-[480px] font-sans text-[15px] md:text-[16px] font-normal leading-[1.62] text-[#684454]">
-              Explore the Flamingo flavour collection crafted for creative beverage professionals, luxury hotels, craft cocktail bars, and specialty menus.
+              Explore the Flamingo flavour collection crafted for creative
+              beverage professionals, luxury hotels, craft cocktail bars, and
+              specialty menus.
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <a
@@ -109,11 +128,17 @@ export function ProductsPage() {
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             {/* SEARCH FLAVOURS INPUT */}
             <div className="w-full lg:max-w-md">
-              <label htmlFor="search-flavours-input" className="block text-[11px] font-semibold uppercase tracking-[.14em] text-[#b63d65] mb-2">
+              <label
+                htmlFor="search-flavours-input"
+                className="block text-[11px] font-semibold uppercase tracking-[.14em] text-[#b63d65] mb-2"
+              >
                 SEARCH FLAVOURS:
               </label>
               <div className="relative">
-                <Search size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#b63d65]" />
+                <Search
+                  size={18}
+                  className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#b63d65]"
+                />
                 <input
                   id="search-flavours-input"
                   type="text"
@@ -126,7 +151,7 @@ export function ProductsPage() {
                 {searchQuery && (
                   <button
                     type="button"
-                    onClick={() => setSearchQuery('')}
+                    onClick={() => setSearchQuery("")}
                     className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-rose-200 p-1 text-[#b63d65] hover:bg-[#d84f78] hover:text-white"
                     aria-label="Clear search"
                   >
@@ -138,7 +163,10 @@ export function ProductsPage() {
 
             {/* SYRUP SELECT DROPDOWN NAVIGATOR */}
             <div className="w-full lg:max-w-xs">
-              <label htmlFor="syrup-dropdown-menu" className="block text-[11px] font-semibold uppercase tracking-[.14em] text-[#b63d65] mb-2">
+              <label
+                htmlFor="syrup-dropdown-menu"
+                className="block text-[11px] font-semibold uppercase tracking-[.14em] text-[#b63d65] mb-2"
+              >
                 QUICK JUMP TO PAGE:
               </label>
               <div className="relative">
@@ -153,14 +181,19 @@ export function ProductsPage() {
                   className="w-full appearance-none rounded-xl border-2 border-rose-300 bg-white px-4 py-3 pr-10 text-sm font-medium text-[#321e2a] shadow-sm outline-none transition-all hover:border-[#d84f78] focus:border-[#d84f78] cursor-pointer"
                   data-testid="select-syrup-dropdown"
                 >
-                  <option value="" disabled>Choose a Syrup...</option>
+                  <option value="" disabled>
+                    Choose a Syrup...
+                  </option>
                   {syrupsList.map((syrup) => (
                     <option key={syrup.id} value={syrup.id}>
                       {syrup.name} — ({syrup.category})
                     </option>
                   ))}
                 </select>
-                <ChevronDown size={18} className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-[#d84f78]" />
+                <ChevronDown
+                  size={18}
+                  className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-[#d84f78]"
+                />
               </div>
             </div>
           </div>
@@ -170,25 +203,35 @@ export function ProductsPage() {
             <span className="block text-[11px] font-semibold uppercase tracking-[.14em] text-[#996074] mb-3">
               Filter by Category:
             </span>
-            <div className="flex flex-wrap gap-2" role="group" aria-label="Filter syrups by category family">
+            <div
+              className="flex flex-wrap gap-2"
+              role="group"
+              aria-label="Filter syrups by category family"
+            >
               {categories.map((cat) => {
-                const count = cat === 'All' ? syrupsList.length : syrupsList.filter(s => s.category === cat).length;
+                const count =
+                  cat === "All"
+                    ? syrupsList.length
+                    : syrupsList.filter((s) => s.category === cat).length;
                 const isSelected = selectedCategory === cat;
                 return (
                   <button
                     key={cat}
                     type="button"
                     onClick={() => setSelectedCategory(cat)}
-                    className={`border px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[.12em] transition-all rounded-xl flex items-center gap-1.5 ${isSelected
-                      ? 'border-[#d84f78] bg-[#d84f78] text-white shadow-sm'
-                      : 'border-rose-300 bg-white text-[#593b49] hover:border-[#d84f78] hover:bg-[#fbd6e4]/40'
-                      }`}
+                    className={`border px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[.12em] transition-all rounded-xl flex items-center gap-1.5 ${
+                      isSelected
+                        ? "border-[#d84f78] bg-[#d84f78] text-white shadow-sm"
+                        : "border-rose-300 bg-white text-[#593b49] hover:border-[#d84f78] hover:bg-[#fbd6e4]/40"
+                    }`}
                     aria-pressed={isSelected}
-                    data-testid={`filter-${cat.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
+                    data-testid={`filter-${cat.toLowerCase().replace(/[^a-z0-9]/g, "-")}`}
                   >
                     <span>{categoryIcons[cat]}</span>
                     <span>{cat}</span>
-                    <span className={`rounded-full px-1.5 py-0.5 text-[10px] ${isSelected ? 'bg-white/30 text-white' : 'bg-rose-100 text-[#b63d65]'}`}>
+                    <span
+                      className={`rounded-full px-1.5 py-0.5 text-[10px] ${isSelected ? "bg-white/30 text-white" : "bg-rose-100 text-[#b63d65]"}`}
+                    >
                       {count}
                     </span>
                   </button>
@@ -202,7 +245,9 @@ export function ProductsPage() {
         <div className="mt-12">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between border-b border-rose-300 pb-4 mb-8">
             <h2 className="font-display text-[clamp(28px,3.5vw,42px)] font-normal text-[#321e2a]">
-              {selectedCategory === 'All' ? '29 Exceptional Syrups' : `${selectedCategory} Flavours`}
+              {selectedCategory === "All"
+                ? "29 Exceptional Syrups"
+                : `${selectedCategory} Flavours`}
             </h2>
             <span className="text-[11px] font-semibold uppercase tracking-wider text-[#b63d65]">
               Showing {filteredSyrups.length} of {syrupsList.length} Syrups
@@ -219,13 +264,17 @@ export function ProductsPage() {
                 NO FLAVOURS FOUND
               </h3>
               <p className="mt-3 max-w-md mx-auto text-sm text-[#684454]">
-                We couldn't find any syrup matching <span className="font-bold text-[#321e2a]">"{searchQuery}"</span>. Try another flavour name or reset your search.
+                We couldn't find any syrup matching{" "}
+                <span className="font-bold text-[#321e2a]">
+                  "{searchQuery}"
+                </span>
+                . Try another flavour name or reset your search.
               </p>
               <button
                 type="button"
                 onClick={() => {
-                  setSearchQuery('');
-                  setSelectedCategory('All');
+                  setSearchQuery("");
+                  setSelectedCategory("All");
                 }}
                 className="ink-button mt-8 inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-[11px] font-semibold uppercase tracking-[.16em]"
                 data-testid="button-reset-search"
@@ -241,13 +290,17 @@ export function ProductsPage() {
               variants={shouldReduceMotion ? undefined : cardContainerVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: '-40px' }}
+              viewport={{ once: true, margin: "-40px" }}
             >
               {filteredSyrups.map((syrup) => {
-                const profileParts = syrup.tag.split(/&|&|·|\//).map((s) => s.trim()).filter(Boolean);
-                const profileText = profileParts.length >= 2
-                  ? `${profileParts[0]} · ${profileParts[1]} · ${syrup.category}`
-                  : `${syrup.tag} · ${syrup.category}`;
+                const profileParts = syrup.tag
+                  .split(/&|&|·|\//)
+                  .map((s) => s.trim())
+                  .filter(Boolean);
+                const profileText =
+                  profileParts.length >= 2
+                    ? `${profileParts[0]} · ${profileParts[1]} · ${syrup.category}`
+                    : `${syrup.tag} · ${syrup.category}`;
 
                 return (
                   <motion.div
@@ -349,13 +402,15 @@ export function ProductsPage() {
           <div>
             <SectionKicker>29 Exceptional Flavours</SectionKicker>
             <h2 className="mt-4 font-display text-[clamp(36px,4.5vw,60px)] font-normal leading-[.90]">
-              Looking for<br />
+              Looking for
+              <br />
               <span className="italic text-[#eaa0b7]">Something Specific?</span>
             </h2>
           </div>
           <div className="flex flex-col justify-center gap-6 text-[#e6bfce] leading-7 font-sans text-[15px]">
             <p>
-              Whether you're a bar, restaurant, hotel, café or distributor, talk to the Flamingo team about your syrup requirements.
+              Whether you're a bar, restaurant, hotel, café or distributor, talk
+              to the Flamingo team about your syrup requirements.
             </p>
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link

@@ -1,9 +1,16 @@
-import { useState, useEffect, type FormEvent } from 'react';
-import { ArrowRight, ArrowUpRight, Check, Mail, MapPin, Phone } from 'lucide-react';
-import { Link } from 'wouter';
-import { brand, syrupsList, socialLinks } from '@/data/site-data';
-import { updatePageSEO } from '@/lib/seo';
-import { SectionKicker } from '@/components/common-ui';
+import { useState, useEffect, type FormEvent } from "react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
+import { Link } from "wouter";
+import { brand, syrupsList, socialLinks } from "@/data/site-data";
+import { updatePageSEO } from "@/lib/seo";
+import { SectionKicker } from "@/components/common-ui";
 
 type EnquireFormState = {
   name: string;
@@ -21,28 +28,30 @@ type EnquireFormErrors = Partial<Record<keyof EnquireFormState, string>>;
 
 export function EnquirePage() {
   const [form, setForm] = useState<EnquireFormState>({
-    name: '',
-    company: '',
-    phone: '',
-    email: '',
-    city: '',
-    businessType: 'Restaurant',
-    product: '',
-    quantity: '1–5 bottles',
-    message: '',
+    name: "",
+    company: "",
+    phone: "",
+    email: "",
+    city: "",
+    businessType: "Restaurant",
+    product: "",
+    quantity: "1–5 bottles",
+    message: "",
   });
 
   const [errors, setErrors] = useState<EnquireFormErrors>({});
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    let initialProduct = '';
-    if (typeof window !== 'undefined') {
+    let initialProduct = "";
+    if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
-      const productParam = params.get('product') || params.get('syrup');
+      const productParam = params.get("product") || params.get("syrup");
       if (productParam) {
         const match = syrupsList.find(
-          (s) => s.id === productParam || s.name.toLowerCase().includes(productParam.toLowerCase())
+          (s) =>
+            s.id === productParam ||
+            s.name.toLowerCase().includes(productParam.toLowerCase()),
         );
         if (match) initialProduct = match.id;
       }
@@ -53,15 +62,16 @@ export function EnquirePage() {
     }
 
     updatePageSEO({
-      title: 'Enquire | Flamingo Premium Syrups',
-      description: 'Get in touch with Flamingo for syrup enquiries, professional 750ml packs and B2B beverage requirements.',
-      canonicalUrl: 'https://gagangowdap.github.io/Flamingo/enquire',
+      title: "Enquire | Flamingo Premium Syrups",
+      description:
+        "Get in touch with Flamingo for syrup enquiries, professional 750ml packs and B2B beverage requirements.",
+      canonicalUrl: "https://gagangowdap.github.io/Flamingo/enquire",
       jsonLd: [
         {
-          '@context': 'https://schema.org',
-          '@type': 'ContactPage',
-          name: 'Flamingo B2B Product Enquiry',
-          url: 'https://gagangowdap.github.io/Flamingo/enquire',
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Flamingo B2B Product Enquiry",
+          url: "https://gagangowdap.github.io/Flamingo/enquire",
         },
       ],
     });
@@ -76,10 +86,13 @@ export function EnquirePage() {
 
   function validate() {
     const next: EnquireFormErrors = {};
-    if (!form.name.trim()) next.name = 'Please enter your full name.';
-    if (!form.phone.trim() || form.phone.trim().length < 8) next.phone = 'Please enter a valid phone number.';
-    if (form.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) next.email = 'Please enter a valid email address.';
-    if (!form.businessType) next.businessType = 'Please select your business type.';
+    if (!form.name.trim()) next.name = "Please enter your full name.";
+    if (!form.phone.trim() || form.phone.trim().length < 8)
+      next.phone = "Please enter a valid phone number.";
+    if (form.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+      next.email = "Please enter a valid email address.";
+    if (!form.businessType)
+      next.businessType = "Please select your business type.";
     setErrors(next);
     return Object.keys(next).length === 0;
   }
@@ -104,14 +117,17 @@ export function EnquirePage() {
           <div>
             <SectionKicker>B2B & Trade Enquiries</SectionKicker>
             <h1 className="mt-3 font-display text-[clamp(42px,5.5vw,72px)] font-normal uppercase tracking-[-.02em] text-[#321e2a] leading-[.92]">
-              LET’S TALK.<br />
+              LET’S TALK.
+              <br />
               <span className="block mt-1.5 font-display italic font-normal tracking-tight text-[#d84f78] text-[clamp(28px,3.5vw,48px)] leading-[.95]">
                 Built for Beverage Professionals.
               </span>
             </h1>
           </div>
           <p className="max-w-[480px] self-end font-sans text-[15px] md:text-[17px] font-normal leading-[1.62] text-[#684454]">
-            Whether you're a luxury hotel, craft cocktail bar, restaurant, café, mixologist, or distributor, talk to the Flamingo team about your syrup requirements.
+            Whether you're a luxury hotel, craft cocktail bar, restaurant, café,
+            mixologist, or distributor, talk to the Flamingo team about your
+            syrup requirements.
           </p>
         </div>
       </section>
@@ -119,7 +135,6 @@ export function EnquirePage() {
       {/* SECTION 2: ENQUIRY CONTENT (CONTACT INFO + B2B FORM) */}
       <section className="page-shell py-16 md:py-24">
         <div className="grid gap-16 lg:grid-cols-[.9fr_1.1fr]">
-
           {/* LEFT COLUMN: DIRECT CONTACT & TRADE DETAILS */}
           <div className="space-y-10">
             <div>
@@ -128,7 +143,10 @@ export function EnquirePage() {
                 A Working Partner for the Bar
               </h2>
               <p className="mt-4 text-base leading-7 text-[#684454]">
-                Flamingo is engineered specifically for high-volume hospitality, luxury hotels, craft cocktail bars, and specialty beverage menus. All 29 syrup flavours are delivered in standardized 750 ml speed-pour bottles.
+                Flamingo is engineered specifically for high-volume hospitality,
+                luxury hotels, craft cocktail bars, and specialty beverage
+                menus. All 29 syrup flavours are delivered in standardized 750
+                ml speed-pour bottles.
               </p>
             </div>
 
@@ -147,7 +165,7 @@ export function EnquirePage() {
                   <span>{brand.email}</span>
                 </a>
                 <a
-                  href={`tel:${brand.phone.replace(/\s/g, '')}`}
+                  href={`tel:${brand.phone.replace(/\s/g, "")}`}
                   className="flex items-center gap-3 hover:text-[#d84f78] transition-colors"
                   data-testid="link-enquire-phone"
                 >
@@ -155,7 +173,10 @@ export function EnquirePage() {
                   <span>{brand.phone} (Call / WhatsApp)</span>
                 </a>
                 <div className="flex items-start gap-3 text-[#684454]">
-                  <MapPin size={18} className="mt-0.5 shrink-0 text-[#d84f78]" />
+                  <MapPin
+                    size={18}
+                    className="mt-0.5 shrink-0 text-[#d84f78]"
+                  />
                   <span>{brand.address}</span>
                 </div>
               </div>
@@ -176,7 +197,8 @@ export function EnquirePage() {
                 Instant Bar Consultation:
               </h3>
               <p className="text-xs leading-5 text-[#684454]">
-                Need immediate sample specs or bar menu recommendations? Message our team directly on WhatsApp.
+                Need immediate sample specs or bar menu recommendations? Message
+                our team directly on WhatsApp.
               </p>
               <a
                 href={whatsappUrl}
@@ -202,7 +224,8 @@ export function EnquirePage() {
                   Enquiry Received
                 </h3>
                 <p className="max-w-md font-sans text-base text-[#684454] leading-relaxed">
-                  Thank you for reaching out to Flamingo. Our beverage team will review your requirements and get back to you shortly.
+                  Thank you for reaching out to Flamingo. Our beverage team will
+                  review your requirements and get back to you shortly.
                 </p>
                 <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
                   <Link
@@ -230,7 +253,8 @@ export function EnquirePage() {
                     B2B Product Enquiry Form
                   </h3>
                   <p className="mt-1 text-xs text-[#684454]">
-                    Fill out your requirements below and our trade team will get in touch.
+                    Fill out your requirements below and our trade team will get
+                    in touch.
                   </p>
                 </div>
 
@@ -241,13 +265,15 @@ export function EnquirePage() {
                     <input
                       type="text"
                       value={form.name}
-                      onChange={(e) => updateField('name', e.target.value)}
+                      onChange={(e) => updateField("name", e.target.value)}
                       placeholder="e.g. Master Mixologist / Manager"
                       className="mt-2 w-full rounded-xl border border-rose-300/80 bg-white p-3.5 text-sm font-semibold text-[#321e2a] outline-none transition-colors focus:border-[#d84f78]"
                       data-testid="input-enquire-name"
                     />
                     {errors.name && (
-                      <span className="mt-1.5 block text-xs font-normal text-[#b63d65]">{errors.name}</span>
+                      <span className="mt-1.5 block text-xs font-normal text-[#b63d65]">
+                        {errors.name}
+                      </span>
                     )}
                   </label>
 
@@ -257,7 +283,7 @@ export function EnquirePage() {
                     <input
                       type="text"
                       value={form.company}
-                      onChange={(e) => updateField('company', e.target.value)}
+                      onChange={(e) => updateField("company", e.target.value)}
                       placeholder="e.g. The Grand Hotel / Bar Lounge"
                       className="mt-2 w-full rounded-xl border border-rose-300/80 bg-white p-3.5 text-sm font-semibold text-[#321e2a] outline-none transition-colors focus:border-[#d84f78]"
                       data-testid="input-enquire-company"
@@ -272,13 +298,15 @@ export function EnquirePage() {
                     <input
                       type="tel"
                       value={form.phone}
-                      onChange={(e) => updateField('phone', e.target.value)}
+                      onChange={(e) => updateField("phone", e.target.value)}
                       placeholder="+91 ..."
                       className="mt-2 w-full rounded-xl border border-rose-300/80 bg-white p-3.5 text-sm font-semibold text-[#321e2a] outline-none transition-colors focus:border-[#d84f78]"
                       data-testid="input-enquire-phone"
                     />
                     {errors.phone && (
-                      <span className="mt-1.5 block text-xs font-normal text-[#b63d65]">{errors.phone}</span>
+                      <span className="mt-1.5 block text-xs font-normal text-[#b63d65]">
+                        {errors.phone}
+                      </span>
                     )}
                   </label>
 
@@ -288,13 +316,15 @@ export function EnquirePage() {
                     <input
                       type="email"
                       value={form.email}
-                      onChange={(e) => updateField('email', e.target.value)}
+                      onChange={(e) => updateField("email", e.target.value)}
                       placeholder="you@barstudio.com"
                       className="mt-2 w-full rounded-xl border border-rose-300/80 bg-white p-3.5 text-sm font-semibold text-[#321e2a] outline-none transition-colors focus:border-[#d84f78]"
                       data-testid="input-enquire-email"
                     />
                     {errors.email && (
-                      <span className="mt-1.5 block text-xs font-normal text-[#b63d65]">{errors.email}</span>
+                      <span className="mt-1.5 block text-xs font-normal text-[#b63d65]">
+                        {errors.email}
+                      </span>
                     )}
                   </label>
                 </div>
@@ -306,7 +336,7 @@ export function EnquirePage() {
                     <input
                       type="text"
                       value={form.city}
-                      onChange={(e) => updateField('city', e.target.value)}
+                      onChange={(e) => updateField("city", e.target.value)}
                       placeholder="e.g. Bengaluru, Mumbai, Delhi"
                       className="mt-2 w-full rounded-xl border border-rose-300/80 bg-white p-3.5 text-sm font-semibold text-[#321e2a] outline-none transition-colors focus:border-[#d84f78]"
                       data-testid="input-enquire-city"
@@ -318,7 +348,9 @@ export function EnquirePage() {
                     Business Type <span className="text-[#d84f78]">*</span>
                     <select
                       value={form.businessType}
-                      onChange={(e) => updateField('businessType', e.target.value)}
+                      onChange={(e) =>
+                        updateField("businessType", e.target.value)
+                      }
                       className="mt-2 w-full rounded-xl border border-rose-300/80 bg-white p-3.5 text-sm font-semibold text-[#321e2a] outline-none transition-colors focus:border-[#d84f78] cursor-pointer"
                       data-testid="select-enquire-businesstype"
                     >
@@ -327,7 +359,9 @@ export function EnquirePage() {
                       <option value="Bar">Bar / Cocktail Lounge</option>
                       <option value="Café">Café</option>
                       <option value="Catering">Catering / Events</option>
-                      <option value="Distributor">Distributor / Beverage Wholesale</option>
+                      <option value="Distributor">
+                        Distributor / Beverage Wholesale
+                      </option>
                       <option value="Retailer">Retailer</option>
                       <option value="Other">Other</option>
                     </select>
@@ -340,7 +374,7 @@ export function EnquirePage() {
                     Interested Product
                     <select
                       value={form.product}
-                      onChange={(e) => updateField('product', e.target.value)}
+                      onChange={(e) => updateField("product", e.target.value)}
                       className="mt-2 w-full rounded-xl border border-rose-300/80 bg-white p-3.5 text-sm font-semibold text-[#321e2a] outline-none transition-colors focus:border-[#d84f78] cursor-pointer"
                       data-testid="select-enquire-product"
                     >
@@ -358,14 +392,22 @@ export function EnquirePage() {
                     Quantity Required
                     <select
                       value={form.quantity}
-                      onChange={(e) => updateField('quantity', e.target.value)}
+                      onChange={(e) => updateField("quantity", e.target.value)}
                       className="mt-2 w-full rounded-xl border border-rose-300/80 bg-white p-3.5 text-sm font-semibold text-[#321e2a] outline-none transition-colors focus:border-[#d84f78] cursor-pointer"
                       data-testid="select-enquire-quantity"
                     >
-                      <option value="1–5 bottles">1–5 bottles (Sample / Trial)</option>
-                      <option value="6–20 bottles">6–20 bottles (Standard Bar Order)</option>
-                      <option value="21–50 bottles">21–50 bottles (High-Volume Supply)</option>
-                      <option value="50+ bottles">50+ bottles (Bulk / Distribution)</option>
+                      <option value="1–5 bottles">
+                        1–5 bottles (Sample / Trial)
+                      </option>
+                      <option value="6–20 bottles">
+                        6–20 bottles (Standard Bar Order)
+                      </option>
+                      <option value="21–50 bottles">
+                        21–50 bottles (High-Volume Supply)
+                      </option>
+                      <option value="50+ bottles">
+                        50+ bottles (Bulk / Distribution)
+                      </option>
                     </select>
                   </label>
                 </div>
@@ -376,7 +418,7 @@ export function EnquirePage() {
                   <textarea
                     rows={4}
                     value={form.message}
-                    onChange={(e) => updateField('message', e.target.value)}
+                    onChange={(e) => updateField("message", e.target.value)}
                     placeholder="Tell us what you're looking for (e.g. sample requests, beverage menu requirements, distribution inquiry)..."
                     className="mt-2 w-full rounded-xl border border-rose-300/80 bg-white p-4 text-sm font-normal text-[#321e2a] outline-none transition-colors focus:border-[#d84f78]"
                     data-testid="input-enquire-message"
@@ -394,7 +436,8 @@ export function EnquirePage() {
 
                 {/* PRIVACY NOTE */}
                 <p className="text-[.68rem] text-center text-[#684454]">
-                  By submitting this form, you agree to be contacted regarding your enquiry.
+                  By submitting this form, you agree to be contacted regarding
+                  your enquiry.
                 </p>
               </form>
             )}

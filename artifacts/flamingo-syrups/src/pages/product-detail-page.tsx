@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
-import { ArrowUpRight, Download, Wine } from 'lucide-react';
-import { Link, useParams } from 'wouter';
-import { syrupsList, socialLinks } from '@/data/site-data';
-import { updatePageSEO } from '@/lib/seo';
-import { SectionKicker } from '@/components/common-ui';
-import NotFound from '@/pages/not-found';
+import { useEffect } from "react";
+import { ArrowUpRight, Download, Wine } from "lucide-react";
+import { Link, useParams } from "wouter";
+import { syrupsList, socialLinks } from "@/data/site-data";
+import { updatePageSEO } from "@/lib/seo";
+import { SectionKicker } from "@/components/common-ui";
+import NotFound from "@/pages/not-found";
 
 export function ProductDetailPage() {
   const params = useParams<{ slug: string }>();
@@ -14,46 +14,48 @@ export function ProductDetailPage() {
   useEffect(() => {
     if (syrup) {
       const canonicalUrl = `https://gagangowdap.github.io/Flamingo/products/${syrup.id}`;
-      const ogImage = syrup.image ? `${window.location.origin}${syrup.image}` : undefined;
+      const ogImage = syrup.image
+        ? `${window.location.origin}${syrup.image}`
+        : undefined;
 
       updatePageSEO({
         title: `Flamingo ${syrup.name} Syrup | 750ml Professional Syrup`,
         description: `Explore Flamingo ${syrup.name} Syrup in a 750 ml professional pack for cocktails, mocktails and creative beverage applications.`,
         canonicalUrl,
         ogImage,
-        ogType: 'product',
+        ogType: "product",
         jsonLd: [
           {
-            '@context': 'https://schema.org/',
-            '@type': 'Product',
+            "@context": "https://schema.org/",
+            "@type": "Product",
             name: `Flamingo ${syrup.name} Syrup`,
             image: ogImage,
             description: syrup.description,
             brand: {
-              '@type': 'Brand',
-              name: 'Flamingo',
+              "@type": "Brand",
+              name: "Flamingo",
             },
             category: syrup.category,
             url: canonicalUrl,
           },
           {
-            '@context': 'https://schema.org',
-            '@type': 'BreadcrumbList',
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
             itemListElement: [
               {
-                '@type': 'ListItem',
+                "@type": "ListItem",
                 position: 1,
-                name: 'Home',
-                item: 'https://gagangowdap.github.io/Flamingo/',
+                name: "Home",
+                item: "https://gagangowdap.github.io/Flamingo/",
               },
               {
-                '@type': 'ListItem',
+                "@type": "ListItem",
                 position: 2,
-                name: 'Products',
-                item: 'https://gagangowdap.github.io/Flamingo/products',
+                name: "Products",
+                item: "https://gagangowdap.github.io/Flamingo/products",
               },
               {
-                '@type': 'ListItem',
+                "@type": "ListItem",
                 position: 3,
                 name: syrup.name,
                 item: canonicalUrl,
@@ -70,11 +72,17 @@ export function ProductDetailPage() {
   }
 
   const currentIndex = syrupsList.findIndex((s) => s.id === syrup.id);
-  const prevSyrup = syrupsList[(currentIndex - 1 + syrupsList.length) % syrupsList.length];
+  const prevSyrup =
+    syrupsList[(currentIndex - 1 + syrupsList.length) % syrupsList.length];
   const nextSyrup = syrupsList[(currentIndex + 1) % syrupsList.length];
 
   const relatedSyrups = syrupsList
-    .filter((s) => s.id !== syrup.id && (s.category === syrup.category || Math.abs(syrupsList.indexOf(s) - currentIndex) <= 4))
+    .filter(
+      (s) =>
+        s.id !== syrup.id &&
+        (s.category === syrup.category ||
+          Math.abs(syrupsList.indexOf(s) - currentIndex) <= 4),
+    )
     .slice(0, 4);
 
   return (
@@ -82,12 +90,23 @@ export function ProductDetailPage() {
       {/* BREADCRUMB BAR */}
       <section className="border-b border-rose-300/60 bg-[#fff3f8] py-4">
         <div className="page-shell">
-          <nav aria-label="Breadcrumbs" className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[.16em] text-[#996074]">
-            <Link href="/" className="hover:text-[#d84f78] transition-colors" data-testid="breadcrumb-home">
+          <nav
+            aria-label="Breadcrumbs"
+            className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[.16em] text-[#996074]"
+          >
+            <Link
+              href="/"
+              className="hover:text-[#d84f78] transition-colors"
+              data-testid="breadcrumb-home"
+            >
               Home
             </Link>
             <span>/</span>
-            <Link href="/products" className="hover:text-[#d84f78] transition-colors" data-testid="breadcrumb-products">
+            <Link
+              href="/products"
+              className="hover:text-[#d84f78] transition-colors"
+              data-testid="breadcrumb-products"
+            >
               Products
             </Link>
             <span>/</span>
@@ -115,8 +134,12 @@ export function ProductDetailPage() {
             ) : (
               <div className="flex h-80 w-full flex-col items-center justify-center rounded-2xl bg-[#fbd6e4]/60 text-center">
                 <Wine size={56} className="text-[#d84f78]" />
-                <p className="mt-4 font-display text-2xl font-medium text-[#321e2a]">{syrup.name}</p>
-                <p className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-[#b63d65]">750 ml Professional Pack</p>
+                <p className="mt-4 font-display text-2xl font-medium text-[#321e2a]">
+                  {syrup.name}
+                </p>
+                <p className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-[#b63d65]">
+                  750 ml Professional Pack
+                </p>
               </div>
             )}
           </div>
@@ -201,22 +224,39 @@ export function ProductDetailPage() {
             </h2>
             <div className="rounded-2xl border border-rose-300/80 bg-white p-6 shadow-sm space-y-4">
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-[#321e2a]">Ingredients:</p>
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-[#321e2a]">
+                  Ingredients:
+                </p>
                 <p className="mt-1.5 text-sm text-[#684454] leading-relaxed">
-                  {syrup.ingredientsList || 'Sugar, Water, Permitted Flavouring Substances, Acidity Regulator (Citric Acid), Preservative.'}
+                  {syrup.ingredientsList ||
+                    "Sugar, Water, Permitted Flavouring Substances, Acidity Regulator (Citric Acid), Preservative."}
                 </p>
               </div>
               <div className="border-t border-rose-200/80 pt-4">
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-[#321e2a]">Pack Size:</p>
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-[#321e2a]">
+                  Pack Size:
+                </p>
                 <p className="mt-1 text-sm font-semibold text-[#d84f78]">
                   750 ml Professional Speed-Pour Pack
                 </p>
               </div>
               <div className="border-t border-rose-200/80 pt-4">
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-[#321e2a]">Ideal Applications:</p>
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-[#321e2a]">
+                  Ideal Applications:
+                </p>
                 <div className="mt-3 flex flex-wrap gap-2">
-                  {['Cocktails', 'Mocktails', 'Spritzes', 'Iced Teas', 'Craft Beverages', 'Desserts'].map((app) => (
-                    <span key={app} className="rounded-lg bg-[#fbd6e4]/70 px-3 py-1.5 text-[10px] font-semibold text-[#b63d65]">
+                  {[
+                    "Cocktails",
+                    "Mocktails",
+                    "Spritzes",
+                    "Iced Teas",
+                    "Craft Beverages",
+                    "Desserts",
+                  ].map((app) => (
+                    <span
+                      key={app}
+                      className="rounded-lg bg-[#fbd6e4]/70 px-3 py-1.5 text-[10px] font-semibold text-[#b63d65]"
+                    >
                       {app}
                     </span>
                   ))}
@@ -234,15 +274,21 @@ export function ProductDetailPage() {
             <div className="rounded-2xl border-2 border-rose-300 bg-white p-6 shadow-sm space-y-4">
               <div className="flex items-center justify-between border-b border-rose-200/80 pb-4">
                 <div>
-                  <span className="text-[10px] font-semibold uppercase tracking-widest text-[#d84f78]">Serve Suggestion</span>
-                  <h3 className="font-display text-2xl font-medium text-[#321e2a]">{syrup.recipe.name}</h3>
+                  <span className="text-[10px] font-semibold uppercase tracking-widest text-[#d84f78]">
+                    Serve Suggestion
+                  </span>
+                  <h3 className="font-display text-2xl font-medium text-[#321e2a]">
+                    {syrup.recipe.name}
+                  </h3>
                 </div>
                 <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#d84f78] text-white">
                   <Wine size={20} />
                 </span>
               </div>
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-[#321e2a]">Recipe Ingredients:</p>
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-[#321e2a]">
+                  Recipe Ingredients:
+                </p>
                 <ul className="mt-2 space-y-1 text-sm text-[#684454]">
                   {syrup.recipe.ingredients.map((ing, idx) => (
                     <li key={idx} className="flex items-center gap-2">
@@ -253,12 +299,20 @@ export function ProductDetailPage() {
                 </ul>
               </div>
               <div className="border-t border-rose-200/80 pt-3">
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-[#321e2a]">Preparation Method:</p>
-                <p className="mt-1 text-sm text-[#684454] leading-relaxed">{syrup.recipe.method}</p>
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-[#321e2a]">
+                  Preparation Method:
+                </p>
+                <p className="mt-1 text-sm text-[#684454] leading-relaxed">
+                  {syrup.recipe.method}
+                </p>
               </div>
               <div className="border-t border-rose-200/80 pt-3">
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-[#321e2a]">Garnish:</p>
-                <p className="mt-1 text-sm font-medium text-[#b63d65]">{syrup.recipe.garnish}</p>
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-[#321e2a]">
+                  Garnish:
+                </p>
+                <p className="mt-1 text-sm font-medium text-[#b63d65]">
+                  {syrup.recipe.garnish}
+                </p>
               </div>
             </div>
           </div>
@@ -274,7 +328,10 @@ export function ProductDetailPage() {
               Related Flavours
             </h2>
           </div>
-          <Link href="/products" className="hidden text-[11px] font-semibold uppercase tracking-widest text-[#d84f78] hover:underline sm:block">
+          <Link
+            href="/products"
+            className="hidden text-[11px] font-semibold uppercase tracking-widest text-[#d84f78] hover:underline sm:block"
+          >
             View All 29 Syrups →
           </Link>
         </div>
@@ -289,13 +346,21 @@ export function ProductDetailPage() {
               <div>
                 <div className="relative flex h-48 w-full items-center justify-center rounded-xl bg-white p-4">
                   {rel.image ? (
-                    <img src={rel.image} alt={`Flamingo ${rel.name}`} className="h-full w-auto object-contain transition-transform group-hover:scale-105" />
+                    <img
+                      src={rel.image}
+                      alt={`Flamingo ${rel.name}`}
+                      className="h-full w-auto object-contain transition-transform group-hover:scale-105"
+                    />
                   ) : (
                     <Wine size={40} className="text-[#d84f78]" />
                   )}
                 </div>
-                <p className="mt-4 text-[10px] font-semibold uppercase tracking-widest text-[#d84f78]">{rel.category}</p>
-                <h3 className="mt-1 font-display text-2xl font-medium text-[#321e2a] group-hover:text-[#d84f78]">{rel.name}</h3>
+                <p className="mt-4 text-[10px] font-semibold uppercase tracking-widest text-[#d84f78]">
+                  {rel.category}
+                </p>
+                <h3 className="mt-1 font-display text-2xl font-medium text-[#321e2a] group-hover:text-[#d84f78]">
+                  {rel.name}
+                </h3>
               </div>
               <div className="mt-4 flex items-center justify-between border-t border-rose-200/80 pt-3 text-[10px] font-semibold uppercase tracking-wider text-[#593b49]">
                 <span>{rel.volume}</span>

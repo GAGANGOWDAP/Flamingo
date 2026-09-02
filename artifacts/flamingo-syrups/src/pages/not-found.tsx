@@ -1,17 +1,17 @@
-import { useEffect } from 'react';
-import { Link } from 'wouter';
-import { Wine, ArrowRight } from 'lucide-react';
+import { useEffect } from "react";
+import { Link } from "wouter";
+import { Wine, ArrowRight } from "lucide-react";
 
 export default function NotFound() {
   useEffect(() => {
-    document.title = '404 Flavour Not Found | Flamingo';
+    document.title = "404 Flavour Not Found | Flamingo";
     let metaRobots = document.querySelector('meta[name="robots"]');
     if (!metaRobots) {
-      metaRobots = document.createElement('meta');
-      metaRobots.setAttribute('name', 'robots');
+      metaRobots = document.createElement("meta");
+      metaRobots.setAttribute("name", "robots");
       document.head.appendChild(metaRobots);
     }
-    metaRobots.setAttribute('content', 'noindex, nofollow');
+    metaRobots.setAttribute("content", "noindex, nofollow");
   }, []);
 
   return (
@@ -24,7 +24,8 @@ export default function NotFound() {
         FLAVOUR NOT FOUND
       </h1>
       <p className="mt-4 max-w-md font-sans text-base leading-relaxed text-[#684454]">
-        The syrup flavour you're looking for could not be found or may have been moved.
+        The syrup flavour you're looking for could not be found or may have been
+        moved.
       </p>
       <div className="mt-8 flex items-center justify-center gap-4">
         <Link
