@@ -258,27 +258,37 @@ export function SiteHeader() {
   );
 }
 
-export function FloatingWhatsApp() {
+export function FloatingSocials() {
   return (
-    <a
-      href={socialLinks.whatsappGeneralUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Contact Flamingo on WhatsApp"
-      data-testid="button-floating-whatsapp"
-      className="group fixed bottom-6 right-6 z-50 flex min-h-[48px] items-center gap-2.5 rounded-full border border-white/30 bg-[#25D366] px-4.5 py-3 text-white shadow-[0_10px_28px_rgba(37,211,102,0.45)] transition-all duration-300 hover:scale-105 hover:bg-[#20ba5a] hover:shadow-[0_14px_34px_rgba(37,211,102,0.6)] focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
-    >
-      <span className="relative flex h-3 w-3 shrink-0">
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
-        <span className="relative inline-flex h-3 w-3 rounded-full bg-white" />
-      </span>
-      <WhatsAppIcon className="h-5 w-5 shrink-0 transition-transform duration-300 group-hover:rotate-6" />
-      <span className="hidden text-xs font-bold uppercase tracking-wider md:inline-block">
-        WhatsApp Us
-      </span>
-    </a>
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-3">
+      {/* FLOATING INSTAGRAM ROUND ICON BUTTON */}
+      <a
+        href={socialLinks.instagram}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit Flamingo on Instagram"
+        data-testid="button-floating-instagram"
+        className="group flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white shadow-[0_8px_22px_rgba(220,39,67,0.4)] transition-all duration-300 hover:scale-110 hover:shadow-[0_12px_28px_rgba(220,39,67,0.6)] focus:outline-none focus:ring-2 focus:ring-[#dc2743] focus:ring-offset-2"
+      >
+        <Instagram size={22} className="transition-transform duration-300 group-hover:scale-110" />
+      </a>
+
+      {/* FLOATING WHATSAPP ROUND ICON BUTTON (NO TEXT, NO DOT) */}
+      <a
+        href={socialLinks.whatsappGeneralUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contact Flamingo on WhatsApp"
+        data-testid="button-floating-whatsapp"
+        className="group flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_22px_rgba(37,211,102,0.45)] transition-all duration-300 hover:scale-110 hover:bg-[#20ba5a] hover:shadow-[0_12px_28px_rgba(37,211,102,0.6)] focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
+      >
+        <WhatsAppIcon className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
+      </a>
+    </div>
   );
 }
+
+export const FloatingWhatsApp = FloatingSocials;
 
 export function SiteFooter() {
   return (
@@ -368,7 +378,7 @@ export function PageFrame({ children }: { children: ReactNode }) {
   return (
     <div className="site-noise min-h-[100dvh] overflow-x-hidden bg-[#ffeaf3] text-[#321e2a]">
       {children}
-      <FloatingWhatsApp />
+      <FloatingSocials />
     </div>
   );
 }
