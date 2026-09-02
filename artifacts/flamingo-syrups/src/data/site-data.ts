@@ -76,6 +76,7 @@ export const brand = {
   phone: "+91 8971825137",
   email: "mjsince1987@gmail.com",
   address: "No 6, RA Road, Ejipura, Bengaluru-560047",
+  mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("No 6, RA Road, Ejipura, Bengaluru-560047")}`,
 };
 
 export const WHATSAPP_NUMBER = "918971825137";

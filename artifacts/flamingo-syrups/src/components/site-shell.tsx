@@ -7,6 +7,7 @@ import {
   Wine,
   Download,
   Instagram,
+  MapPin,
 } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import logoPath from "@assets/2.jpg_1787233517766.jpeg";
@@ -25,7 +26,6 @@ export function SiteHeader() {
   const [location] = useLocation();
   const [open, setOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -46,36 +46,20 @@ export function SiteHeader() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    function handleScroll() {
-      setIsScrolled(window.scrollY > 20);
-    }
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "border-b border-rose-300/60 bg-[#fff3f8]/98 shadow-[0_6px_30px_rgba(153,63,98,.1)] backdrop-blur-md"
-          : "border-b border-[#e8d5dc]/80 bg-[#fff3f8]/90 backdrop-blur-md"
-      }`}
-    >
-      <div className="page-shell flex h-[82px] items-center justify-between">
-        {/* LOGO */}
+    <header className="sticky top-0 z-40 border-b border-rose-300/60 bg-[#fff3f8]/90 backdrop-blur-md transition-all duration-300">
+      <div className="page-shell flex h-[76px] items-center justify-between">
+        {/* BRAND LOGO & WORDMARK */}
         <Link
           href="/"
-          className="group flex items-center gap-3.5 transition-opacity hover:opacity-95"
-          data-testid="link-logo"
+          className="flex items-center gap-3 transition-transform hover:scale-[1.02]"
+          data-testid="link-header-logo"
         >
-          <span className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-rose-200/90 bg-[#fffdfc] shadow-sm transition-transform duration-300 group-hover:scale-105">
-            <img
-              src={logoPath}
-              alt="Flamingo logo: a pink flamingo in a cocktail glass"
-              className="h-full w-full object-contain p-0.5"
-            />
-          </span>
+          <img
+            src={logoPath}
+            alt="Flamingo Premium Syrups logo"
+            className="h-11 w-11 rounded-full object-contain shadow-sm border border-rose-200"
+          />
           <span className="hidden font-display text-[1.45rem] font-semibold tracking-[.04em] text-[#321e2a] sm:block">
             {brand.name}
           </span>
@@ -250,47 +234,54 @@ export function SiteHeader() {
             <Link
               href="/"
               className="border-b border-rose-200/80 py-3.5 text-sm font-bold uppercase tracking-[.16em] text-[#593b49] hover:text-[#d84f78]"
+              onClick={() => setOpen(false)}
             >
               Home
             </Link>
-
             <Link
               href="/products"
-              className="flex items-center justify-between border-b border-rose-200/80 py-3.5 text-sm font-bold uppercase tracking-[.16em] text-[#593b49] hover:text-[#d84f78]"
+              className="border-b border-rose-200/80 py-3.5 text-sm font-bold uppercase tracking-[.16em] text-[#593b49] hover:text-[#d84f78]"
+              onClick={() => setOpen(false)}
             >
-              <span>Products (Syrups)</span>
-              <span className="rounded-full bg-[#d84f78] px-2.5 py-0.5 text-[.64rem] font-bold text-white shadow-sm">
-                {syrupsList.length} Flavours
-              </span>
+              Products Catalogue ({syrupsList.length})
             </Link>
-
             <Link
               href="/about"
               className="border-b border-rose-200/80 py-3.5 text-sm font-bold uppercase tracking-[.16em] text-[#593b49] hover:text-[#d84f78]"
+              onClick={() => setOpen(false)}
             >
-              The story
+              The Story
+            </Link>
+            <Link
+              href="/for-business"
+              className="border-b border-rose-200/80 py-3.5 text-sm font-bold uppercase tracking-[.16em] text-[#593b49] hover:text-[#d84f78]"
+              onClick={() => setOpen(false)}
+            >
+              For Business
             </Link>
             <Link
               href="/enquire"
-              className="py-3.5 text-sm font-bold uppercase tracking-[.16em] text-[#593b49] hover:text-[#d84f78]"
+              className="border-b border-rose-200/80 py-3.5 text-sm font-bold uppercase tracking-[.16em] text-[#593b49] hover:text-[#d84f78]"
+              onClick={() => setOpen(false)}
             >
               Enquire
             </Link>
 
             <div className="pt-4 flex flex-col gap-3">
-              <Link
-                href="/enquire"
-                className="flex h-[46px] w-full items-center justify-center gap-2 rounded-lg bg-[#321e2a] px-6 text-xs font-bold uppercase tracking-[.18em] text-[#ffeaf3] shadow-sm transition-all hover:bg-[#d84f78]"
-                data-testid="link-mobile-enquire-now"
+              <a
+                href={`${import.meta.env.BASE_URL}catalogue/flamingo-product-catalogue.pdf`}
+                download="flamingo-product-catalogue.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 rounded-xl border border-rose-300 bg-white py-3 text-xs font-bold uppercase tracking-wider text-[#321e2a]"
               >
-                Enquire now <ArrowUpRight size={15} strokeWidth={2} />
-              </Link>
+                <Download size={16} /> Catalogue PDF ↓
+              </a>
               <a
                 href={socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Visit Flamingo on Instagram"
-                className="flex h-[44px] w-full items-center justify-center gap-2 rounded-lg border border-rose-300/80 bg-white px-6 text-xs font-bold uppercase tracking-[.16em] text-[#321e2a]"
+                className="flex items-center justify-center gap-2 rounded-xl border border-rose-300 bg-white py-3 text-xs font-bold uppercase tracking-wider text-[#d84f78]"
               >
                 <Instagram size={16} className="text-[#d84f78]" /> Follow on
                 Instagram
@@ -321,7 +312,7 @@ export function FloatingSocials() {
         />
       </a>
 
-      {/* FLOATING WHATSAPP ROUND ICON BUTTON (NO TEXT, NO DOT) */}
+      {/* FLOATING WHATSAPP ROUND ICON BUTTON */}
       <a
         href={socialLinks.whatsappGeneralUrl}
         target="_blank"
@@ -342,68 +333,24 @@ export function SiteFooter() {
   return (
     <footer className="mt-24 bg-[#321e2a] text-[#ffeaf3]">
       <div className="page-shell grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-4 md:py-20">
-        {/* BRAND COLUMN */}
+        {/* COLUMN 1: FLAMINGO BRAND */}
         <div>
           <p className="eyebrow text-[#eaa0b7]">Flamingo</p>
           <h2 className="mt-4 max-w-sm font-display text-4xl leading-[.92] text-[#fff3f8] md:text-5xl">
-            A little colour for the bar.
+            Premium Syrups
           </h2>
-          <p className="mt-6 max-w-xs text-sm leading-6 text-[#e6bfce]">
-            {syrupsList.length} Exceptional Flavours. Endless Possibilities.
-            Crafted in Bengaluru for professional mixology & craft beverages.
+          <p className="mt-3 font-display italic text-lg text-[#eaa0b7]">
+            29 Flavours. Endless Possibilities.
+          </p>
+          <p className="mt-4 max-w-xs font-sans text-sm leading-6 text-[#e6bfce]">
+            Crafted in Bengaluru for professional mixology, luxury hotels, craft cocktail bars, and specialty menus.
           </p>
         </div>
 
-        {/* FOLLOW FLAMINGO SOCIAL COLUMN */}
-        <div>
-          <p className="eyebrow text-[#eaa0b7]">Follow Flamingo</p>
-          <p className="mt-3 text-xs text-[#e6bfce]">
-            Connect with us for menu inspiration & trade updates.
-          </p>
-          <div className="mt-5 flex flex-col gap-3">
-            {/* INSTAGRAM LINK */}
-            <a
-              href={socialLinks.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit Flamingo on Instagram"
-              data-testid="link-footer-instagram"
-              className="group inline-flex min-h-[44px] items-center gap-3 rounded-xl border border-rose-300/30 bg-white/5 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-[#ffeaf3] transition-all duration-300 hover:border-[#d84f78] hover:bg-[#d84f78] hover:text-white"
-            >
-              <Instagram
-                size={18}
-                className="shrink-0 transition-transform duration-300 group-hover:scale-110"
-              />
-              <span>Instagram</span>
-              <ArrowUpRight
-                size={14}
-                className="ml-auto opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </a>
-
-            {/* WHATSAPP LINK */}
-            <a
-              href={socialLinks.whatsappGeneralUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Contact Flamingo on WhatsApp"
-              data-testid="link-footer-whatsapp"
-              className="group inline-flex min-h-[44px] items-center gap-3 rounded-xl border border-rose-300/30 bg-white/5 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-[#ffeaf3] transition-all duration-300 hover:border-[#25D366] hover:bg-[#25D366] hover:text-white"
-            >
-              <WhatsAppIcon className="h-4.5 w-4.5 shrink-0 transition-transform duration-300 group-hover:scale-110" />
-              <span>WhatsApp</span>
-              <ArrowUpRight
-                size={14}
-                className="ml-auto opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </a>
-          </div>
-        </div>
-
-        {/* EXPLORE LINKS */}
+        {/* COLUMN 2: EXPLORE LINKS */}
         <div>
           <p className="eyebrow text-[#eaa0b7]">Explore</p>
-          <div className="mt-5 flex flex-col items-start gap-3 text-sm text-[#ffeaf3]">
+          <div className="mt-5 flex flex-col items-start gap-3 font-sans text-sm text-[#ffeaf3]">
             <Link
               href="/"
               className="hover:text-[#eaa0b7] transition-colors"
@@ -416,14 +363,21 @@ export function SiteFooter() {
               className="hover:text-[#eaa0b7] transition-colors"
               data-testid="link-footer-products"
             >
-              Syrups
+              Products
             </Link>
             <Link
               href="/about"
               className="hover:text-[#eaa0b7] transition-colors"
               data-testid="link-footer-about"
             >
-              The story
+              The Story
+            </Link>
+            <Link
+              href="/for-business"
+              className="hover:text-[#eaa0b7] transition-colors"
+              data-testid="link-footer-business"
+            >
+              For Business
             </Link>
             <Link
               href="/enquire"
@@ -435,10 +389,42 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* CONTACT DETAILS */}
+        {/* COLUMN 3: CONNECT SOCIAL & CONTACT */}
         <div>
-          <p className="eyebrow text-[#eaa0b7]">Contact</p>
-          <div className="mt-5 space-y-3 text-sm leading-6 text-[#ffeaf3]">
+          <p className="eyebrow text-[#eaa0b7]">Connect</p>
+          <div className="mt-5 flex flex-col gap-3 font-sans text-sm text-[#ffeaf3]">
+            <a
+              href={socialLinks.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow Flamingo on Instagram"
+              data-testid="link-footer-instagram"
+              className="group inline-flex items-center gap-2 hover:text-[#eaa0b7] transition-colors"
+            >
+              <Instagram size={16} className="text-[#d84f78]" />
+              <span>Instagram</span>
+              <ArrowUpRight
+                size={13}
+                className="opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </a>
+
+            <a
+              href={socialLinks.whatsappGeneralUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Contact Flamingo on WhatsApp"
+              data-testid="link-footer-whatsapp"
+              className="group inline-flex items-center gap-2 hover:text-[#25D366] transition-colors"
+            >
+              <WhatsAppIcon className="h-4 w-4 text-[#25D366]" />
+              <span>WhatsApp</span>
+              <ArrowUpRight
+                size={13}
+                className="opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </a>
+
             <a
               href={`mailto:${brand.email}`}
               className="block break-all hover:text-[#eaa0b7] transition-colors"
@@ -446,6 +432,7 @@ export function SiteFooter() {
             >
               {brand.email}
             </a>
+
             <a
               href={`tel:${brand.phone.replace(/\s/g, "")}`}
               className="block hover:text-[#eaa0b7] transition-colors"
@@ -453,7 +440,32 @@ export function SiteFooter() {
             >
               {brand.phone}
             </a>
-            <p className="text-[#e6bfce]">{brand.address}</p>
+          </div>
+        </div>
+
+        {/* COLUMN 4: FIND US (LOCATION & GOOGLE MAPS) */}
+        <div>
+          <p className="eyebrow text-[#eaa0b7]">Find Us</p>
+          <div className="mt-5 space-y-4 font-sans text-sm leading-6 text-[#ffeaf3]">
+            <div className="flex items-start gap-2.5 text-[#e6bfce]">
+              <MapPin size={18} className="mt-0.5 shrink-0 text-[#d84f78]" />
+              <span>{brand.address}</span>
+            </div>
+
+            <a
+              href={brand.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View Flamingo location on Google Maps"
+              data-testid="link-footer-maps"
+              className="group inline-flex min-h-[44px] items-center gap-2 text-xs font-semibold uppercase tracking-[.14em] text-[#d84f78] transition-colors hover:text-[#eaa0b7]"
+            >
+              <span>View on Google Maps</span>
+              <ArrowUpRight
+                size={14}
+                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </a>
           </div>
         </div>
       </div>
