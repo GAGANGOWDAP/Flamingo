@@ -58,7 +58,7 @@ export function SiteHeader() {
           <img
             src={logoPath}
             alt="Flamingo Premium Syrups logo"
-            className="h-11 w-11 rounded-full object-contain shadow-sm border border-rose-200"
+            className="h-11 w-11 rounded-xl object-contain shadow-sm border border-rose-200 bg-white p-0.5"
           />
           <span className="hidden font-display text-[1.45rem] font-semibold tracking-[.04em] text-[#321e2a] sm:block">
             {brand.name}
