@@ -26,7 +26,7 @@ export function ProductsPage() {
 
   useEffect(() => {
     updatePageSEO({
-      title: "Flamingo Syrups | 29 Flavours",
+      title: "Products | Flamingo",
       description:
         "Explore all 29 Flamingo syrup flavours, available in 750 ml professional packs for creative beverage applications.",
       canonicalUrl: "https://gagangowdap.github.io/Flamingo/products",

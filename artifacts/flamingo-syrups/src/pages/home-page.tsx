@@ -16,8 +16,7 @@ export function HomePage() {
 
   useEffect(() => {
     updatePageSEO({
-      title:
-        "Flamingo Syrups | 29 Exceptional Flavours for Cocktails & Beverages",
+      title: "Flamingo",
       description:
         "Explore Flamingo's collection of 29 premium syrup flavours crafted for cocktails, mocktails and creative beverage applications.",
       canonicalUrl: "https://gagangowdap.github.io/Flamingo/",
