@@ -253,6 +253,70 @@ export function HomePage() {
         </div>
       </section>
 
+      {/* WHY FLAMINGO? SECTION */}
+      <section className="border-t border-rose-300/60 py-20 md:py-28">
+        <div className="page-shell">
+          <div className="max-w-2xl">
+            <SectionKicker>Why Flamingo?</SectionKicker>
+            <h2 className="mt-3 font-display text-[clamp(36px,4.5vw,56px)] font-normal leading-[.95] text-[#321e2a]">
+              Why Flamingo?
+            </h2>
+            <p className="mt-4 font-sans text-[15px] md:text-[17px] font-normal leading-[1.6] text-[#684454]">
+              Made to bring more possibility to every pour.
+            </p>
+          </div>
+
+          <motion.div
+            className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
+            variants={shouldReduceMotion ? undefined : cardContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-40px" }}
+          >
+            {[
+              {
+                num: "01",
+                title: "29 FLAVOURS",
+                desc: "A collection made for exploration.",
+              },
+              {
+                num: "02",
+                title: "VERSATILE",
+                desc: "From cocktails to coffee and desserts.",
+              },
+              {
+                num: "03",
+                title: "CREATIVE",
+                desc: "Built around flavour possibilities.",
+              },
+              {
+                num: "04",
+                title: "FOR PROFESSIONALS",
+                desc: "Designed with beverage and hospitality applications in mind.",
+              },
+            ].map((item) => (
+              <motion.div
+                key={item.num}
+                variants={shouldReduceMotion ? undefined : cardItemVariants}
+                className="flex flex-col justify-between border-t border-rose-300/70 pt-6"
+              >
+                <div>
+                  <span className="font-sans text-[11px] font-semibold uppercase tracking-[.18em] text-[#b63d65]">
+                    {item.num}
+                  </span>
+                  <h3 className="mt-3 font-display text-[clamp(24px,2.2vw,30px)] font-medium leading-[1.05] text-[#321e2a]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 font-sans text-[14px] font-normal leading-[1.6] text-[#684454]">
+                    {item.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* B2B BANNER */}
       <section className="border-y border-rose-300/70 bg-[#f9d7e4]">
         <div className="page-shell flex flex-col items-start justify-between gap-8 py-16 md:flex-row md:items-center md:py-20">
