@@ -70,6 +70,17 @@ export const brand = {
   address: 'No 6, RA Road, Ejipura, Bengaluru-560047',
 };
 
+export const WHATSAPP_NUMBER = '918971825137';
+export const INSTAGRAM_URL = 'https://www.instagram.com/flamingosyrups';
+
+export const socialLinks = {
+  instagram: INSTAGRAM_URL,
+  whatsappNumber: WHATSAPP_NUMBER,
+  whatsappGeneralUrl: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hello Flamingo, I would like to know more about your syrup range.')}`,
+  getProductWhatsappUrl: (syrupName: string) =>
+    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hello Flamingo, I would like to enquire about Flamingo ${syrupName} Syrup, 750 ml Professional Pack.`)}`,
+};
+
 export const syrupsList: SyrupItem[] = [
   {
     id: 'jamun',

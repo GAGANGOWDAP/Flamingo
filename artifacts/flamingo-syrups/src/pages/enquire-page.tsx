@@ -1,7 +1,7 @@
 import { useState, useEffect, type FormEvent } from 'react';
 import { ArrowRight, ArrowUpRight, Check, Mail, MapPin, Phone } from 'lucide-react';
 import { Link } from 'wouter';
-import { brand, syrupsList } from '@/data/site-data';
+import { brand, syrupsList, socialLinks } from '@/data/site-data';
 import { updatePageSEO } from '@/lib/seo';
 import { SectionKicker } from '@/components/common-ui';
 
@@ -92,10 +92,9 @@ export function EnquirePage() {
   }
 
   const selectedSyrupObj = syrupsList.find((s) => s.id === form.product);
-  const whatsappMsgText = selectedSyrupObj
-    ? `Hello Flamingo, I would like to enquire about ${selectedSyrupObj.name}, 750 ml Professional Pack.`
-    : `Hello Flamingo, I would like to enquire about your 29 syrup range.`;
-  const whatsappUrl = `https://wa.me/918971825137?text=${encodeURIComponent(whatsappMsgText)}`;
+  const whatsappUrl = selectedSyrupObj
+    ? socialLinks.getProductWhatsappUrl(selectedSyrupObj.name)
+    : socialLinks.whatsappGeneralUrl;
 
   return (
     <main>

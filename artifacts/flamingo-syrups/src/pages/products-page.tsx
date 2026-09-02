@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, ChevronDown, Download, Search, Wine, X } from 'lucide-react';
 import { Link, useLocation } from 'wouter';
-import { syrupsList, type SyrupCategory } from '@/data/site-data';
+import { syrupsList, socialLinks, type SyrupCategory } from '@/data/site-data';
 import { updatePageSEO } from '@/lib/seo';
 import { SectionKicker, cardContainerVariants, cardItemVariants } from '@/components/common-ui';
 
@@ -367,9 +367,10 @@ export function ProductsPage() {
                 Enquire Now <ArrowUpRight size={16} />
               </Link>
               <a
-                href="https://wa.me/918971825137?text=Hello%20Flamingo%2C%20I%20would%20like%20to%20enquire%20about%20your%20syrup%20range."
+                href={socialLinks.whatsappGeneralUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Contact Flamingo on WhatsApp"
                 className="inline-flex items-center gap-2 rounded-xl border border-rose-300/40 bg-white/10 px-6 py-3.5 text-xs font-bold uppercase tracking-[.16em] text-white transition-colors hover:bg-white/20"
                 data-testid="button-products-bottom-whatsapp"
               >

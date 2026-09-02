@@ -1,8 +1,9 @@
 import { useEffect, useState, useRef, type ReactNode } from 'react';
-import { ArrowUpRight, ChevronDown, Menu, X, Wine, Sparkles, Download, Flame } from 'lucide-react';
+import { ArrowUpRight, ChevronDown, Menu, X, Wine, Download, Flame, Instagram } from 'lucide-react';
 import { Link, useLocation } from 'wouter';
 import logoPath from '@assets/2.jpg_1787233517766.jpeg';
-import { brand, syrupsList } from '@/data/site-data';
+import { brand, syrupsList, socialLinks } from '@/data/site-data';
+import { WhatsAppIcon } from '@/components/common-ui';
 
 export function ScrollToTop() {
   const [location] = useLocation();
@@ -51,7 +52,7 @@ export function SiteHeader() {
       }`}
     >
       <div className="page-shell flex h-[82px] items-center justify-between">
-        {/* LOGO - INCREASED BY 15-20% WITH CRISP SPACING */}
+        {/* LOGO */}
         <Link href="/" className="group flex items-center gap-3.5 transition-opacity hover:opacity-95" data-testid="link-logo">
           <span className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-rose-200/90 bg-[#fffdfc] shadow-sm transition-transform duration-300 group-hover:scale-105">
             <img src={logoPath} alt="Flamingo logo: a pink flamingo in a cocktail glass" className="h-full w-full object-contain p-0.5" />
@@ -61,7 +62,7 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        {/* NAVIGATION LINKS WITH ENHANCED SPACING & TYPOGRAPHY */}
+        {/* NAVIGATION LINKS */}
         <nav className="hidden items-center gap-10 md:flex" aria-label="Primary navigation">
           <Link
             href="/"
@@ -189,7 +190,7 @@ export function SiteHeader() {
           </Link>
         </nav>
 
-        {/* CTA BUTTON - REFINED PREMIUM ENQUIRE NOW BUTTON */}
+        {/* CTA BUTTON */}
         <Link
           href="/enquire"
           className="hidden h-[44px] items-center gap-2 rounded-lg bg-[#321e2a] px-6 text-[.7rem] font-bold uppercase tracking-[.18em] text-[#ffeaf3] shadow-sm transition-all duration-300 hover:bg-[#d84f78] hover:shadow-md hover:-translate-y-0.5 md:flex"
@@ -232,7 +233,7 @@ export function SiteHeader() {
               Enquire
             </Link>
 
-            <div className="pt-4">
+            <div className="pt-4 flex flex-col gap-3">
               <Link
                 href="/enquire"
                 className="flex h-[46px] w-full items-center justify-center gap-2 rounded-lg bg-[#321e2a] px-6 text-xs font-bold uppercase tracking-[.18em] text-[#ffeaf3] shadow-sm transition-all hover:bg-[#d84f78]"
@@ -240,6 +241,15 @@ export function SiteHeader() {
               >
                 Enquire now <ArrowUpRight size={15} strokeWidth={2} />
               </Link>
+              <a
+                href={socialLinks.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Flamingo on Instagram"
+                className="flex h-[44px] w-full items-center justify-center gap-2 rounded-lg border border-rose-300/80 bg-white px-6 text-xs font-bold uppercase tracking-[.16em] text-[#321e2a]"
+              >
+                <Instagram size={16} className="text-[#d84f78]" /> Follow on Instagram
+              </a>
             </div>
           </div>
         </nav>
@@ -248,33 +258,102 @@ export function SiteHeader() {
   );
 }
 
+export function FloatingWhatsApp() {
+  return (
+    <a
+      href={socialLinks.whatsappGeneralUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Contact Flamingo on WhatsApp"
+      data-testid="button-floating-whatsapp"
+      className="group fixed bottom-6 right-6 z-50 flex min-h-[48px] items-center gap-2.5 rounded-full border border-white/30 bg-[#25D366] px-4.5 py-3 text-white shadow-[0_10px_28px_rgba(37,211,102,0.45)] transition-all duration-300 hover:scale-105 hover:bg-[#20ba5a] hover:shadow-[0_14px_34px_rgba(37,211,102,0.6)] focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
+    >
+      <span className="relative flex h-3 w-3 shrink-0">
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
+        <span className="relative inline-flex h-3 w-3 rounded-full bg-white" />
+      </span>
+      <WhatsAppIcon className="h-5 w-5 shrink-0 transition-transform duration-300 group-hover:rotate-6" />
+      <span className="hidden text-xs font-bold uppercase tracking-wider md:inline-block">
+        WhatsApp Us
+      </span>
+    </a>
+  );
+}
+
 export function SiteFooter() {
   return (
     <footer className="mt-24 bg-[#321e2a] text-[#ffeaf3]">
-      <div className="page-shell grid gap-12 py-16 md:grid-cols-[1.1fr_.8fr_.8fr] md:py-20">
+      <div className="page-shell grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-4 md:py-20">
+        {/* BRAND COLUMN */}
         <div>
           <p className="eyebrow text-[#eaa0b7]">Flamingo</p>
-          <h2 className="mt-4 max-w-sm font-display text-5xl leading-[.92] text-[#fff3f8] md:text-6xl">A little colour for the bar.</h2>
-          <p className="mt-6 max-w-xs text-sm leading-6 text-[#e6bfce]">{syrupsList.length} Exceptional Flavours. Endless Possibilities. Crafted in Bengaluru for professional mixology & craft beverages.</p>
+          <h2 className="mt-4 max-w-sm font-display text-4xl leading-[.92] text-[#fff3f8] md:text-5xl">
+            A little colour for the bar.
+          </h2>
+          <p className="mt-6 max-w-xs text-sm leading-6 text-[#e6bfce]">
+            {syrupsList.length} Exceptional Flavours. Endless Possibilities. Crafted in Bengaluru for professional mixology & craft beverages.
+          </p>
         </div>
+
+        {/* FOLLOW FLAMINGO SOCIAL COLUMN */}
+        <div>
+          <p className="eyebrow text-[#eaa0b7]">Follow Flamingo</p>
+          <p className="mt-3 text-xs text-[#e6bfce]">
+            Connect with us for menu inspiration & trade updates.
+          </p>
+          <div className="mt-5 flex flex-col gap-3">
+            {/* INSTAGRAM LINK */}
+            <a
+              href={socialLinks.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit Flamingo on Instagram"
+              data-testid="link-footer-instagram"
+              className="group inline-flex min-h-[44px] items-center gap-3 rounded-xl border border-rose-300/30 bg-white/5 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-[#ffeaf3] transition-all duration-300 hover:border-[#d84f78] hover:bg-[#d84f78] hover:text-white"
+            >
+              <Instagram size={18} className="shrink-0 transition-transform duration-300 group-hover:scale-110" />
+              <span>Instagram</span>
+              <ArrowUpRight size={14} className="ml-auto opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+
+            {/* WHATSAPP LINK */}
+            <a
+              href={socialLinks.whatsappGeneralUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Contact Flamingo on WhatsApp"
+              data-testid="link-footer-whatsapp"
+              className="group inline-flex min-h-[44px] items-center gap-3 rounded-xl border border-rose-300/30 bg-white/5 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-[#ffeaf3] transition-all duration-300 hover:border-[#25D366] hover:bg-[#25D366] hover:text-white"
+            >
+              <WhatsAppIcon className="h-4.5 w-4.5 shrink-0 transition-transform duration-300 group-hover:scale-110" />
+              <span>WhatsApp</span>
+              <ArrowUpRight size={14} className="ml-auto opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+          </div>
+        </div>
+
+        {/* EXPLORE LINKS */}
         <div>
           <p className="eyebrow text-[#eaa0b7]">Explore</p>
           <div className="mt-5 flex flex-col items-start gap-3 text-sm text-[#ffeaf3]">
-            <Link href="/" className="hover:text-[#eaa0b7]" data-testid="link-footer-home">Home</Link>
-            <Link href="/products" className="hover:text-[#eaa0b7]" data-testid="link-footer-products">Syrups</Link>
-            <Link href="/about" className="hover:text-[#eaa0b7]" data-testid="link-footer-about">The story</Link>
-            <Link href="/contact" className="hover:text-[#eaa0b7]" data-testid="link-footer-contact">Enquire</Link>
+            <Link href="/" className="hover:text-[#eaa0b7] transition-colors" data-testid="link-footer-home">Home</Link>
+            <Link href="/products" className="hover:text-[#eaa0b7] transition-colors" data-testid="link-footer-products">Syrups</Link>
+            <Link href="/about" className="hover:text-[#eaa0b7] transition-colors" data-testid="link-footer-about">The story</Link>
+            <Link href="/enquire" className="hover:text-[#eaa0b7] transition-colors" data-testid="link-footer-contact">Enquire</Link>
           </div>
         </div>
+
+        {/* CONTACT DETAILS */}
         <div>
           <p className="eyebrow text-[#eaa0b7]">Contact</p>
           <div className="mt-5 space-y-3 text-sm leading-6 text-[#ffeaf3]">
-            <a href={`mailto:${brand.email}`} className="block break-all hover:text-[#eaa0b7]" data-testid="link-footer-email">{brand.email}</a>
-            <a href={`tel:${brand.phone.replace(/\s/g, '')}`} className="block hover:text-[#eaa0b7]" data-testid="link-footer-phone">{brand.phone}</a>
+            <a href={`mailto:${brand.email}`} className="block break-all hover:text-[#eaa0b7] transition-colors" data-testid="link-footer-email">{brand.email}</a>
+            <a href={`tel:${brand.phone.replace(/\s/g, '')}`} className="block hover:text-[#eaa0b7] transition-colors" data-testid="link-footer-phone">{brand.phone}</a>
             <p className="text-[#e6bfce]">{brand.address}</p>
           </div>
         </div>
       </div>
+
       <div className="border-t border-[#6b4353]">
         <div className="page-shell flex flex-col gap-2 py-5 text-[.66rem] uppercase tracking-[.15em] text-[#c997a9] sm:flex-row sm:items-center sm:justify-between">
           <span>Flamingo · Bengaluru</span>
@@ -286,5 +365,10 @@ export function SiteFooter() {
 }
 
 export function PageFrame({ children }: { children: ReactNode }) {
-  return <div className="site-noise min-h-[100dvh] overflow-x-hidden bg-[#ffeaf3] text-[#321e2a]">{children}</div>;
+  return (
+    <div className="site-noise min-h-[100dvh] overflow-x-hidden bg-[#ffeaf3] text-[#321e2a]">
+      {children}
+      <FloatingWhatsApp />
+    </div>
+  );
 }

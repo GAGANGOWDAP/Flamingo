@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { ArrowUpRight, Download, Wine } from 'lucide-react';
 import { Link, useParams } from 'wouter';
-import { syrupsList } from '@/data/site-data';
+import { syrupsList, socialLinks } from '@/data/site-data';
 import { updatePageSEO } from '@/lib/seo';
 import { SectionKicker } from '@/components/common-ui';
 import NotFound from '@/pages/not-found';
@@ -162,9 +162,10 @@ export function ProductDetailPage() {
               </Link>
 
               <a
-                href={`https://wa.me/918971825137?text=${encodeURIComponent(`Hello Flamingo, I would like to enquire about ${syrup.name}, 750 ml Professional Pack.`)}`}
+                href={socialLinks.getProductWhatsappUrl(syrup.name)}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Enquire about Flamingo ${syrup.name} Syrup on WhatsApp`}
                 className="inline-flex h-[48px] items-center gap-2 rounded-xl border border-rose-300 bg-white px-6 text-xs font-bold uppercase tracking-[.16em] text-[#b63d65] transition-colors hover:border-[#d84f78] hover:bg-[#fff3f8]"
                 data-testid="button-enquire-whatsapp-product"
               >
