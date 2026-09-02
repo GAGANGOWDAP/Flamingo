@@ -78,13 +78,13 @@ export function ProductsPage() {
         <div className="page-shell grid gap-10 py-16 md:grid-cols-[1.1fr_.9fr] md:py-24">
           <div>
             <SectionKicker>Our Collection</SectionKicker>
-            <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[.88] tracking-[-.03em] sm:text-6xl md:text-[5.5rem]">
+            <h1 className="mt-5 max-w-3xl font-display text-[clamp(42px,5.5vw,72px)] font-normal leading-[.92] tracking-[-.02em] text-[#321e2a]">
               29 FLAVOURS.<br />
-              <span className="italic text-[#d84f78]">ENDLESS POSSIBILITIES.</span>
+              <span className="italic font-normal text-[#d84f78]">ENDLESS POSSIBILITIES.</span>
             </h1>
           </div>
           <div className="flex flex-col justify-between gap-6 self-end">
-            <p className="max-w-md text-base leading-7 text-[#684454]">
+            <p className="max-w-[480px] font-sans text-[15px] md:text-[16px] font-normal leading-[1.62] text-[#684454]">
               Explore the Flamingo flavour collection crafted for creative beverage professionals, luxury hotels, craft cocktail bars, and specialty menus.
             </p>
             <div className="flex flex-wrap items-center gap-4">
@@ -93,7 +93,7 @@ export function ProductsPage() {
                 download="flamingo-product-catalogue.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2.5 rounded-xl border border-[#321e2a] bg-[#321e2a] px-6 py-3.5 font-sans text-[11px] font-bold uppercase tracking-[.16em] text-[#ffeaf3] shadow-sm transition-all duration-300 hover:bg-[#d84f78] hover:border-[#d84f78] hover:shadow-md hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2.5 rounded-xl border border-[#321e2a] bg-[#321e2a] px-6 py-3.5 font-sans text-[11px] font-semibold uppercase tracking-[.16em] text-[#ffeaf3] shadow-sm transition-all duration-300 hover:bg-[#d84f78] hover:border-[#d84f78] hover:shadow-md hover:-translate-y-0.5"
                 aria-label="Download Flamingo Product Catalogue PDF"
               >
                 <Download size={16} /> Download Product Catalogue ↓
@@ -109,7 +109,7 @@ export function ProductsPage() {
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             {/* SEARCH FLAVOURS INPUT */}
             <div className="w-full lg:max-w-md">
-              <label htmlFor="search-flavours-input" className="block text-xs font-bold uppercase tracking-[.14em] text-[#b63d65] mb-2">
+              <label htmlFor="search-flavours-input" className="block text-[11px] font-semibold uppercase tracking-[.14em] text-[#b63d65] mb-2">
                 SEARCH FLAVOURS:
               </label>
               <div className="relative">
@@ -120,7 +120,7 @@ export function ProductsPage() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search by flavour name (e.g. Passion Fruit, Lavender)..."
-                  className="w-full rounded-xl border-2 border-rose-300 bg-white py-3 pl-10 pr-10 text-sm font-semibold text-[#321e2a] shadow-sm outline-none transition-all placeholder:text-[#996074]/60 focus:border-[#d84f78] focus:ring-2 focus:ring-[#d84f78]/30"
+                  className="w-full rounded-xl border-2 border-rose-300 bg-white py-3 pl-10 pr-10 text-sm font-normal text-[#321e2a] shadow-sm outline-none transition-all placeholder:text-[#996074]/60 focus:border-[#d84f78] focus:ring-2 focus:ring-[#d84f78]/30"
                   data-testid="input-search-flavours"
                 />
                 {searchQuery && (
@@ -138,7 +138,7 @@ export function ProductsPage() {
 
             {/* SYRUP SELECT DROPDOWN NAVIGATOR */}
             <div className="w-full lg:max-w-xs">
-              <label htmlFor="syrup-dropdown-menu" className="block text-xs font-bold uppercase tracking-[.14em] text-[#b63d65] mb-2">
+              <label htmlFor="syrup-dropdown-menu" className="block text-[11px] font-semibold uppercase tracking-[.14em] text-[#b63d65] mb-2">
                 QUICK JUMP TO PAGE:
               </label>
               <div className="relative">
@@ -150,7 +150,7 @@ export function ProductsPage() {
                       setLocation(`/products/${e.target.value}`);
                     }
                   }}
-                  className="w-full appearance-none rounded-xl border-2 border-rose-300 bg-white px-4 py-3 pr-10 text-sm font-semibold text-[#321e2a] shadow-sm outline-none transition-all hover:border-[#d84f78] focus:border-[#d84f78] cursor-pointer"
+                  className="w-full appearance-none rounded-xl border-2 border-rose-300 bg-white px-4 py-3 pr-10 text-sm font-medium text-[#321e2a] shadow-sm outline-none transition-all hover:border-[#d84f78] focus:border-[#d84f78] cursor-pointer"
                   data-testid="select-syrup-dropdown"
                 >
                   <option value="" disabled>Choose a Syrup...</option>
@@ -167,7 +167,7 @@ export function ProductsPage() {
 
           {/* FLAVOUR FAMILY CATEGORY FILTERS */}
           <div className="border-t border-rose-300/70 pt-6">
-            <span className="block text-xs font-bold uppercase tracking-[.14em] text-[#996074] mb-3">
+            <span className="block text-[11px] font-semibold uppercase tracking-[.14em] text-[#996074] mb-3">
               Filter by Category:
             </span>
             <div className="flex flex-wrap gap-2" role="group" aria-label="Filter syrups by category family">
@@ -179,7 +179,7 @@ export function ProductsPage() {
                     key={cat}
                     type="button"
                     onClick={() => setSelectedCategory(cat)}
-                    className={`border px-3.5 py-2 text-[.68rem] font-bold uppercase tracking-[.12em] transition-all rounded-xl flex items-center gap-1.5 ${isSelected
+                    className={`border px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[.12em] transition-all rounded-xl flex items-center gap-1.5 ${isSelected
                       ? 'border-[#d84f78] bg-[#d84f78] text-white shadow-sm'
                       : 'border-rose-300 bg-white text-[#593b49] hover:border-[#d84f78] hover:bg-[#fbd6e4]/40'
                       }`}
@@ -188,7 +188,7 @@ export function ProductsPage() {
                   >
                     <span>{categoryIcons[cat]}</span>
                     <span>{cat}</span>
-                    <span className={`rounded-full px-1.5 py-0.5 text-[.6rem] ${isSelected ? 'bg-white/30 text-white' : 'bg-rose-100 text-[#b63d65]'}`}>
+                    <span className={`rounded-full px-1.5 py-0.5 text-[10px] ${isSelected ? 'bg-white/30 text-white' : 'bg-rose-100 text-[#b63d65]'}`}>
                       {count}
                     </span>
                   </button>
@@ -201,10 +201,10 @@ export function ProductsPage() {
         {/* CATALOGUE HEADER & COUNT */}
         <div className="mt-12">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between border-b border-rose-300 pb-4 mb-8">
-            <h2 className="font-display text-3xl font-semibold text-[#321e2a]">
+            <h2 className="font-display text-[clamp(28px,3.5vw,42px)] font-normal text-[#321e2a]">
               {selectedCategory === 'All' ? '29 Exceptional Syrups' : `${selectedCategory} Flavours`}
             </h2>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#b63d65]">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-[#b63d65]">
               Showing {filteredSyrups.length} of {syrupsList.length} Syrups
             </span>
           </div>
@@ -215,7 +215,7 @@ export function ProductsPage() {
               <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#d84f78] text-white shadow-sm">
                 <Wine size={32} />
               </div>
-              <h3 className="mt-6 font-display text-4xl font-semibold text-[#321e2a]">
+              <h3 className="mt-6 font-display text-4xl font-normal text-[#321e2a]">
                 NO FLAVOURS FOUND
               </h3>
               <p className="mt-3 max-w-md mx-auto text-sm text-[#684454]">
@@ -227,7 +227,7 @@ export function ProductsPage() {
                   setSearchQuery('');
                   setSelectedCategory('All');
                 }}
-                className="ink-button mt-8 inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-xs font-bold uppercase tracking-[.16em]"
+                className="ink-button mt-8 inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-[11px] font-semibold uppercase tracking-[.16em]"
                 data-testid="button-reset-search"
               >
                 View All 29 Flavours <ArrowRight size={15} />
@@ -244,7 +244,6 @@ export function ProductsPage() {
               viewport={{ once: true, margin: '-40px' }}
             >
               {filteredSyrups.map((syrup) => {
-                // Compute flavour profile notes
                 const profileParts = syrup.tag.split(/&|&|·|\//).map((s) => s.trim()).filter(Boolean);
                 const profileText = profileParts.length >= 2
                   ? `${profileParts[0]} · ${profileParts[1]} · ${syrup.category}`
@@ -264,11 +263,11 @@ export function ProductsPage() {
                           className="h-3.5 w-3.5 rounded-full shadow-sm"
                           style={{ backgroundColor: syrup.badgeColor }}
                         />
-                        <span className="text-[.68rem] font-bold uppercase tracking-widest text-[#b63d65]">
+                        <span className="text-[10px] font-semibold uppercase tracking-widest text-[#b63d65]">
                           {syrup.category}
                         </span>
                       </div>
-                      <span className="rounded-full bg-white/90 px-2.5 py-1 text-[.64rem] font-bold uppercase tracking-wider text-[#7e3450] shadow-sm">
+                      <span className="rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#7e3450] shadow-sm">
                         {syrup.tag}
                       </span>
                     </div>
@@ -288,25 +287,25 @@ export function ProductsPage() {
                           )}
                         </div>
 
-                        {/* PRODUCT TITLE */}
-                        <h3 className="font-display text-3xl font-semibold leading-tight text-[#321e2a] transition-colors duration-300 group-hover:text-[#d84f78]">
+                        {/* PRODUCT TITLE - CORMORANT GARAMOND 500 */}
+                        <h3 className="font-display text-[clamp(26px,2.5vw,34px)] font-medium leading-[1.05] text-[#321e2a] transition-colors duration-300 group-hover:text-[#d84f78]">
                           {syrup.name}
                         </h3>
                       </Link>
 
-                      {/* SHORT DESCRIPTION */}
-                      <p className="mt-2 font-sans text-xs leading-5 text-[#684454] line-clamp-2">
+                      {/* SHORT DESCRIPTION - INTER 400 */}
+                      <p className="mt-2 font-sans text-xs leading-[1.6] text-[#684454] line-clamp-2">
                         {syrup.description}
                       </p>
 
                       {/* FLAVOUR PROFILE NOTES */}
-                      <div className="mt-3 rounded-lg border border-rose-300/60 bg-white/80 px-3 py-1.5 text-[.68rem] font-bold text-[#321e2a]">
+                      <div className="mt-3 rounded-lg border border-rose-300/60 bg-white/80 px-3 py-1.5 text-[11px] font-medium text-[#321e2a] tracking-[0.04em]">
                         <span className="text-[#b63d65]">PROFILE: </span>
                         <span>{profileText}</span>
                       </div>
 
                       {/* PACK SIZE & BEST FOR APPLICATIONS */}
-                      <div className="mt-3 flex items-center justify-between gap-2 text-[.66rem] font-bold uppercase tracking-wider text-[#593b49]">
+                      <div className="mt-3 flex items-center justify-between gap-2 text-[10px] font-semibold uppercase tracking-wider text-[#593b49]">
                         <span className="rounded-md bg-[#fbd6e4]/80 px-2 py-1 text-[#b63d65]">
                           750 ml Professional Pack
                         </span>
@@ -321,7 +320,7 @@ export function ProductsPage() {
                       {/* ENQUIRE ABOUT THIS FLAVOUR CTA */}
                       <Link
                         href={`/enquire?product=${syrup.id}`}
-                        className="ink-button flex w-full items-center justify-center gap-2 rounded-xl py-3 text-[.68rem] font-bold uppercase tracking-[.16em] transition-transform hover:-translate-y-0.5 shadow-sm"
+                        className="ink-button flex w-full items-center justify-center gap-2 rounded-xl py-3 text-[11px] font-semibold uppercase tracking-[.16em] transition-transform hover:-translate-y-0.5 shadow-sm"
                         data-testid={`button-enquire-${syrup.id}`}
                       >
                         Enquire About This Flavour <ArrowUpRight size={14} />
@@ -330,7 +329,7 @@ export function ProductsPage() {
                       {/* VIEW PRODUCT PAGE LINK */}
                       <Link
                         href={`/products/${syrup.id}`}
-                        className="flex items-center justify-center gap-1 py-1 text-[.66rem] font-bold uppercase tracking-wider text-[#d84f78] hover:underline"
+                        className="flex items-center justify-center gap-1 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#d84f78] hover:underline"
                         data-testid={`link-view-page-${syrup.id}`}
                       >
                         View Details Page →
@@ -349,19 +348,19 @@ export function ProductsPage() {
         <div className="page-shell grid gap-8 py-16 md:grid-cols-[1fr_1fr] md:py-24">
           <div>
             <SectionKicker>29 Exceptional Flavours</SectionKicker>
-            <h2 className="mt-4 font-display text-5xl leading-[.88] md:text-7xl">
+            <h2 className="mt-4 font-display text-[clamp(36px,4.5vw,60px)] font-normal leading-[.90]">
               Looking for<br />
               <span className="italic text-[#eaa0b7]">Something Specific?</span>
             </h2>
           </div>
-          <div className="flex flex-col justify-center gap-6 text-[#e6bfce] leading-7">
+          <div className="flex flex-col justify-center gap-6 text-[#e6bfce] leading-7 font-sans text-[15px]">
             <p>
               Whether you're a bar, restaurant, hotel, café or distributor, talk to the Flamingo team about your syrup requirements.
             </p>
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link
                 href="/enquire"
-                className="ink-button inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-xs font-bold uppercase tracking-[.18em]"
+                className="ink-button inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-[11px] font-semibold uppercase tracking-[.18em]"
                 data-testid="button-products-bottom-enquire"
               >
                 Enquire Now <ArrowUpRight size={16} />
@@ -371,7 +370,7 @@ export function ProductsPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Contact Flamingo on WhatsApp"
-                className="inline-flex items-center gap-2 rounded-xl border border-rose-300/40 bg-white/10 px-6 py-3.5 text-xs font-bold uppercase tracking-[.16em] text-white transition-colors hover:bg-white/20"
+                className="inline-flex items-center gap-2 rounded-xl border border-rose-300/40 bg-white/10 px-6 py-3.5 text-[11px] font-semibold uppercase tracking-[.16em] text-white transition-colors hover:bg-white/20"
                 data-testid="button-products-bottom-whatsapp"
               >
                 WhatsApp Us <ArrowUpRight size={15} />

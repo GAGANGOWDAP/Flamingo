@@ -67,7 +67,7 @@ export function SiteHeader() {
           <Link
             href="/"
             data-testid="link-nav-home"
-            className={`relative py-2 text-[.74rem] font-bold uppercase tracking-[.18em] transition-colors duration-200 hover:text-[#d84f78] ${
+            className={`relative py-2 text-[.74rem] font-medium uppercase tracking-[.14em] transition-colors duration-200 hover:text-[#d84f78] ${
               location === '/' ? 'text-[#d84f78]' : 'text-[#593b49]'
             }`}
           >
@@ -81,7 +81,7 @@ export function SiteHeader() {
               type="button"
               onClick={() => setProductsOpen((prev) => !prev)}
               data-testid="link-nav-products-dropdown"
-              className={`flex items-center gap-1.5 py-2 text-[.74rem] font-bold uppercase tracking-[.18em] transition-colors duration-200 hover:text-[#d84f78] ${
+              className={`flex items-center gap-1.5 py-2 text-[.74rem] font-medium uppercase tracking-[.14em] transition-colors duration-200 hover:text-[#d84f78] ${
                 location.startsWith('/products') ? 'text-[#d84f78]' : 'text-[#593b49]'
               }`}
               aria-expanded={productsOpen}
@@ -104,7 +104,7 @@ export function SiteHeader() {
                         <Wine size={18} />
                       </span>
                       <div>
-                        <p className="text-xs font-bold uppercase tracking-wider text-[#321e2a] group-hover:text-[#d84f78]">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-[#321e2a] group-hover:text-[#d84f78]">
                           All Syrups
                         </p>
                         <p className="text-[.68rem] font-medium text-[#996074]">
@@ -126,7 +126,7 @@ export function SiteHeader() {
                         <Flame size={18} />
                       </span>
                       <div>
-                        <p className="text-xs font-bold uppercase tracking-wider text-[#321e2a] group-hover:text-[#d84f78]">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-[#321e2a] group-hover:text-[#d84f78]">
                           Best Sellers
                         </p>
                         <p className="text-[.68rem] font-medium text-[#996074]">
@@ -152,7 +152,7 @@ export function SiteHeader() {
                         <Download size={18} />
                       </span>
                       <div>
-                        <p className="text-xs font-bold uppercase tracking-wider text-[#321e2a] group-hover:text-[#d84f78]">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-[#321e2a] group-hover:text-[#d84f78]">
                           Download Catalogue ↓
                         </p>
                         <p className="text-[.68rem] font-medium text-[#996074]">
@@ -170,7 +170,7 @@ export function SiteHeader() {
           <Link
             href="/about"
             data-testid="link-nav-the-story"
-            className={`relative py-2 text-[.74rem] font-bold uppercase tracking-[.18em] transition-colors duration-200 hover:text-[#d84f78] ${
+            className={`relative py-2 text-[.74rem] font-medium uppercase tracking-[.14em] transition-colors duration-200 hover:text-[#d84f78] ${
               location === '/about' ? 'text-[#d84f78]' : 'text-[#593b49]'
             }`}
           >
@@ -181,7 +181,7 @@ export function SiteHeader() {
           <Link
             href="/enquire"
             data-testid="link-nav-enquire"
-            className={`relative py-2 text-[.74rem] font-bold uppercase tracking-[.18em] transition-colors duration-200 hover:text-[#d84f78] ${
+            className={`relative py-2 text-[.74rem] font-medium uppercase tracking-[.14em] transition-colors duration-200 hover:text-[#d84f78] ${
               location === '/enquire' || location === '/contact' ? 'text-[#d84f78]' : 'text-[#593b49]'
             }`}
           >
