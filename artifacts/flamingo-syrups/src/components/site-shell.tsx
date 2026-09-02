@@ -48,19 +48,21 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-rose-300/60 bg-[#fff3f8]/90 backdrop-blur-md transition-all duration-300">
-      <div className="page-shell flex h-[76px] items-center justify-between">
+      <div className="page-shell flex h-[84px] items-center justify-between">
         {/* BRAND LOGO & WORDMARK */}
         <Link
           href="/"
-          className="flex items-center gap-3 transition-transform hover:scale-[1.02]"
+          className="flex items-center gap-3.5 transition-transform hover:scale-[1.02]"
           data-testid="link-header-logo"
         >
-          <img
-            src={logoPath}
-            alt="Flamingo Premium Syrups logo"
-            className="h-11 w-11 rounded-xl object-contain shadow-sm border border-rose-200 bg-white p-0.5"
-          />
-          <span className="hidden font-display text-[1.45rem] font-semibold tracking-[.04em] text-[#321e2a] sm:block">
+          <div className="flex h-[64px] w-[64px] shrink-0 items-center justify-center overflow-hidden rounded-[20px] border border-rose-300 bg-white p-1 shadow-sm transition-all duration-300 hover:border-[#d84f78]">
+            <img
+              src={logoPath}
+              alt="Flamingo Premium Syrups logo"
+              className="h-full w-full object-contain"
+            />
+          </div>
+          <span className="hidden font-display text-[1.5rem] font-semibold tracking-[.04em] text-[#321e2a] sm:block">
             {brand.name}
           </span>
         </Link>
