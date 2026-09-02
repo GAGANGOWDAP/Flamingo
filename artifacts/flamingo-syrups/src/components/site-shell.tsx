@@ -365,8 +365,13 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-[#6b4353]">
-        <div className="page-shell flex flex-col gap-2 py-5 text-[.66rem] uppercase tracking-[.15em] text-[#c997a9] sm:flex-row sm:items-center sm:justify-between">
+        <div className="page-shell flex flex-col gap-3 py-5 text-[.66rem] uppercase tracking-[.15em] text-[#c997a9] sm:flex-row sm:items-center sm:justify-between">
           <span>Flamingo · Bengaluru</span>
+          <div className="flex items-center gap-4">
+            <Link href="/privacy" className="hover:text-white transition-colors" data-testid="link-footer-privacy">Privacy Policy</Link>
+            <span>·</span>
+            <Link href="/terms" className="hover:text-white transition-colors" data-testid="link-footer-terms">Terms of Service</Link>
+          </div>
           <span>{syrupsList.length} Exceptional Flavours</span>
         </div>
       </div>

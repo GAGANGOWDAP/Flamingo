@@ -1,11 +1,32 @@
-import { useEffect } from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react';
 import { Link } from 'wouter';
 import { syrupsList, timeline } from '@/data/site-data';
 import { updatePageSEO } from '@/lib/seo';
 import { SectionKicker, FlamingoMark } from '@/components/common-ui';
 
+const faqs = [
+  {
+    q: 'What bottle size is available for Flamingo syrups?',
+    a: 'All 29 Flamingo syrup flavours are packaged in standard 750 ml professional speed-pour bottles designed for craft cocktail bars, hotels, restaurants, and cafés.',
+  },
+  {
+    q: 'How can I enquire about B2B trade supply or request samples?',
+    a: 'You can submit a trade request on our /enquire page or connect directly with our Master Mixologist and sales team via WhatsApp for sample specs and menu consultation.',
+  },
+  {
+    q: 'Which beverage applications are Flamingo syrups best suited for?',
+    a: 'Our syrup range is engineered for high versatility across craft cocktails, signature mocktails, spritzes, iced teas, coffee creations, and specialty desserts.',
+  },
+  {
+    q: 'Where can I download the complete product catalogue?',
+    a: 'You can download the official 29-Flavour Product Catalogue PDF directly from the website header or product catalogue page.',
+  },
+];
+
 export function AboutPage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
   useEffect(() => {
     updatePageSEO({
       title: 'For Business & Trade | Flamingo Premium Syrups',
@@ -18,6 +39,18 @@ export function AboutPage() {
           '@type': 'AboutPage',
           name: 'About Flamingo & Master Mixologist Manoj Alphones',
           url: 'https://gagangowdap.github.io/Flamingo/about',
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqs.map((f) => ({
+            '@type': 'Question',
+            name: f.q,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: f.a,
+            },
+          })),
         },
       ],
     });
@@ -105,7 +138,58 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* SECTION 4: CALL TO ACTION */}
+      {/* SECTION 4: FREQUENTLY ASKED QUESTIONS (B2B FAQ) */}
+      <section className="page-shell py-20 md:py-28 border-b border-rose-300/70">
+        <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
+          <div>
+            <SectionKicker>Trade FAQ</SectionKicker>
+            <h2 className="mt-3 font-display text-4xl font-semibold text-[#321e2a] md:text-5xl">
+              Frequently Asked Questions
+            </h2>
+            <p className="mt-4 text-sm text-[#684454] leading-relaxed">
+              Common questions from hospitality buyers, master mixologists, and beverage managers regarding Flamingo syrup supply.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div
+                  key={idx}
+                  className="rounded-2xl border border-rose-300/80 bg-[#fff3f8] overflow-hidden transition-all duration-300"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    className="flex w-full items-center justify-between p-6 text-left"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="font-display text-xl font-semibold text-[#321e2a]">
+                      {faq.q}
+                    </span>
+                    <ChevronDown
+                      size={18}
+                      className={`shrink-0 text-[#d84f78] transition-transform duration-300 ${
+                        isOpen ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  {isOpen && (
+                    <div className="px-6 pb-6 pt-0 border-t border-rose-200/80">
+                      <p className="mt-3 text-sm leading-relaxed text-[#684454]">
+                        {faq.a}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5: CALL TO ACTION */}
       <section className="page-shell py-24 md:py-32">
         <div className="mx-auto max-w-4xl text-center">
           <Sparkles size={20} className="mx-auto text-[#d84f78]" />
