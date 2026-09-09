@@ -62,14 +62,13 @@ export function AboutPage() {
       <section className="relative overflow-hidden border-b border-rose-300/70 bg-[#cfe7dc]">
         <div className="page-shell grid min-h-[600px] items-center gap-10 py-20 md:grid-cols-[1fr_.8fr]">
           <div>
-            <SectionKicker>The story</SectionKicker>
+            <SectionKicker>Our Vision</SectionKicker>
             <h1 className="mt-5 max-w-3xl font-display text-[clamp(4rem,9vw,8.4rem)] leading-[.78] tracking-[-.04em] text-[#234039]">
-              A drink is
+              To explore the world of flavours, create extraordinary taste experiences and share the
+delight of flavour with everyone
               <br />
-              <span className="italic text-[#b63d65]">a feeling</span>
-              <br />
-              before it is
-              <br />a recipe.
+              <span className="italic text-[#b63d65]">Flamingo Flavours – Explore. Mix. Create. Delight </span>
+              
             </h1>
           </div>
           <div className="flex justify-center md:justify-end">
