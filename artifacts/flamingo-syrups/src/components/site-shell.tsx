@@ -305,7 +305,7 @@ export function FloatingSocials() {
         href="/"
         aria-label="Go to Flamingo Home Page"
         data-testid="button-floating-home-mascot"
-        className="group relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-2 border-white bg-gradient-to-tr from-[#ffeaf3] via-[#ffd6e5] to-[#f7c4d6] p-1 shadow-[0_10px_25px_rgba(216,79,120,0.45)] transition-all duration-300 hover:scale-115 hover:shadow-[0_14px_32px_rgba(216,79,120,0.65)] focus:outline-none focus:ring-2 focus:ring-[#d84f78] focus:ring-offset-2"
+        className="group relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-2 border-white bg-white p-1 shadow-[0_10px_25px_rgba(216,79,120,0.45)] transition-all duration-300 hover:scale-115 hover:shadow-[0_14px_32px_rgba(216,79,120,0.65)] focus:outline-none focus:ring-2 focus:ring-[#d84f78] focus:ring-offset-2"
       >
         <img
           src={mascotHomePath}
