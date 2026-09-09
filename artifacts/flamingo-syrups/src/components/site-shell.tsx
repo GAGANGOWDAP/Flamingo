@@ -300,6 +300,23 @@ export function SiteHeader() {
 export function FloatingSocials() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-3">
+      {/* FLOATING HOME MASCOT BUTTON (ROUND ICON LEADING TO HOME) */}
+      <Link
+        href="/"
+        aria-label="Go to Flamingo Home Page"
+        data-testid="button-floating-home-mascot"
+        className="group relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-2 border-white bg-gradient-to-tr from-[#ffeaf3] via-[#ffd6e5] to-[#f7c4d6] p-1 shadow-[0_10px_25px_rgba(216,79,120,0.45)] transition-all duration-300 hover:scale-115 hover:shadow-[0_14px_32px_rgba(216,79,120,0.65)] focus:outline-none focus:ring-2 focus:ring-[#d84f78] focus:ring-offset-2"
+      >
+        <img
+          src={mascotHomePath}
+          alt="Flamingo Mascot — Click to return to Home"
+          className="h-full w-full rounded-full object-cover transition-transform duration-300 group-hover:scale-110"
+        />
+        <span className="pointer-events-none absolute right-16 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-md bg-[#321e2a] px-2.5 py-1 text-[11px] font-medium text-[#ffeaf3] opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100">
+          Home
+        </span>
+      </Link>
+
       {/* FLOATING INSTAGRAM ROUND ICON BUTTON */}
       <a
         href={socialLinks.instagram}
