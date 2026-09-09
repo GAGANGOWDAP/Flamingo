@@ -310,7 +310,7 @@ export function FloatingSocials() {
         <img
           src={mascotHomePath}
           alt="Flamingo Mascot — Click to return to Home"
-          className="h-full w-full rounded-full object-cover transition-transform duration-300 group-hover:scale-110"
+          className="h-full w-full object-contain p-0.5 transition-transform duration-300 group-hover:scale-110"
         />
         <span className="pointer-events-none absolute right-16 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-md bg-[#321e2a] px-2.5 py-1 text-[11px] font-medium text-[#ffeaf3] opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100">
           Home
