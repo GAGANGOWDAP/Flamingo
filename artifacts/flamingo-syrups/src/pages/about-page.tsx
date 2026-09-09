@@ -60,18 +60,17 @@ export function AboutPage() {
     <main>
       {/* SECTION 1: THE STORY HERO BANNER */}
       <section className="relative overflow-hidden border-b border-rose-300/70 bg-[#cfe7dc]">
-        <div className="page-shell grid min-h-[600px] items-center gap-10 py-20 md:grid-cols-[1fr_.8fr]">
-          <div>
+        <div className="page-shell flex flex-col md:flex-row min-h-[400px] items-center justify-between gap-8 py-16">
+          <div className="overflow-x-auto max-w-full">
             <SectionKicker>Our Vision</SectionKicker>
-            <h1 className="mt-5 max-w-3xl font-display text-[clamp(4rem,9vw,8.4rem)] leading-[.78] tracking-[-.04em] text-[#234039]">
-              To explore the world of flavours, create extraordinary taste experiences and share the
-delight of flavour with everyone
-              <br />
-              <span className="italic text-[#b63d65]">Flamingo Flavours – Explore. Mix. Create. Delight </span>
-              
+            <h1 className="mt-4 font-display text-[12px] font-semibold text-[#234039] leading-normal whitespace-nowrap">
+              To explore the world of flavours, create extraordinary taste experiences and share the delight of flavour with everyone
             </h1>
+            <p className="mt-2 font-display text-[11px] italic text-[#b63d65] leading-normal whitespace-nowrap">
+              Flamingo Flavours – Explore. Mix. Create. Delight
+            </p>
           </div>
-          <div className="flex justify-center md:justify-end">
+          <div className="flex justify-center md:justify-end shrink-0">
             <FlamingoMark compact />
           </div>
         </div>
