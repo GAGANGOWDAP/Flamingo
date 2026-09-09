@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import logoPath from "@assets/2.jpg_1787233517766.jpeg";
+import flamingoOriginArtwork from "@assets/flamingo_origin_artwork.jpg";
 import { updatePageSEO } from "@/lib/seo";
 import {
   SectionKicker,
