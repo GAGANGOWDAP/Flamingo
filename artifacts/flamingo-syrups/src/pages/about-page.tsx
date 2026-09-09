@@ -63,10 +63,10 @@ export function AboutPage() {
         <div className="page-shell flex flex-col md:flex-row min-h-[400px] items-center justify-between gap-8 py-16">
           <div className="overflow-x-auto max-w-full">
             <SectionKicker>Our Vision</SectionKicker>
-            <h1 className="mt-4 font-display text-[12px] font-semibold text-[#234039] leading-normal whitespace-nowrap">
+            <h1 className="mt-4 font-display text-[25px] font-semibold text-[#234039] leading-normal whitespace-nowrap">
               To explore the world of flavours, create extraordinary taste experiences and share the delight of flavour with everyone
             </h1>
-            <p className="mt-2 font-display text-[11px] italic text-[#b63d65] leading-normal whitespace-nowrap">
+            <p className="mt-2 font-display text-[23px] italic text-[#b63d65] leading-normal whitespace-nowrap">
               Flamingo Flavours – Explore. Mix. Create. Delight
             </p>
           </div>
