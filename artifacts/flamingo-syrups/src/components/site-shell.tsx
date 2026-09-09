@@ -317,6 +317,25 @@ export function FloatingSocials() {
         </span>
       </Link>
 
+      {/* FLOATING CATALOGUE DOWNLOAD ROUND ICON BUTTON (PLACED ABOVE INSTAGRAM) */}
+      <a
+        href={`${import.meta.env.BASE_URL}catalogue/flamingo-product-catalogue.pdf`}
+        download="flamingo-product-catalogue.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Download Catalogue"
+        data-testid="button-floating-catalogue"
+        className="group relative flex h-12 w-12 items-center justify-center rounded-full border border-[#d84f78]/50 bg-[#321e2a] text-[#ffeaf3] shadow-[0_8px_22px_rgba(50,30,42,0.4)] transition-all duration-300 hover:scale-110 hover:border-[#d84f78] hover:bg-[#452739] hover:text-white hover:shadow-[0_12px_28px_rgba(153,63,98,0.5)] focus:outline-none focus:ring-2 focus:ring-[#d84f78] focus:ring-offset-2"
+      >
+        <Download
+          size={20}
+          className="transition-transform duration-300 group-hover:-translate-y-0.5"
+        />
+        <span className="pointer-events-none absolute right-16 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-md bg-[#321e2a] px-2.5 py-1 text-[11px] font-medium text-[#ffeaf3] opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100">
+          Catalogue
+        </span>
+      </a>
+
       {/* FLOATING INSTAGRAM ROUND ICON BUTTON */}
       <a
         href={socialLinks.instagram}
@@ -330,22 +349,6 @@ export function FloatingSocials() {
           size={22}
           className="transition-transform duration-300 group-hover:scale-110"
         />
-      </a>
-
-      {/* FLOATING CATALOGUE DOWNLOAD BUTTON */}
-      <a
-        href={`${import.meta.env.BASE_URL}catalogue/flamingo-product-catalogue.pdf`}
-        download="flamingo-product-catalogue.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Download Catalogue"
-        data-testid="button-floating-catalogue"
-        className="group flex h-12 items-center gap-2 rounded-full border border-[#d84f78]/50 bg-[#321e2a] px-3.5 text-[#ffeaf3] shadow-[0_8px_22px_rgba(50,30,42,0.4)] transition-all duration-300 hover:scale-105 hover:border-[#d84f78] hover:bg-[#452739] hover:text-white hover:shadow-[0_12px_28px_rgba(153,63,98,0.5)] focus:outline-none focus:ring-2 focus:ring-[#d84f78] focus:ring-offset-2"
-      >
-        <Download size={16} className="shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5" />
-        <span className="hidden text-[11px] font-semibold uppercase tracking-[.14em] sm:inline">
-          Catalogue
-        </span>
       </a>
 
       {/* FLOATING WHATSAPP ROUND ICON BUTTON */}
