@@ -76,7 +76,41 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* SECTION 2: THE MAKER (MANOJ ALPHONES BIOGRAPHY) */}
+      {/* SECTION 2: ABOUT THE FOUNDER (SELVAMANI K.) */}
+      <section className="border-b border-rose-300/60 bg-[#fdfbf7] py-20 md:py-28">
+        <div className="page-shell grid gap-12 md:grid-cols-[.75fr_1.25fr]">
+          <div>
+            <SectionKicker>About the founder</SectionKicker>
+            <h2 className="mt-5 font-display text-5xl leading-[.90] md:text-7xl text-[#321e2a]">
+              Selvamani
+              <br />
+              <span className="italic text-[#d84f78]">K.</span>
+            </h2>
+            <p className="mt-4 font-sans text-xs font-semibold uppercase tracking-[.2em] text-[#996074]">
+              Founder – Flamingo Flavours
+            </p>
+          </div>
+          <div className="max-w-2xl font-sans text-base leading-8 text-[#684454] space-y-6">
+            <p className="font-display text-xl md:text-2xl italic font-normal text-[#b63d65] leading-relaxed">
+              Selvamani K., the founder of Flamingo Flavours, began his professional journey with a passion for hospitality and a deep curiosity for the art of flavours.
+            </p>
+            <p>
+              After graduating in Hotel Management in 2007, he chose to specialize in the world of bar operations and mixology, where creativity, precision and flavour play a vital role.
+            </p>
+            <p>
+              His journey from a young hospitality professional to an internationally trained bartender and mixologist was shaped by years of hands-on experience, continuous learning and a passion for creating exceptional flavour experiences. Through participation and victories in national and international competitions, he had the opportunity to explore different countries, cultures, ingredients and beverage traditions.
+            </p>
+            <p>
+              Travelling around the world exposed him to diverse flavour profiles and innovative techniques. These experiences helped him understand how individual ingredients can be carefully balanced and transformed into memorable taste experiences.
+            </p>
+            <p className="font-medium text-[#321e2a] border-l-2 border-[#d84f78]/60 pl-4 py-0.5">
+              With years of experience in bartending, mixology, flavour exploration, research, training and product development, Selvamani K. is now bringing his knowledge from the bar to the world of flavour creation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3: THE MAKER (MANOJ ALPHONES BIOGRAPHY) */}
       <section className="page-shell grid gap-12 py-24 md:grid-cols-[.75fr_1.25fr] md:py-32">
         <div>
           <SectionKicker>The maker</SectionKicker>
