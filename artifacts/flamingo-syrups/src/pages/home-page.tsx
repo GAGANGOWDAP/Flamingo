@@ -273,15 +273,6 @@ export function HomePage() {
               </motion.div>
             ))}
           </motion.div>
-          <div className="mt-12 text-center">
-            <Link
-              href="/products"
-              className="ink-button inline-flex items-center gap-3 px-6 py-4 text-[11px] font-semibold uppercase tracking-[.16em]"
-              data-testid="link-home-catalogue"
-            >
-              Explore Syrups Catalogue <ArrowRight size={16} />
-            </Link>
-          </div>
         </div>
       </section>
 
