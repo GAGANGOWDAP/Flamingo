@@ -149,17 +149,30 @@ export function HomePage() {
       </section>
 
       {/* THE BIRTH OF FLAMINGO FLAVOURS SECTION */}
-      <section className="border-t border-rose-300/60 bg-[#faf4f6] py-20 md:py-28">
-        <div className="page-shell">
-          <div className="max-w-3xl">
+      <section className="relative overflow-hidden border-t border-b border-[#ebd7df]/70 bg-[#fdfbf7] py-20 md:py-28">
+        <div className="page-shell grid gap-12 lg:grid-cols-[1.15fr_.85fr] lg:items-center">
+          {/* LEFT COLUMN: STORY CONTENT */}
+          <div className="reveal">
             <SectionKicker>Our Origin</SectionKicker>
-            <h2 className="mt-4 font-display text-[clamp(34px,4.5vw,56px)] font-normal leading-[.95] text-[#321e2a]">
+
+            <h2 className="mt-4 font-display text-[clamp(34px,4.5vw,56px)] font-normal leading-[.96] tracking-[-.02em] text-[#321e2a]">
               The Birth of Flamingo Flavours
             </h2>
-            <div className="mt-8 grid gap-6 font-sans text-[15px] md:text-[17px] font-normal leading-[1.68] text-[#684454]">
-              <p className="font-display text-xl md:text-2xl italic font-normal text-[#b63d65] leading-snug">
-                Flamingo Flavours was born from a simple idea — to share the delight of exceptional flavours with everyone.
-              </p>
+
+            {/* SUBTLE DECORATIVE ACCENT */}
+            <div className="mt-5 flex items-center gap-3 text-[#d84f78]/70">
+              <span className="h-[1px] w-12 bg-gradient-to-r from-[#d84f78]/70 to-transparent" />
+              <span className="text-xs font-serif text-[#b63d65]">✦</span>
+              <span className="h-[1px] w-16 bg-gradient-to-r from-[#d84f78]/40 to-transparent" />
+            </div>
+
+            {/* INTRODUCTORY DISTINCT ITALIC SENTENCE */}
+            <p className="mt-7 font-display text-xl md:text-2xl italic font-normal text-[#b63d65] leading-[1.38] border-l-2 border-[#d84f78]/60 pl-5 py-0.5">
+              Flamingo Flavours was born from a simple idea — to share the delight of exceptional flavours with everyone.
+            </p>
+
+            {/* BODY PARAGRAPHS */}
+            <div className="mt-7 space-y-4 font-sans text-[15px] md:text-[16px] font-normal leading-[1.68] text-[#593b49] max-w-xl">
               <p>
                 Combining professional mixology knowledge with continuous research and development, Flamingo Flavours aims to create high-quality flavour syrups that inspire creativity in beverages, desserts and culinary applications.
               </p>
@@ -169,6 +182,31 @@ export function HomePage() {
               <p className="font-medium text-[#321e2a]">
                 From the world of international mixology to your glass, cup and plate, Flamingo Flavours is a journey of passion, creativity and taste.
               </p>
+            </div>
+
+            {/* FINISHING LINE */}
+            <div className="mt-10 pt-6 border-t border-[#ebd7df]/60">
+              <p className="text-[11px] font-semibold uppercase tracking-[.22em] text-[#996074]">
+                CRAFTED WITH PASSION • INSPIRED BY FLAVOUR
+              </p>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: ATTACHED FLAMINGO PHOTO */}
+          <div className="reveal reveal-delay-2 relative flex items-center justify-center lg:justify-end">
+            <div className="relative w-full max-w-[480px]">
+              {/* DECORATIVE SOFT PINK BACKGROUND GLOW */}
+              <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-tr from-[#f9d7e4]/60 via-[#ffeaf3]/80 to-[#c5e2d5]/50 blur-xl opacity-70" />
+              
+              {/* MAIN FLAMINGO ARTWORK CONTAINER */}
+              <div className="relative overflow-hidden rounded-2xl border-4 border-[#fff9fb] bg-[#fff9fb] shadow-[0_20px_50px_rgba(153,63,98,.16)] transition-transform duration-700 hover:scale-[1.01]">
+                <img
+                  src={flamingoOriginArtwork}
+                  alt="Flamingo Flavours artwork: A vibrant pink flamingo enjoying a craft cocktail at sunset"
+                  className="w-full h-auto max-h-[520px] object-cover rounded-xl"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </div>
