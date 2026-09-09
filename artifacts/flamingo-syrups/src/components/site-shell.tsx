@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import logoPath from "@assets/2.jpg_1787233517766.jpeg";
-import mascotHomePath from "@assets/flamingo_home_mascot.jpg";
+import mascotHomePath from "@assets/flamingo_home_mascot.png";
 import { brand, syrupsList, socialLinks } from "@/data/site-data";
 import { WhatsAppIcon } from "@/components/common-ui";
 
