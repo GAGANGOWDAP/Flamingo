@@ -147,6 +147,32 @@ export function HomePage() {
         </div>
       </section>
 
+      {/* THE BIRTH OF FLAMINGO FLAVOURS SECTION */}
+      <section className="border-t border-rose-300/60 bg-[#faf4f6] py-20 md:py-28">
+        <div className="page-shell">
+          <div className="max-w-3xl">
+            <SectionKicker>Our Origin</SectionKicker>
+            <h2 className="mt-4 font-display text-[clamp(34px,4.5vw,56px)] font-normal leading-[.95] text-[#321e2a]">
+              The Birth of Flamingo Flavours
+            </h2>
+            <div className="mt-8 grid gap-6 font-sans text-[15px] md:text-[17px] font-normal leading-[1.68] text-[#684454]">
+              <p className="font-display text-xl md:text-2xl italic font-normal text-[#b63d65] leading-snug">
+                Flamingo Flavours was born from a simple idea — to share the delight of exceptional flavours with everyone.
+              </p>
+              <p>
+                Combining professional mixology knowledge with continuous research and development, Flamingo Flavours aims to create high-quality flavour syrups that inspire creativity in beverages, desserts and culinary applications.
+              </p>
+              <p>
+                Every flavour is developed with an understanding of balance, aroma, taste and versatility, bringing professional flavour knowledge into an accessible form.
+              </p>
+              <p className="font-medium text-[#321e2a]">
+                From the world of international mixology to your glass, cup and plate, Flamingo Flavours is a journey of passion, creativity and taste.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FEATURE HIGHLIGHTS GRID */}
       <section className="bg-[#cfe7dc]">
         <div className="page-shell py-20 md:py-28">
