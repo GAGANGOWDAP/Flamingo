@@ -299,20 +299,20 @@ export function SiteHeader() {
 
 export function FloatingSocials() {
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-3">
+    <div className="fixed bottom-6 right-5 md:right-6 z-50 flex flex-col items-center gap-3.5">
       {/* FLOATING HOME MASCOT BUTTON (ROUND ICON LEADING TO HOME) */}
       <Link
         href="/"
         aria-label="Go to Flamingo Home Page"
         data-testid="button-floating-home-mascot"
-        className="group relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-2 border-white bg-white p-1 shadow-[0_10px_25px_rgba(216,79,120,0.45)] transition-all duration-300 hover:scale-115 hover:shadow-[0_14px_32px_rgba(216,79,120,0.65)] focus:outline-none focus:ring-2 focus:ring-[#d84f78] focus:ring-offset-2"
+        className="group relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border-2 border-white bg-white p-1 shadow-[0_6px_20px_rgba(216,79,120,0.35)] transition-all duration-300 hover:scale-110 hover:shadow-[0_10px_25px_rgba(216,79,120,0.5)] focus:outline-none focus:ring-2 focus:ring-[#d84f78] focus:ring-offset-2"
       >
         <img
           src={mascotHomePath}
           alt="Flamingo Mascot — Click to return to Home"
-          className="h-full w-full object-contain p-0.5 transition-transform duration-300 group-hover:scale-110"
+          className="h-full w-full object-contain p-0.5 transition-transform duration-300 group-hover:scale-105"
         />
-        <span className="pointer-events-none absolute right-16 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-md bg-[#321e2a] px-2.5 py-1 text-[11px] font-medium text-[#ffeaf3] opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100">
+        <span className="pointer-events-none absolute right-14 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-md bg-[#321e2a] px-2.5 py-1 text-[11px] font-medium text-[#ffeaf3] opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100">
           Home
         </span>
       </Link>
@@ -325,13 +325,13 @@ export function FloatingSocials() {
         rel="noopener noreferrer"
         aria-label="Download Catalogue"
         data-testid="button-floating-catalogue"
-        className="group relative flex h-12 w-12 items-center justify-center rounded-full border border-[#d84f78]/50 bg-[#321e2a] text-[#ffeaf3] shadow-[0_8px_22px_rgba(50,30,42,0.4)] transition-all duration-300 hover:scale-110 hover:border-[#d84f78] hover:bg-[#452739] hover:text-white hover:shadow-[0_12px_28px_rgba(153,63,98,0.5)] focus:outline-none focus:ring-2 focus:ring-[#d84f78] focus:ring-offset-2"
+        className="group relative flex h-11 w-11 items-center justify-center rounded-full border border-[#d84f78]/50 bg-[#321e2a] text-[#ffeaf3] shadow-[0_6px_20px_rgba(50,30,42,0.35)] transition-all duration-300 hover:scale-110 hover:border-[#d84f78] hover:bg-[#452739] hover:text-white hover:shadow-[0_10px_25px_rgba(153,63,98,0.45)] focus:outline-none focus:ring-2 focus:ring-[#d84f78] focus:ring-offset-2"
       >
         <Download
-          size={20}
+          size={18}
           className="transition-transform duration-300 group-hover:-translate-y-0.5"
         />
-        <span className="pointer-events-none absolute right-16 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-md bg-[#321e2a] px-2.5 py-1 text-[11px] font-medium text-[#ffeaf3] opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100">
+        <span className="pointer-events-none absolute right-14 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-md bg-[#321e2a] px-2.5 py-1 text-[11px] font-medium text-[#ffeaf3] opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100">
           Catalogue
         </span>
       </a>
@@ -343,10 +343,10 @@ export function FloatingSocials() {
         rel="noopener noreferrer"
         aria-label="Visit Flamingo on Instagram"
         data-testid="button-floating-instagram"
-        className="group flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white shadow-[0_8px_22px_rgba(220,39,67,0.4)] transition-all duration-300 hover:scale-110 hover:shadow-[0_12px_28px_rgba(220,39,67,0.6)] focus:outline-none focus:ring-2 focus:ring-[#dc2743] focus:ring-offset-2"
+        className="group flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white shadow-[0_6px_20px_rgba(220,39,67,0.35)] transition-all duration-300 hover:scale-110 hover:shadow-[0_10px_25px_rgba(220,39,67,0.5)] focus:outline-none focus:ring-2 focus:ring-[#dc2743] focus:ring-offset-2"
       >
         <Instagram
-          size={22}
+          size={19}
           className="transition-transform duration-300 group-hover:scale-110"
         />
       </a>
@@ -358,9 +358,9 @@ export function FloatingSocials() {
         rel="noopener noreferrer"
         aria-label="Contact Flamingo on WhatsApp"
         data-testid="button-floating-whatsapp"
-        className="group flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_22px_rgba(37,211,102,0.45)] transition-all duration-300 hover:scale-110 hover:bg-[#20ba5a] hover:shadow-[0_12px_28px_rgba(37,211,102,0.6)] focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
+        className="group flex h-11 w-11 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_6px_20px_rgba(37,211,102,0.35)] transition-all duration-300 hover:scale-110 hover:bg-[#20ba5a] hover:shadow-[0_10px_25px_rgba(37,211,102,0.5)] focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
       >
-        <WhatsAppIcon className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
+        <WhatsAppIcon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
       </a>
     </div>
   );
