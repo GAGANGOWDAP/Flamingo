@@ -159,10 +159,10 @@ export function HomePage() {
             </h2>
 
             {/* SUBTLE DECORATIVE ACCENT */}
-            <div className="mt-5 flex items-center gap-3 text-[#d84f78]/70">
-              <span className="h-[1px] w-12 bg-gradient-to-r from-[#d84f78]/70 to-transparent" />
+            <div className="mt-5 flex w-full max-w-2xl items-center gap-3 text-[#d84f78]/70">
+              <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#d84f78]/50 to-[#d84f78]/70" />
               <span className="text-xs font-serif text-[#b63d65]">✦</span>
-              <span className="h-[1px] w-16 bg-gradient-to-r from-[#d84f78]/40 to-transparent" />
+              <span className="h-[1px] flex-1 bg-gradient-to-r from-[#d84f78]/70 via-[#d84f78]/50 to-transparent" />
             </div>
 
             {/* INTRODUCTORY DISTINCT ITALIC SENTENCE */}
